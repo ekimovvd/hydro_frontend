@@ -1,0 +1,130 @@
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  font-family: $font-family-regular;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  background: #ffffff;
+  font-size: 14px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+  font-family: $font-family-bold;
+  color: #000000;
+}
+
+h1 {
+  font-size: 45px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+h5 {
+  font-size: 16px;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  color: #6b778c;
+}
+
+section {
+  height: 100%;
+  width: 100%;
+}
+
+div,
+p,
+input,
+form {
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+
+input[type="radio"] {
+  outline: none;
+}
+
+input[type="checkbox"] {
+  outline: none;
+}
+
+.container {
+  height: 100%;
+  width: 1040px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.container-full {
+  height: 100%;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+}
+
+*[data-tooltip] {
+  position: relative;
+}
+
+*[data-tooltip]::after {
+  content: attr(data-tooltip);
+
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  z-index: 101;
+
+  pointer-events: none;
+  opacity: 0;
+  -webkit-transition: opacity 0.15s ease-in-out;
+  -moz-transition: opacity 0.15s ease-in-out;
+  -ms-transition: opacity 0.15s ease-in-out;
+  -o-transition: opacity 0.15s ease-in-out;
+  transition: opacity 0.15s ease-in-out;
+
+  display: block;
+  font-size: 12px;
+  background: #ffffff;
+  border: 2px solid #e4e4e4;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+*[data-tooltip]:hover::after {
+  opacity: 1;
+}
+
+table {
+  border-collapse: collapse;
+}
