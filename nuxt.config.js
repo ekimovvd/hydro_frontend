@@ -20,13 +20,21 @@ export default {
     ],
   },
 
-  css: [],
+  css: ["boxicons/css/boxicons.min.css"],
 
   styleResources: {
-    scss: ["./assets/styles/variables.scss", "./assets/styles/main.scss"],
+    scss: [
+      "./assets/styles/variables.scss",
+      "./assets/styles/main.scss",
+      "./assets/styles/mixins.scss",
+    ],
   },
 
-  plugins: ["~/plugins/axios.ts"],
+  plugins: [
+    "~/plugins/axios.ts",
+    "~/plugins/vue-bem-cn.ts",
+    "~plugins/project-services",
+  ],
 
   components: true,
 
@@ -36,6 +44,8 @@ export default {
 
   axios: {
     baseURL: process.env.API_URL,
+    proxyHeaders: false,
+    credentials: false,
   },
 
   build: {},

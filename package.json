@@ -11,10 +11,12 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/style-resources": "^1.2.1",
+    "boxicons": "^2.1.4",
     "core-js": "^3.25.3",
     "nuxt": "^2.15.8",
     "nuxt-property-decorator": "^2.9.1",
     "vue": "^2.7.10",
+    "vue-bem-cn": "^1.1.1",
     "vue-server-renderer": "^2.7.10",
     "vue-template-compiler": "^2.7.10"
   },

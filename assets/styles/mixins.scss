@@ -1,0 +1,75 @@
+// input
+@mixin input {
+  width: $width-full;
+  background: $input-background;
+  border: $input-border;
+  padding: $input-padding;
+  border-radius: $border-radius;
+  color: $color-gray;
+  font-family: $font-family-regular;
+  font-size: $input-size;
+  outline: $outline-none;
+
+  &::placeholder {
+    color: $color-gray;
+    opacity: $opacity;
+    font-family: $font-family-regular;
+    font-size: $input-size;
+  }
+}
+
+// button
+@mixin button-reset {
+  background: $background-none;
+  border: $border-none;
+  outline: $outline-none;
+  margin: $margin-none;
+  cursor: $cursor-pointer;
+}
+
+@mixin button {
+  font-family: $font-family-medium;
+  font-size: $button-size;
+  text-align: $text-align-center;
+  color: $color-white;
+  border-radius: $border-radius;
+  padding: $button-padding;
+}
+
+// position
+@mixin position-y {
+  position: $position-absolute;
+  transform: translateY($translate-y);
+}
+
+@mixin position-y-right {
+  @include position-y();
+  top: $top-50-percent;
+  right: $right-0;
+}
+
+@mixin position-y-left {
+  @include position-y();
+  top: $top-50;
+  right: $right-0;
+}
+
+// display - flex
+@mixin display-flex-center {
+  display: $display-flex;
+  align-items: $align-items-center;
+  justify-content: $justify-content-center;
+}
+
+// icon
+@mixin icon {
+  display: $display-block;
+  color: $color-gray;
+}
+
+// label
+@mixin label {
+  display: $display-inline-block;
+  color: $color-gray;
+  font-size: $label-size;
+}

@@ -2,3 +2,88 @@
 $font-family-regular: "Rubik-Regular", sans-serif;
 $font-family-medium: "Rubik-Medium", sans-serif;
 $font-family-bold: "Rubik-Bold", sans-serif;
+
+// colors
+$color-black: #000000;
+$color-white: #ffffff;
+$color-gray: #6b778c;
+$color-gray-light: #fafbfc;
+$color-gray-dark: #dfe1e6;
+$color-primary: #4c6ef5;
+
+// width
+$width-full: 100%;
+
+// height
+$height-full: 100%;
+$height-full-vh: 100vh;
+
+// padding
+$padding-none: 0;
+
+// margin
+$margin-none: 0;
+
+// background
+$background-none: none;
+
+// border
+$border-none: none;
+
+// border-radius
+$border-radius: 5px;
+
+// outline
+$outline-none: none;
+
+// opacity
+$opacity: 1;
+
+// cursor
+$cursor-pointer: pointer;
+
+// position
+$position-relative: relative;
+$position-absolute: absolute;
+
+$top-50-percent: 50%;
+$left-0: 0;
+$right-0: 0;
+
+//translate
+$translate-y: -50%;
+$translate-x: -50%;
+
+// display
+$display-block: block;
+$display-grid: grid;
+$display-inline-block: inline-block;
+$display-flex: flex;
+
+// align-items
+$align-items-center: center;
+
+// justify-content
+$justify-content-center: center;
+
+// input
+$input-background: $color-gray-light;
+$input-border: 2px solid $color-gray-dark;
+$input-padding: 8px;
+$input-size: 13px;
+
+// button
+$button-size: 14px;
+$button-padding: 8px 20px;
+
+// label
+$label-size: 13px;
+
+// text-align
+$text-align-center: center;
+
+// box-sizing
+$box-sizing: border-box;
+
+// text-decoration
+$text-decoration-none: none;

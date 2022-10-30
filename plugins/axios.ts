@@ -1,26 +1,34 @@
-export default function ({ $axios, store, redirect }) {
-  // $api.interceptors.request.use((config) => {
-  //   config.headers.Authorization = `Bearer ${localStorage.getItem(
-  //     "access_token"
-  //   )}`;
-  //   return config;
-  // });
-  $axios.onError((error) => {
-    console.log("error", error);
-    // if (error.response && error.response.status === 500) {
-    //   redirect("/login");
-    // }
-  });
-  $axios.interceptors.response.use((response) => {
-    console.log("response", response);
-    // if (response.status === 200) {
-    //   if (
-    //     response.request.responseURL &&
-    //     response.request.responseURL.includes("login")
-    //   ) {
-    //     store.dispatch("setUser", response);
-    //   }
-    // }
-    return response;
-  });
-}
+import { Plugin } from "@nuxt/types";
+import { initializeAxios } from "~/shared/repository/initialize";
+
+const axiosPlugin: Plugin = (context) => {
+  const { $axios } = context;
+
+  initializeAxios($axios);
+
+  $axios.interceptors.request.use(
+    async (config) => {
+      return config;
+    },
+
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
+
+  $axios.interceptors.response.use(
+    (response) => {
+      return response;
+    },
+    (error) => {
+      //   const { response } = error;
+      //   const { status } = response;
+
+      console.log("error", error);
+
+      //   return Promise.reject(status);
+    }
+  );
+};
+
+export default axiosPlugin;

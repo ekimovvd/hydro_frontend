@@ -1,0 +1,12 @@
+.v-button-text {
+  @include button-reset;
+  @include button;
+
+  &--view-primary {
+    background: $color-primary;
+  }
+
+  &--view-full {
+    width: $width-full;
+  }
+}

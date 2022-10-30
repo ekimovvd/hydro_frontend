@@ -1,0 +1,7 @@
+.auth {
+  @include display-flex-center;
+
+  &__logo {
+    margin-bottom: 15px;
+  }
+}

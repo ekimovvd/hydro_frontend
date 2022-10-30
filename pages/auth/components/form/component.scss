@@ -1,0 +1,8 @@
+.auth-form {
+  display: $display-grid;
+  grid-row-gap: 10px;
+
+  &__label {
+    margin-bottom: 5px;
+  }
+}

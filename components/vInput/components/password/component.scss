@@ -1,0 +1,19 @@
+.v-input-password {
+  width: $width-full;
+  position: $position-relative;
+
+  &__button {
+    @include button-reset;
+    @include position-y-right;
+    right: 8px;
+  }
+
+  &__icon {
+    @include icon;
+    font-size: 15px;
+  }
+
+  &__input {
+    @include input;
+  }
+}
