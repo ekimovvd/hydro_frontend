@@ -1,0 +1,7 @@
+.v-header-profile {
+  @include display-flex-center;
+
+  &__text {
+    margin-left: 10px;
+  }
+}

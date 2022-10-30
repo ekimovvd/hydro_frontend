@@ -1,7 +1,7 @@
 <template>
-  <div :class="b()">
+  <section :class="b()">
     <Nuxt />
-  </div>
+  </section>
 </template>
 
 <script lang="ts" src="./default.ts"></script>

@@ -1,3 +1,10 @@
+// container
+@mixin container {
+  width: $widht-90;
+  height: $height-full;
+  margin: $margin-none $margin-auto;
+}
+
 // input
 @mixin input {
   width: $width-full;
@@ -64,6 +71,12 @@
   display: $display-flex;
   align-items: $align-items-center;
   justify-content: $justify-content-center;
+}
+
+@mixin display-flex-between {
+  display: $display-flex;
+  align-items: $align-items-center;
+  justify-content: $justify-content-between;
 }
 
 // icon

@@ -1,7 +1,7 @@
 <template>
-  <section :class="b()">
-    <div :class="b('container')">container</div>
-  </section>
+  <div :class="b()">
+    <VLogo :params="VLogoParams" />
+  </div>
 </template>
 
 <script lang="ts" src="./component.ts"></script>
