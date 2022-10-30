@@ -1,6 +1,7 @@
 <template>
   <section :class="b()">
     <VHeader />
+    <VNavbar />
     <nuxt />
   </section>
 </template>

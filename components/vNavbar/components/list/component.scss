@@ -1,0 +1,4 @@
+.v-navbar-list {
+  @include display-flex-center;
+  grid-column-gap: 20px;
+}

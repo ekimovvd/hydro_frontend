@@ -1,0 +1,5 @@
+.v-navbar {
+  &__container {
+    @include container;
+  }
+}

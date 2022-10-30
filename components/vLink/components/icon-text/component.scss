@@ -1,0 +1,21 @@
+.v-link-icon-text {
+  @include display-flex-center;
+  &.nuxt-link-exact-active {
+    .v-link-icon-text__text,
+    .v-link-icon-text__icon {
+      color: $color-black;
+    }
+  }
+
+  &__icon {
+    @include icon;
+    font-size: 18px;
+    margin-right: 5px;
+  }
+
+  &__text {
+    color: $color-gray;
+    font-family: $font-family-medium;
+    font-size: 13px;
+  }
+}
