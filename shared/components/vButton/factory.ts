@@ -1,7 +1,7 @@
 export interface VButtonParamsInterface {
+  id?: string;
   type: VButtonParamsTypeEnum;
   label?: VButtonParamsLabelEnum;
-  icon?: VButtonParamsIconEnum;
   style: VButtonParamsStyleEnum;
   full: boolean;
 }
@@ -12,13 +12,16 @@ export enum VButtonParamsTypeEnum {
 }
 
 export enum VButtonParamsLabelEnum {
+  loading = "Загрузка...",
   auth = "Войти",
 }
 
-export enum VButtonParamsIconEnum {}
-
 export enum VButtonParamsStyleEnum {
   primary = "primary",
+}
+
+export enum VButtonEventEnum {
+  click = "click",
 }
 
 export const VButtonParamsFactory = (

@@ -1,6 +1,11 @@
 <template>
   <div :class="b()">
-    <component :is="getComponent" :params="params" @click="onClick"></component>
+    <component
+      :is="getComponent"
+      :params="params"
+      :status="status"
+      @click="onClick"
+    ></component>
   </div>
 </template>
 

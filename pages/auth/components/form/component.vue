@@ -5,7 +5,7 @@
       <VInput
         :params="VInputParamsLogin"
         :value="user.login"
-        @changeValue="onChangeUserLogin"
+        @change="onChangeUserLogin"
       />
     </div>
     <div :class="b('group')">
@@ -13,10 +13,10 @@
       <VInput
         :params="VInputParamsPassword"
         :value="user.password"
-        @changeValue="onChangeUserPassword"
+        @change="onChangeUserPassword"
       />
     </div>
-    <VButton :params="VButtonParams" @click="onAuth" />
+    <VButton :params="VButtonParams" :status="status" @click="onAuth" />
   </form>
 </template>
 

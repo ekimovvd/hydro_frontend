@@ -1,6 +1,7 @@
 import { Component, Emit, Prop, Vue } from "nuxt-property-decorator";
 
 import {
+  VInputEventEnum,
   VInputParamsInterface,
   VInputParamsTypeEnum,
 } from "~/shared/components/vInput/factory";
@@ -33,6 +34,6 @@ export default class VInput extends Vue {
     return this.params.type;
   }
 
-  @Emit("changeValue")
+  @Emit(VInputEventEnum.change)
   onChangeValue(value: string): void {}
 }

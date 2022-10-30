@@ -3,7 +3,7 @@ import {
   AuthRequestInterface,
   AuthResponseInterface,
 } from "../pages/auth/factory";
-import { ApiWrapper, ProjectRepositoryInterface } from "./factory";
+import { ProjectRepositoryInterface } from "./factory";
 import { Url } from "./url";
 
 export class Http implements ProjectRepositoryInterface {
@@ -13,11 +13,11 @@ export class Http implements ProjectRepositoryInterface {
   ) {}
 
   async auth(params: AuthRequestInterface): Promise<AuthResponseInterface> {
-    const { data } = await this.axios.post<ApiWrapper<AuthResponseInterface>>(
+    const { data } = await this.axios.post<AuthResponseInterface>(
       this.url.auth(),
       params
     );
 
-    return data.response;
+    return data;
   }
 }

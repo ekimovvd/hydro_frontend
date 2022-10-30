@@ -1,6 +1,9 @@
 import { Component, Prop, Vue } from "nuxt-property-decorator";
 
-import { VInputParamsInterface } from "~/shared/components/vInput/factory";
+import {
+  VInputEventEnum,
+  VInputParamsInterface,
+} from "~/shared/components/vInput/factory";
 
 import { ButtonIconEnum, COMPONENT_NAME, InputTypeEnum } from "./constants";
 
@@ -37,7 +40,7 @@ export default class VInputPassword extends Vue {
   }
 
   set currentValue(value: string) {
-    this.$emit("changeValue", value);
+    this.$emit(VInputEventEnum.change, value);
   }
 
   onChangeVisible(): void {

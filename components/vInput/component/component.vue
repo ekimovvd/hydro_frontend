@@ -4,7 +4,7 @@
       :is="getComponent"
       :params="params"
       :value="value"
-      @changeValue="onChangeValue"
+      @change="onChangeValue"
     ></component>
   </div>
 </template>

@@ -1,9 +1,15 @@
 import { Component, Emit, Prop, Vue } from "nuxt-property-decorator";
 
 import {
+  VButtonEventEnum,
   VButtonParamsInterface,
+  VButtonParamsLabelEnum,
   VButtonParamsStyleEnum,
 } from "~/shared/components/vButton/factory";
+import {
+  StatusInterface,
+  StatusTypeEnum,
+} from "~/shared/entities/status/factory";
 
 import {
   COMPONENT_NAME,
@@ -20,6 +26,11 @@ export default class VButtonText extends Vue {
     required: true,
   })
   readonly params: VButtonParamsInterface;
+  @Prop({
+    type: Object,
+    required: true,
+  })
+  readonly status: StatusInterface;
 
   get getStyleViewClass(): VButtonStyleViewClassEnum {
     switch (this.params.style) {
@@ -39,6 +50,31 @@ export default class VButtonText extends Vue {
     }
   }
 
-  @Emit("click")
+  get getLabel(): VButtonParamsLabelEnum {
+    if (
+      this.status.type === StatusTypeEnum.loading &&
+      this.status.id === this.params.id
+    ) {
+      return VButtonParamsLabelEnum.loading;
+    } else if (
+      this.status.type === StatusTypeEnum.loading ||
+      this.status.type === StatusTypeEnum.pending
+    ) {
+      return this.params.label;
+    }
+    return this.params.label;
+  }
+
+  get getDisabled(): boolean {
+    if (
+      this.status.type === StatusTypeEnum.loading ||
+      this.status.type === StatusTypeEnum.pending
+    ) {
+      return true;
+    }
+    return false;
+  }
+
+  @Emit(VButtonEventEnum.click)
   onClick(): void {}
 }

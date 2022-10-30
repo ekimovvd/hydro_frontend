@@ -21,6 +21,10 @@ export enum VInputParamsIdEnum {
   authFormPassword = "authFormPassword",
 }
 
+export enum VInputEventEnum {
+  change = "change",
+}
+
 export const VInputParamsFixture = (
   params: Partial<VInputParamsInterface> = {}
 ): VInputParamsInterface => {

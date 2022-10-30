@@ -1,6 +1,9 @@
 import { Component, Emit, Prop, Vue } from "nuxt-property-decorator";
 
-import { VInputParamsInterface } from "~/shared/components/vInput/factory";
+import {
+  VInputEventEnum,
+  VInputParamsInterface,
+} from "~/shared/components/vInput/factory";
 
 import { COMPONENT_NAME } from "./constants";
 
@@ -24,6 +27,6 @@ export default class VInputText extends Vue {
   }
 
   set currentValue(value: string) {
-    this.$emit("changeValue", value);
+    this.$emit(VInputEventEnum.change, value);
   }
 }

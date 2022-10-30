@@ -1,6 +1,10 @@
 <template>
-  <button :class="[b(), getStyleViewClass, getFullViewClass]" @click="onClick">
-    {{ params.label }}
+  <button
+    :class="[b(), getStyleViewClass, getFullViewClass]"
+    :disabled="getDisabled"
+    @click="onClick"
+  >
+    {{ getLabel }}
   </button>
 </template>
 

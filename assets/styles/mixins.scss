@@ -34,6 +34,11 @@
   color: $color-white;
   border-radius: $border-radius;
   padding: $button-padding;
+
+  &:disabled {
+    opacity: $opacity-8;
+    cursor: $cursor-default;
+  }
 }
 
 // position

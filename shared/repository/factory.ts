@@ -10,9 +10,3 @@ export interface ProjectRepositoryInterface {
 export interface ProjectServicesInterface {
   projectRepository: ProjectRepositoryInterface;
 }
-
-export interface ApiWrapper<T> {
-  status?: string;
-  description?: string;
-  response: T;
-}

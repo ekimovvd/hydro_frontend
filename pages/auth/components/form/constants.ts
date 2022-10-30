@@ -16,6 +16,10 @@ import {
 
 export const COMPONENT_NAME = "auth-form";
 
+export enum ButtonIdEnum {
+  auth = "auth-button",
+}
+
 export const VInputParamsLogin = VInputParamsFixture({
   type: VInputParamsTypeEnum.text,
   placeholder: VInputParamsPlaceholderEnum.login,
@@ -37,5 +41,6 @@ export const VLabelParamsPassword = VLabelParamsFactory({
 });
 
 export const VButtonParams = VButtonParamsFactory({
+  id: ButtonIdEnum.auth,
   label: VButtonParamsLabelEnum.auth,
 });
