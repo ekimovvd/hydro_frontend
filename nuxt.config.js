@@ -33,7 +33,8 @@ export default {
   plugins: [
     "~/plugins/axios.ts",
     "~/plugins/vue-bem-cn.ts",
-    "~plugins/project-services",
+    "~plugins/project-services.ts",
+    "~/plugins/element-ui.ts",
   ],
 
   components: true,

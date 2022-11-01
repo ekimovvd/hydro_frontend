@@ -1,10 +1,11 @@
 $font-size: 13px;
 
-.v-input-text {
-  .el-input__inner {
-    @include input;
+.v-input-textarea {
+  .el-textarea__inner {
+    @include textarea;
     border: 2px solid $color-gray-dark;
     font-size: $font-size;
+    height: 100px;
     padding: 8px;
 
     &::placeholder {

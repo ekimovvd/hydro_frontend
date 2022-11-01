@@ -1,0 +1,16 @@
+.posts-form {
+  display: flex;
+  justify-content: space-between;
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: 15px;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: 5px;
+  }
+}

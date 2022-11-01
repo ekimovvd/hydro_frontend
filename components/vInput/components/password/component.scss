@@ -1,6 +1,18 @@
+$font-size-13: 13px;
+
 .v-input-password {
-  width: $width-full;
   position: $position-relative;
+
+  .el-input__inner {
+    @include input;
+    border: 2px solid $color-gray-dark;
+    font-size: $font-size-13;
+    padding: 8px;
+
+    &::placeholder {
+      font-size: $font-size-13;
+    }
+  }
 
   &__button {
     @include button-reset;

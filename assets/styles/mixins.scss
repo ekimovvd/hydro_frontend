@@ -8,20 +8,33 @@
 // input
 @mixin input {
   width: $width-full;
-  background: $input-background;
-  border: $input-border;
-  padding: $input-padding;
+  background: $color-gray-light;
+  outline: $outline-none;
   border-radius: $border-radius;
   color: $color-gray;
   font-family: $font-family-regular;
-  font-size: $input-size;
-  outline: $outline-none;
 
   &::placeholder {
     color: $color-gray;
     opacity: $opacity;
     font-family: $font-family-regular;
-    font-size: $input-size;
+  }
+}
+
+// textarea
+@mixin textarea {
+  width: $width-full;
+  background: $color-gray-light;
+  resize: $resize-none;
+  outline: $outline-none;
+  color: $color-gray;
+  font-family: $font-family-regular;
+  border-radius: $border-radius;
+
+  &::placeholder {
+    color: $color-gray;
+    opacity: $opacity;
+    font-family: $font-family-regular;
   }
 }
 
@@ -79,6 +92,12 @@
   justify-content: $justify-content-between;
 }
 
+@mixin display-flex-end {
+  display: $display-flex;
+  align-items: $align-items-center;
+  justify-content: $justify-content-end;
+}
+
 // icon
 @mixin icon {
   display: $display-block;
@@ -90,4 +109,42 @@
   display: $display-inline-block;
   color: $color-gray;
   font-size: $label-size;
+}
+
+// select
+@mixin select-el-input {
+  @include display-flex-between();
+  border-radius: $border-radius;
+}
+
+@mixin select-el-input-inner {
+  border: $border-none;
+  cursor: $cursor-pointer;
+  outline: $outline-none;
+  width: $width-full;
+  font-family: $font-family-regular;
+  padding: $padding-none;
+
+  &::placeholder {
+    font-family: $font-family-regular;
+  }
+}
+
+@mixin select-list {
+  border-radius: $border-radius;
+}
+
+@mixin select-prefix {
+  cursor: $cursor-pointer;
+}
+
+@mixin select-item {
+  cursor: $cursor-pointer;
+  color: $color-gray;
+}
+
+@mixin select-empty {
+  cursor: $cursor-default;
+  color: $color-gray;
+  text-align: $text-align-center;
 }

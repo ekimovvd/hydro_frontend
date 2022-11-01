@@ -6,6 +6,7 @@ $font-family-bold: "Rubik-Bold", sans-serif;
 // colors
 $color-black: #000000;
 $color-white: #ffffff;
+$color-white-dark: #f4f5f7;
 $color-gray: #6b778c;
 $color-gray-light: #fafbfc;
 $color-gray-dark: #dfe1e6;
@@ -70,12 +71,7 @@ $align-items-center: center;
 // justify-content
 $justify-content-center: center;
 $justify-content-between: space-between;
-
-// input
-$input-background: $color-gray-light;
-$input-border: 2px solid $color-gray-dark;
-$input-padding: 8px;
-$input-size: 13px;
+$justify-content-end: flex-end;
 
 // button
 $button-size: 14px;
@@ -92,3 +88,6 @@ $box-sizing: border-box;
 
 // text-decoration
 $text-decoration-none: none;
+
+// resize
+$resize-none: none;

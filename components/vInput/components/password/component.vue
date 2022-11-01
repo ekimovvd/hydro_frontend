@@ -3,13 +3,13 @@
     <button :class="b('button')" @click="onChangeVisible">
       <i :class="[b('icon'), getButtonIcon]"></i>
     </button>
-    <input
+    <el-input
       :class="b('input')"
       :id="params.id"
       :type="inputType"
       :placeholder="params.placeholder"
-      v-model.trim="currentValue"
-    />
+      v-model="currentValue"
+    ></el-input>
   </div>
 </template>
 

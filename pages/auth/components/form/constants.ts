@@ -3,7 +3,7 @@ import {
   VButtonParamsLabelEnum,
 } from "~/shared/components/vButton/factory";
 import {
-  VInputParamsFixture,
+  VInputParamsFactory,
   VInputParamsIdEnum,
   VInputParamsPlaceholderEnum,
   VInputParamsTypeEnum,
@@ -20,12 +20,12 @@ export enum ButtonIdEnum {
   auth = "auth-button",
 }
 
-export const VInputParamsLogin = VInputParamsFixture({
+export const VInputParamsLogin = VInputParamsFactory({
   type: VInputParamsTypeEnum.text,
   placeholder: VInputParamsPlaceholderEnum.login,
   id: VInputParamsIdEnum.authFormLogin,
 });
-export const VInputParamsPassword = VInputParamsFixture({
+export const VInputParamsPassword = VInputParamsFactory({
   type: VInputParamsTypeEnum.password,
   placeholder: VInputParamsPlaceholderEnum.password,
   id: VInputParamsIdEnum.authFormPassword,
