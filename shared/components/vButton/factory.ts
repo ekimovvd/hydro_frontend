@@ -24,6 +24,11 @@ export enum VButtonEventEnum {
   click = "click",
 }
 
+export enum VButtonIconEnum {
+  hide = "bx bx-hide",
+  show = "bx bx-show",
+}
+
 export const VButtonParamsFactory = (
   params: Partial<VButtonParamsInterface>
 ): VButtonParamsInterface => {

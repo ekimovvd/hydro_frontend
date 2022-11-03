@@ -1,0 +1,17 @@
+.v-table-tag {
+  &__label {
+    font-size: 18px;
+
+    &--view-primary {
+      color: $color-primary;
+    }
+  }
+
+  &__tag {
+    font-size: 16px;
+
+    &--view-orange {
+      color: $color-orange;
+    }
+  }
+}

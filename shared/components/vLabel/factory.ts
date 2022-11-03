@@ -7,8 +7,8 @@ export enum VLabelParamsForEnum {
   default = "",
   authFormLogin = "authFormLogin",
   authFormPassword = "authFormPassword",
-  postsFormName = "postsFormName",
-  postsFormComment = "postsFormComment",
+  stationsFormName = "stationsFormName",
+  stationsFormComment = "stationsFormComment",
 }
 
 export enum VLabelParamsTextEnum {

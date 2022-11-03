@@ -1,8 +1,9 @@
 import { AxiosInstance } from "axios";
+import { AuthInterface, TokenInterface } from "../entities/connect/factory";
 import {
-  AuthRequestInterface,
-  AuthResponseInterface,
-} from "../pages/auth/factory";
+  NearestSynopStationInterface,
+  WorkStationInterface,
+} from "../entities/stations/factory";
 import { ProjectRepositoryInterface } from "./factory";
 import { Url } from "./url";
 
@@ -12,10 +13,30 @@ export class Http implements ProjectRepositoryInterface {
     private readonly url: Url
   ) {}
 
-  async auth(params: AuthRequestInterface): Promise<AuthResponseInterface> {
-    const { data } = await this.axios.post<AuthResponseInterface>(
-      this.url.auth(),
+  // CONNECT
+  async token(params: AuthInterface): Promise<TokenInterface> {
+    const { data } = await this.axios.post<TokenInterface>(
+      this.url.token(),
       params
+    );
+
+    return data;
+  }
+
+  // STATIONS
+  async getAllWorkStations(): Promise<WorkStationInterface[]> {
+    const { data } = await this.axios.get<WorkStationInterface[]>(
+      this.url.getAllWorkStations()
+    );
+
+    return data;
+  }
+
+  async getNearestSynopStations(
+    ID: string | number
+  ): Promise<NearestSynopStationInterface[]> {
+    const { data } = await this.axios.get<NearestSynopStationInterface[]>(
+      this.url.getNearestSynopStations(ID)
     );
 
     return data;

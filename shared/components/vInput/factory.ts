@@ -1,5 +1,6 @@
 export interface VInputParamsInterface {
   type: VInputParamsTypeEnum;
+  inputType: VInputTypeEnum;
   placeholder: VInputParamsPlaceholderEnum;
   id: VInputParamsIdEnum;
   text?: VInputParamsTextEnum;
@@ -25,8 +26,8 @@ export enum VInputParamsIdEnum {
   default = "",
   authFormLogin = "authFormLogin",
   authFormPassword = "authFormPassword",
-  postsFormName = "postsFormName",
-  postsFormComment = "postsFormComment",
+  stationsFormName = "stationsFormName",
+  stationsFormComment = "stationsFormComment",
 }
 
 export enum VInputParamsTextEnum {
@@ -39,11 +40,18 @@ export enum VInputEventEnum {
   change = "change",
 }
 
+export enum VInputTypeEnum {
+  text = "text",
+  password = "password",
+  textarea = "textarea",
+}
+
 export const VInputParamsFactory = (
   params: Partial<VInputParamsInterface> = {}
 ): VInputParamsInterface => {
   return {
     type: VInputParamsTypeEnum.text,
+    inputType: VInputTypeEnum.text,
     placeholder: VInputParamsPlaceholderEnum.text,
     id: VInputParamsIdEnum.default,
     ...params,

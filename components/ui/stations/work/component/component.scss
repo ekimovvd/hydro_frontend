@@ -1,0 +1,5 @@
+.stations-work {
+  display: $display-grid;
+  grid-template-columns: 1fr 600px;
+  grid-column-gap: 50px;
+}

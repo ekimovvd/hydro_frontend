@@ -98,6 +98,11 @@
   justify-content: $justify-content-end;
 }
 
+@mixin display-flex-column {
+  display: $display-flex;
+  flex-direction: $flex-direction-column;
+}
+
 // icon
 @mixin icon {
   display: $display-block;

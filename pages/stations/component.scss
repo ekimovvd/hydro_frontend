@@ -1,0 +1,7 @@
+.stations {
+  padding: 20px 0;
+
+  &__container {
+    @include container;
+  }
+}

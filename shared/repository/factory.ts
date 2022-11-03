@@ -1,10 +1,18 @@
 import {
-  AuthRequestInterface,
-  AuthResponseInterface,
-} from "../pages/auth/factory";
+  NearestSynopStationInterface,
+  WorkStationInterface,
+} from "../entities/stations/factory";
+import { AuthInterface, TokenInterface } from "../entities/connect/factory";
 
 export interface ProjectRepositoryInterface {
-  auth(params?: AuthRequestInterface): Promise<AuthResponseInterface>;
+  // TOKEN
+  token(params?: AuthInterface): Promise<TokenInterface>;
+
+  // STATIONS
+  getAllWorkStations(): Promise<WorkStationInterface[]>;
+  getNearestSynopStations(
+    ID: string | number
+  ): Promise<NearestSynopStationInterface[]>;
 }
 
 export interface ProjectServicesInterface {

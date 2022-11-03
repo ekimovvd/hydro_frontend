@@ -1,9 +1,7 @@
 import { Component, Vue } from "nuxt-property-decorator";
 
-import { COMPONENT_NAME, VLogoParams } from "./constants";
-
-import VLogo from "~/components/vLogo/component/component";
-import AuthForm from "./components/form/component";
+import VLogo from "~/components/shared/vLogo/component/component";
+import AuthForm from "~/components/ui/auth/component/component";
 
 import { VLogoParamsInterface } from "~/shared/components/vLogo/factory";
 import {
@@ -12,12 +10,20 @@ import {
   StatusInterface,
   StatusTypeEnum,
 } from "~/shared/entities/status/factory";
+import { VLinkParamsNameEnum } from "~/shared/components/vLink/factory";
+
+import { COMPONENT_NAME, VLogoParams } from "./constants";
 
 @Component({
   name: COMPONENT_NAME,
   components: {
     VLogo,
     AuthForm,
+  },
+  head() {
+    return {
+      title: VLinkParamsNameEnum.auth,
+    };
   },
 })
 export default class Auth extends Vue {

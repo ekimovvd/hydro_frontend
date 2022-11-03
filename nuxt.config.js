@@ -41,7 +41,7 @@ export default {
 
   buildModules: ["@nuxt/typescript-build", "@nuxtjs/style-resources"],
 
-  modules: ["@nuxtjs/axios"],
+  modules: ["@nuxtjs/axios", "cookie-universal-nuxt"],
 
   axios: {
     baseURL: process.env.API_URL,

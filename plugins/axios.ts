@@ -2,12 +2,15 @@ import { Plugin } from "@nuxt/types";
 import { initializeAxios } from "~/shared/repository/initialize";
 
 const axiosPlugin: Plugin = (context) => {
-  const { $axios } = context;
+  const { $axios, app } = context;
 
   initializeAxios($axios);
 
   $axios.interceptors.request.use(
     async (config) => {
+      config.headers.Authorization = `Bearer ${app.$cookies.get(
+        "access_token"
+      )}`;
       return config;
     },
 
@@ -20,14 +23,7 @@ const axiosPlugin: Plugin = (context) => {
     (response) => {
       return response;
     },
-    (error) => {
-      //   const { response } = error;
-      //   const { status } = response;
-
-      console.log("error", error);
-
-      //   return Promise.reject(status);
-    }
+    (error) => {}
   );
 };
 

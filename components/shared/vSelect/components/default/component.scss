@@ -1,0 +1,74 @@
+$padding: 8px 12px;
+$font-size: 13px;
+
+.v-select-default {
+  cursor: $cursor-pointer;
+
+  &__clear {
+    @include button-reset;
+    padding: $padding-none;
+  }
+
+  &__prefix {
+    @include display-flex-end;
+    width: 41px;
+  }
+
+  .v-select-default__list {
+    overflow-y: $overflow-y-auto;
+    max-height: 157px;
+  }
+
+  &--view-gray {
+    .el-input {
+      @include select-el-input;
+      padding: $padding;
+      background: $color-white-dark;
+    }
+
+    .el-input__inner {
+      @include select-el-input-inner;
+      background: $color-white-dark;
+      color: $color-black;
+
+      &::placeholder {
+        color: $color-black;
+      }
+    }
+
+    .v-select-default__icon {
+      @include icon;
+      font-size: 18px;
+    }
+
+    .v-select-default__list {
+      @include select-list;
+      margin-top: 5px;
+      background: $color-white-dark;
+
+      .el-select-dropdown__item {
+        @include select-item;
+        padding: $padding;
+        font-size: $font-size;
+
+        &.selected {
+          color: $color-black;
+        }
+
+        &.hover {
+          color: $color-black;
+        }
+      }
+
+      .el-select-dropdown__empty {
+        @include select-empty;
+        padding: $padding;
+        font-size: $font-size;
+      }
+    }
+
+    .el-input__prefix {
+      @include select-prefix;
+    }
+  }
+}

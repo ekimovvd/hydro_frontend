@@ -4,6 +4,7 @@ export interface VSelectParamsInterface {
   placeholder: VSelectParamsPlaceholderEnum;
   popperClass: VSelectParamsPooperClassEnum;
   popperAppendToBody: boolean;
+  iconClear: VSelectIconEnum;
 }
 
 export interface VSelectDataInterface {
@@ -24,9 +25,10 @@ export enum VSelectParamsPooperClassEnum {
   list = "list",
 }
 
-export enum VSelectChevronIconEnum {
-  down = "bx bx-chevron-down",
-  up = "bx bx-chevron-up",
+export enum VSelectIconEnum {
+  chevronDown = "bx bx-chevron-down",
+  chevronUp = "bx bx-chevron-up",
+  x = "bx bx-x",
 }
 
 export enum VSelectEventEnum {
@@ -49,6 +51,7 @@ export const VSelectParamsFactory = (
     placeholder: VSelectParamsPlaceholderEnum.default,
     popperClass: VSelectParamsPooperClassEnum.list,
     popperAppendToBody: false,
+    iconClear: VSelectIconEnum.x,
     ...params,
   };
 };

@@ -11,17 +11,18 @@ export enum VLinkParamsTypeEnum {
 
 export enum VLinkParamsToEnum {
   home = "/",
-  posts = "/posts",
+  stations = "/stations",
   operational = "/operational",
   methods = "/methods",
   files = "/files",
   bulletins = "/bulletins",
   forecasts = "/forecasts",
+  profile = "/profile",
 }
 
 export enum VLinkParamsIconEnum {
   home = "bx bx-home",
-  posts = "bx bx-line-chart",
+  stations = "bx bx-line-chart",
   operational = "bx bx-flag",
   methods = "bx bx-slider",
   files = "bx bx-file",
@@ -31,12 +32,14 @@ export enum VLinkParamsIconEnum {
 
 export enum VLinkParamsNameEnum {
   home = "Главная",
-  posts = "Список постов",
+  stations = "Список постов",
   operational = "Оперативная работа",
   methods = "Методы",
   files = "Файлы",
   bulletins = "Бюллетени",
   forecasts = "Прогнозы",
+  auth = "Авторизация",
+  profile = "Профиль",
 }
 
 export const VLinkParamsFactory = (
