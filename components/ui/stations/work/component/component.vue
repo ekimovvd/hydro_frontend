@@ -10,6 +10,7 @@
       :form="form"
       :nearestMeteo="nearestMeteo"
       :areaCenterMeteo="areaCenterMeteo"
+      :status="status"
       @form:name="onChangeFormName"
       @form:comment="onChangeFormComment"
       @form:is:reservoir="onChangeFormIsReservoir"
@@ -18,6 +19,8 @@
       @form:clear:nearest:meteo="onClearFormNearestMeteo"
       @form:area:center:meteo="onChangeFormAreaCenterMeteo"
       @form:clear:area:center:meteo="onClearFormAreaCenterMeteo"
+      @station:save="onSaveStation"
+      @station:remove="onRemoveStation"
     />
   </div>
 </template>

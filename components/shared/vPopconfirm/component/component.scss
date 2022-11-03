@@ -1,0 +1,42 @@
+.v-popconfirm {
+  width: $width-full;
+
+  .el-button {
+    @include button-reset;
+    @include button;
+    background: $color-primary;
+    width: $width-full;
+  }
+}
+
+.el-popconfirm {
+  margin-top: 10px;
+  padding: 15px;
+  background: $color-white-dark;
+  border-radius: $border-radius;
+
+  .el-popconfirm__main {
+    color: $color-gray;
+    font-size: 13px;
+  }
+
+  .el-popconfirm__action {
+    @include display-flex-center;
+    grid-column-gap: 10px;
+    margin-top: 10px;
+  }
+
+  .el-button {
+    @include button-reset;
+    @include button;
+    width: $width-full;
+
+    &:first-child {
+      background: $color-primary;
+    }
+
+    &:last-child {
+      background: $color-danger;
+    }
+  }
+}

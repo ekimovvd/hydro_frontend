@@ -6,6 +6,7 @@ import {
   VButtonParamsTypeEnum,
 } from "~/shared/components/vButton/factory";
 import { StatusInterface } from "~/shared/entities/status/factory";
+import { VButtonFullViewClassEnum } from "../components/text/constants";
 
 import { COMPONENt_NAME } from "./constants";
 
@@ -31,6 +32,15 @@ export default class VButton extends Vue {
 
   get getComponent(): VButtonParamsTypeEnum {
     return this.params.type;
+  }
+
+  get getFullViewClass(): VButtonFullViewClassEnum {
+    switch (this.params.full) {
+      case true:
+        return VButtonFullViewClassEnum.full;
+      default:
+        return VButtonFullViewClassEnum.default;
+    }
   }
 
   @Emit(VButtonEventEnum.click)

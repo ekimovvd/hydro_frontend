@@ -14,6 +14,7 @@ export enum VButtonParamsTypeEnum {
 export enum VButtonParamsLabelEnum {
   loading = "Загрузка...",
   auth = "Войти",
+  save = "Сохранить",
 }
 
 export enum VButtonParamsStyleEnum {

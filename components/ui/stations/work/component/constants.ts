@@ -11,4 +11,6 @@ export enum EventEnum {
   formClearAreaCenterMeteo = "form:clear:area:center:meteo",
   station = "station",
   stationClear = "station:clear",
+  stationRemove = "station:remove",
+  stationSave = "station:save",
 }

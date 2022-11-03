@@ -3,6 +3,8 @@ import { Component, Emit, Prop, Vue } from "nuxt-property-decorator";
 import VSelect from "~/components/shared/vSelect/component/component";
 import VLabel from "~/components/shared/vLabel/component/component";
 import VInput from "~/components/shared/vInput/component/component";
+import VPopconfirm from "~/components/shared/vPopconfirm/component/component";
+import VButton from "~/components/shared/vButton/component/component";
 
 import {
   VSelectDataInterface,
@@ -11,10 +13,13 @@ import {
 import { VLabelParamsInterface } from "~/shared/components/vLabel/factory";
 import { VInputParamsInterface } from "~/shared/components/vInput/factory";
 import { WorkStationInterface } from "~/shared/entities/stations/factory";
-import { EventEnum } from "../../component/constants";
+import { VPopconfirmParamsInterface } from "~/shared/components/vPopconfirm/factory";
+import { VButtonParamsInterface } from "~/shared/components/vButton/factory";
+import { StatusInterface } from "~/shared/entities/status/factory";
 
 import {
   COMPONENT_NAME,
+  VButtonParamsSave,
   VInputParamsComment,
   VInputParamsIsFavorite,
   VInputParamsIsReservoir,
@@ -23,9 +28,11 @@ import {
   VLabelParamsComment,
   VLabelParamsName,
   VLabelParamsNearestMeteo,
+  VPopconfirmParamsDelete,
   VSelectParamsAreaCenterMeteo,
   VSelectParamsNearestMeteo,
 } from "./constants";
+import { EventEnum } from "../../component/constants";
 
 @Component({
   name: COMPONENT_NAME,
@@ -33,6 +40,8 @@ import {
     VSelect,
     VLabel,
     VInput,
+    VPopconfirm,
+    VButton,
   },
 })
 export default class StationsWorkForm extends Vue {
@@ -51,6 +60,11 @@ export default class StationsWorkForm extends Vue {
     default: () => [],
   })
   readonly areaCenterMeteo: VSelectDataInterface[];
+  @Prop({
+    type: Object,
+    required: true,
+  })
+  readonly status: StatusInterface;
 
   readonly VSelectParamsNearestMeteo: VSelectParamsInterface =
     VSelectParamsNearestMeteo;
@@ -72,6 +86,10 @@ export default class StationsWorkForm extends Vue {
     VInputParamsIsReservoir;
   readonly VInputParamsIsFavorite: VInputParamsInterface =
     VInputParamsIsFavorite;
+
+  readonly VPopconfirmParamsDelete: VPopconfirmParamsInterface =
+    VPopconfirmParamsDelete;
+  readonly VButtonParamsSave: VButtonParamsInterface = VButtonParamsSave;
 
   get getCommentValue(): string {
     return this.form.Comment !== null ? this.form.Comment : "";
@@ -110,4 +128,10 @@ export default class StationsWorkForm extends Vue {
 
   @Emit(EventEnum.formClearAreaCenterMeteo)
   onClearAreaCenterMeteo(): void {}
+
+  @Emit(EventEnum.stationRemove)
+  onRemoveStation(): void {}
+
+  @Emit(EventEnum.stationSave)
+  onSaveStation(): void {}
 }

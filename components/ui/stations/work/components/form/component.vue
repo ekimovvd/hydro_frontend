@@ -51,6 +51,17 @@
           @clear="onClearAreaCenterMeteo"
         />
       </div>
+      <div :class="b('buttons')">
+        <VButton
+          :params="VButtonParamsSave"
+          :status="status"
+          @click="onSaveStation"
+        />
+        <VPopconfirm
+          :params="VPopconfirmParamsDelete"
+          @confirm="onRemoveStation"
+        />
+      </div>
     </div>
   </form>
 </template>

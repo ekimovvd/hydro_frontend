@@ -1,4 +1,9 @@
 import {
+  VButtonParamsFactory,
+  VButtonParamsInterface,
+  VButtonParamsLabelEnum,
+} from "~/shared/components/vButton/factory";
+import {
   VInputParamsFactory,
   VInputParamsIdEnum,
   VInputParamsInterface,
@@ -13,6 +18,11 @@ import {
   VLabelParamsInterface,
   VLabelParamsTextEnum,
 } from "~/shared/components/vLabel/factory";
+import {
+  VPopconfirmParamsFactory,
+  VPopconfirmParamsInterface,
+  VPopconfirmParamsTitleEnum,
+} from "~/shared/components/vPopconfirm/factory";
 import {
   VSelectParamsFactory,
   VSelectParamsInterface,
@@ -65,3 +75,11 @@ export const VInputParamsIsFavorite: VInputParamsInterface =
     type: VInputParamsTypeEnum.checkbox,
     text: VInputParamsTextEnum.isFavorite,
   });
+
+export const VPopconfirmParamsDelete: VPopconfirmParamsInterface =
+  VPopconfirmParamsFactory({ title: VPopconfirmParamsTitleEnum.deletePost });
+
+export const VButtonParamsSave: VButtonParamsInterface = VButtonParamsFactory({
+  id: "",
+  label: VButtonParamsLabelEnum.save,
+});

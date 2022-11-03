@@ -11,6 +11,12 @@ import {
   VSelectDataFactory,
   VSelectDataInterface,
 } from "~/shared/components/vSelect/factory";
+import {
+  StatusFactory,
+  StatusIdEnum,
+  StatusInterface,
+  StatusTypeEnum,
+} from "~/shared/entities/status/factory";
 
 import { COMPONENT_NAME } from "./constants";
 
@@ -31,6 +37,7 @@ export default class StationsWork extends Vue {
   public form: WorkStationInterface = WorkStationFactory();
   public nearestMeteo: VSelectDataInterface[] = [];
   public areaCenterMeteo: VSelectDataInterface[] = [];
+  public status: StatusInterface = StatusFactory();
 
   readonly projectRepository = this.$projectServices.projectRepository;
 
@@ -82,5 +89,23 @@ export default class StationsWork extends Vue {
     this.form = WorkStationFactory();
     this.nearestMeteo = [];
     this.areaCenterMeteo = [];
+  }
+
+  onChangeStatusLoading(id: string) {
+    this.status.id = id;
+    this.status.type = StatusTypeEnum.loading;
+  }
+
+  onChangeStatusDefault() {
+    this.status.id = StatusIdEnum.default;
+    this.status.type = StatusTypeEnum.default;
+  }
+
+  onSaveStation(): void {
+    console.log(`Save station: ${this.form}`);
+  }
+
+  onRemoveStation(): void {
+    console.log(`Remove station: ${this.form.ID}`);
   }
 }

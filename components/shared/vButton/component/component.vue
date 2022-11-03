@@ -1,5 +1,5 @@
 <template>
-  <div :class="b()">
+  <div :class="[b(), getFullViewClass]">
     <component
       :is="getComponent"
       :params="params"
