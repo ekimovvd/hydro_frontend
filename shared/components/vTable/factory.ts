@@ -1,21 +1,22 @@
 export interface VTableParamsInterface {
   border: boolean;
-  tag: VTableParamsTagInterface;
-  selection: VTableParamsSelectionInterface;
-  currentRow: VTableParamsCurrentRowInterface;
-  align: VTableParamsAlignEnum;
+  rowKey: string;
+  tag: VTableTagInterface;
+  selection: VTableSelectionInterface;
+  currentRow: VTableCurrentRowInterface;
+  align: VTableAlignEnum;
 }
 
-export interface VTableParamsTagInterface {
+export interface VTableTagInterface {
   isEnabled: boolean;
   prop?: string;
-  label?: VTableParamsIconEnum;
-  icon?: VTableParamsIconEnum;
-  style?: VTableParamsStyleEnum;
-  align?: VTableParamsAlignEnum;
+  label?: VTableIconEnum;
+  icon?: VTableIconEnum;
+  style?: VTableStyleEnum;
+  align?: VTableAlignEnum;
 }
 
-export interface VTableParamsCurrentRowInterface {
+export interface VTableCurrentRowInterface {
   isEnabled: boolean;
   rowKey?: string | number;
 }
@@ -25,11 +26,11 @@ export interface VTableColumnInterface {
   label: VTableColumnLabelEnum;
 }
 
-export interface VTableParamsSelectionInterface {
+export interface VTableSelectionInterface {
   isEnabled: boolean;
-  type?: VTableParamsTypeEnum;
-  width?: VTableParamsWidthEnum;
-  align?: VTableParamsAlignEnum;
+  type?: VTableTypeEnum;
+  width?: VTableWidthEnum;
+  align?: VTableAlignEnum;
 }
 
 export enum VTableColumnLabelEnum {
@@ -43,11 +44,11 @@ export enum VTableColumnLabelEnum {
   zeroPost = "Нуль поста",
 }
 
-export enum VTableParamsIconEnum {
+export enum VTableIconEnum {
   star = "bx bx-star",
 }
 
-export enum VTableParamsStyleEnum {
+export enum VTableStyleEnum {
   default = "default",
   primary = "primary",
   orange = "orange",
@@ -58,15 +59,15 @@ export enum VTableEventEnum {
   row = "row",
 }
 
-export enum VTableParamsAlignEnum {
+export enum VTableAlignEnum {
   center = "center",
 }
 
-export enum VTableParamsWidthEnum {
+export enum VTableWidthEnum {
   default = "55",
 }
 
-export enum VTableParamsTypeEnum {
+export enum VTableTypeEnum {
   selection = "selection",
 }
 
@@ -75,6 +76,7 @@ export const VTableParamsFactory = (
 ): VTableParamsInterface => {
   return {
     border: true,
+    rowKey: "ID",
     tag: {
       isEnabled: false,
     },
@@ -84,7 +86,7 @@ export const VTableParamsFactory = (
     currentRow: {
       isEnabled: false,
     },
-    align: VTableParamsAlignEnum.center,
+    align: VTableAlignEnum.center,
     ...params,
   };
 };

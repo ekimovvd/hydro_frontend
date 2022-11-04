@@ -55,10 +55,13 @@
         <VButton
           :params="VButtonParamsSave"
           :status="status"
+          :disabled="getButtonSaveDisabled"
           @click="onSaveStation"
         />
         <VPopconfirm
           :params="VPopconfirmParamsDelete"
+          :status="status"
+          :disabled="getButtonDeleteDisabled"
           @confirm="onRemoveStation"
         />
       </div>

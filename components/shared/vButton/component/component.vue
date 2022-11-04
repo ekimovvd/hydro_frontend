@@ -4,6 +4,7 @@
       :is="getComponent"
       :params="params"
       :status="status"
+      :disabled="disabled"
       @click="onClick"
     ></component>
   </div>

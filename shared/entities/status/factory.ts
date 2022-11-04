@@ -17,6 +17,10 @@ export enum StatusEventEnum {
 
 export enum StatusIdEnum {
   default = "",
+  authButton = "auth-button",
+  stationsTableButtonAdd = "stations-table-button-add",
+  stationsWorkFormButtonSave = "stations-work-form-button-save",
+  stationsWorkFormButtonDelete = "stations-work-form-button-delete",
 }
 
 export const StatusFactory = (

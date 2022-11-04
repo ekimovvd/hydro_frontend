@@ -28,6 +28,7 @@ import {
   VSelectParamsInterface,
   VSelectParamsPlaceholderEnum,
 } from "~/shared/components/vSelect/factory";
+import { StatusIdEnum } from "~/shared/entities/status/factory";
 
 export const COMPONENT_NAME = "stations-work-form";
 
@@ -77,9 +78,12 @@ export const VInputParamsIsFavorite: VInputParamsInterface =
   });
 
 export const VPopconfirmParamsDelete: VPopconfirmParamsInterface =
-  VPopconfirmParamsFactory({ title: VPopconfirmParamsTitleEnum.deletePost });
+  VPopconfirmParamsFactory({
+    id: StatusIdEnum.stationsWorkFormButtonDelete,
+    title: VPopconfirmParamsTitleEnum.deletePost,
+  });
 
 export const VButtonParamsSave: VButtonParamsInterface = VButtonParamsFactory({
-  id: "",
+  id: StatusIdEnum.stationsWorkFormButtonSave,
   label: VButtonParamsLabelEnum.save,
 });

@@ -1,6 +1,7 @@
 import { AxiosInstance } from "axios";
 import { AuthInterface, TokenInterface } from "../entities/connect/factory";
 import {
+  HydroStationInterface,
   NearestSynopStationInterface,
   WorkStationInterface,
 } from "../entities/stations/factory";
@@ -24,6 +25,14 @@ export class Http implements ProjectRepositoryInterface {
   }
 
   // STATIONS
+  async getAllHydroStations(): Promise<HydroStationInterface[]> {
+    const { data } = await this.axios.get<Promise<HydroStationInterface[]>>(
+      this.url.getAllHydroStations()
+    );
+
+    return data;
+  }
+
   async getAllWorkStations(): Promise<WorkStationInterface[]> {
     const { data } = await this.axios.get<WorkStationInterface[]>(
       this.url.getAllWorkStations()
@@ -37,6 +46,31 @@ export class Http implements ProjectRepositoryInterface {
   ): Promise<NearestSynopStationInterface[]> {
     const { data } = await this.axios.get<NearestSynopStationInterface[]>(
       this.url.getNearestSynopStations(ID)
+    );
+
+    return data;
+  }
+
+  async addWorkStations(params: Array<number>): Promise<string> {
+    const { data } = await this.axios.post<string>(this.url.addWorkStations(), {
+      ids: params,
+    });
+
+    return data;
+  }
+
+  async forceDeleteWorkStation(ID: string | number): Promise<boolean> {
+    const { data } = await this.axios.post<boolean>(
+      this.url.forceDeleteWorkStation(ID)
+    );
+
+    return data;
+  }
+
+  async updateWorkStation(params: WorkStationInterface): Promise<string> {
+    const { data } = await this.axios.put<string>(
+      this.url.updateWorkStation(),
+      params
     );
 
     return data;

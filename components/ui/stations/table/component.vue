@@ -3,10 +3,18 @@
     <VTable
       :params="VTableParams"
       :columns="VTableColumns"
-      :data="stations"
-      :row-key="form.ID"
+      :data="getStations"
+      :row-key="station.ID"
+      :row-ids="getWorkStationsIds"
+      :selections="hydroStations"
       @selection="onChangeSelection"
       @row="onChangeRow"
+    />
+    <VButton
+      :params="VButtonParamsAdd"
+      :status="status"
+      :disabled="getButtonAddDisabled"
+      @click="onAddStations"
     />
   </div>
 </template>

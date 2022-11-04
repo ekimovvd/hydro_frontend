@@ -1,11 +1,14 @@
 <template>
   <el-table
     :class="b()"
+    ref="table"
     :data="data"
     :border="params.border"
     :highlight-current-row="params.currentRow.isEnabled"
     :row-key="params.currentRow.rowKey"
     :current-row-key="rowKey"
+    :row-class-name="onTableRowClassName"
+    @selection-change="onChangeSelection"
     @row-click="onClickRow"
   >
     <VTableSelection

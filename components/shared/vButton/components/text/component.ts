@@ -31,6 +31,11 @@ export default class VButtonText extends Vue {
     required: true,
   })
   readonly status: StatusInterface;
+  @Prop({
+    type: Boolean,
+    default: false,
+  })
+  readonly disabled: boolean;
 
   get getStyleViewClass(): VButtonStyleViewClassEnum {
     switch (this.params.style) {
@@ -61,6 +66,8 @@ export default class VButtonText extends Vue {
       this.status.type === StatusTypeEnum.pending
     ) {
       return this.params.label;
+    } else if (this.disabled) {
+      return this.params.label;
     }
     return this.params.label;
   }
@@ -68,7 +75,8 @@ export default class VButtonText extends Vue {
   get getDisabled(): boolean {
     if (
       this.status.type === StatusTypeEnum.loading ||
-      this.status.type === StatusTypeEnum.pending
+      this.status.type === StatusTypeEnum.pending ||
+      this.disabled
     ) {
       return true;
     }

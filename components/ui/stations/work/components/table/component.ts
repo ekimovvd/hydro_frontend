@@ -3,14 +3,12 @@ import { Component, Prop, Vue } from "nuxt-property-decorator";
 import VTable from "~/components/shared/vTable/component/component";
 
 import {
-  VTableColumnFactory,
   VTableColumnInterface,
-  VTableColumnLabelEnum,
   VTableParamsInterface,
 } from "~/shared/components/vTable/factory";
 import { WorkStationInterface } from "~/shared/entities/stations/factory";
 
-import { COMPONENT_NAME, VTableParams } from "./constants";
+import { COMPONENT_NAME, VTableColumns, VTableParams } from "./constants";
 import { EventEnum } from "../../component/constants";
 
 @Component({
@@ -24,7 +22,7 @@ export default class StationsWorkTable extends Vue {
     type: Array,
     default: () => [],
   })
-  readonly data: WorkStationInterface[];
+  readonly stations: WorkStationInterface[];
   @Prop({
     type: Object,
     required: true,
@@ -32,31 +30,7 @@ export default class StationsWorkTable extends Vue {
   readonly form: WorkStationInterface;
 
   readonly VTableParams: VTableParamsInterface = VTableParams;
-
-  get getVTableColumns(): VTableColumnInterface[] {
-    return [
-      VTableColumnFactory({
-        prop: "ID",
-        label: VTableColumnLabelEnum.postCode,
-      }),
-      VTableColumnFactory({
-        prop: "HydroStation.ObjName",
-        label: VTableColumnLabelEnum.river,
-      }),
-      VTableColumnFactory({
-        prop: "HydroStation.Name",
-        label: VTableColumnLabelEnum.postName,
-      }),
-      VTableColumnFactory({
-        prop: "HydroStation.Lat",
-        label: VTableColumnLabelEnum.latitude,
-      }),
-      VTableColumnFactory({
-        prop: "HydroStation.Lng",
-        label: VTableColumnLabelEnum.longitude,
-      }),
-    ];
-  }
+  readonly VTableColumns: VTableColumnInterface[] = VTableColumns;
 
   onChangeSelection(value: WorkStationInterface[]): void {
     console.log(value);

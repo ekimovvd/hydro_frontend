@@ -1,4 +1,4 @@
-import { Component, Emit, Prop, Vue } from "nuxt-property-decorator";
+import { Component, Emit, Prop, Vue, Watch } from "nuxt-property-decorator";
 
 import VTableSelection from "../components/selection/component";
 import VTableTag from "../components/tag/component";
@@ -10,7 +10,7 @@ import {
 } from "~/shared/components/vTable/factory";
 import { WorkStationInterface } from "~/shared/entities/stations/factory";
 
-import { COMPONENT_NAME } from "./constants";
+import { COMPONENT_NAME, VTableRowStyleViewClass } from "./constants";
 
 @Component({
   name: COMPONENT_NAME,
@@ -36,14 +36,37 @@ export default class VTable extends Vue {
   })
   readonly data: WorkStationInterface[];
   @Prop({
+    type: Array,
+    default: () => [],
+  })
+  readonly rowIds: Array<string | number>;
+  @Prop({
+    type: Array,
+    default: () => [],
+  })
+  readonly selections: WorkStationInterface[];
+  @Prop({
     type: [String, Number],
     default: "",
   })
   readonly rowKey: string | number;
 
+  @Watch("selections")
+  onClearSelections(value: WorkStationInterface[]): void {
+    if (!value.length) {
+      this.$refs.table.clearSelection();
+    }
+  }
+
   @Emit(VTableEventEnum.selection)
   onChangeSelection(value: WorkStationInterface[]): void {}
 
   @Emit(VTableEventEnum.row)
-  onClickRow(value: WorkStationInterface) {}
+  onClickRow(value: WorkStationInterface): void {}
+
+  onTableRowClassName({ row }): VTableRowStyleViewClass {
+    return this.rowIds.find((element) => element === row[this.params.rowKey])
+      ? VTableRowStyleViewClass.success
+      : VTableRowStyleViewClass.default;
+  }
 }

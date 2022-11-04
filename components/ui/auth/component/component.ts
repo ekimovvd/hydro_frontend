@@ -1,16 +1,20 @@
 import { Component, Prop, Vue } from "nuxt-property-decorator";
 
+import VInput from "~/components/shared/vInput/component/component";
+import VLabel from "~/components/shared/vLabel/component/component";
+import VButton from "~/components/shared/vButton/component/component";
+
 import { VInputParamsInterface } from "~/shared/components/vInput/factory";
 import { VLabelParamsInterface } from "~/shared/components/vLabel/factory";
 import { VButtonParamsInterface } from "~/shared/components/vButton/factory";
 import { AuthInterface } from "~/shared/entities/connect/factory";
 import {
   StatusEventEnum,
+  StatusIdEnum,
   StatusInterface,
 } from "~/shared/entities/status/factory";
 
 import {
-  ButtonIdEnum,
   COMPONENT_NAME,
   VButtonParams,
   VInputParamsLogin,
@@ -18,10 +22,6 @@ import {
   VLabelParamsLogin,
   VLabelParamsPassword,
 } from "./constants";
-
-import VInput from "~/components/shared/vInput/component/component";
-import VLabel from "~/components/shared/vLabel/component/component";
-import VButton from "~/components/shared/vButton/component/component";
 
 @Component({
   name: COMPONENT_NAME,
@@ -63,7 +63,7 @@ export default class AuthForm extends Vue {
 
   async onAuth() {
     try {
-      this.$emit(StatusEventEnum.loading, ButtonIdEnum.auth);
+      this.$emit(StatusEventEnum.loading, StatusIdEnum.authButton);
       await this.projectReposity.token(this.user).then((res) => {
         this.$cookies.set("access_token", res.access_token);
         this.$emit(StatusEventEnum.default);

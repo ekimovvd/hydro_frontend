@@ -13,12 +13,9 @@ import {
   VLabelParamsForEnum,
   VLabelParamsTextEnum,
 } from "~/shared/components/vLabel/factory";
+import { StatusIdEnum } from "~/shared/entities/status/factory";
 
 export const COMPONENT_NAME = "auth-form";
-
-export enum ButtonIdEnum {
-  auth = "auth-button",
-}
 
 export const VInputParamsLogin = VInputParamsFactory({
   type: VInputParamsTypeEnum.text,
@@ -41,6 +38,6 @@ export const VLabelParamsPassword = VLabelParamsFactory({
 });
 
 export const VButtonParams = VButtonParamsFactory({
-  id: ButtonIdEnum.auth,
+  id: StatusIdEnum.authButton,
   label: VButtonParamsLabelEnum.auth,
 });

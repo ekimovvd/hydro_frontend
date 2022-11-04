@@ -7,7 +7,9 @@
     @confirm="onConfirm"
     @cancel="onCancel"
   >
-    <el-button slot="reference">{{ params.label }}</el-button>
+    <el-button slot="reference" :disabled="getDisabled">
+      {{ getLabel }}
+    </el-button>
   </el-popconfirm>
 </template>
 

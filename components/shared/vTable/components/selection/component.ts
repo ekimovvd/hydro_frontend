@@ -1,6 +1,6 @@
 import { Component, Prop, Vue } from "nuxt-property-decorator";
 
-import { VTableParamsSelectionInterface } from "~/shared/components/vTable/factory";
+import { VTableSelectionInterface } from "~/shared/components/vTable/factory";
 
 import { COMPONENT_NAME } from "./constants";
 
@@ -12,5 +12,5 @@ export default class VTableSelection extends Vue {
     type: Object,
     required: true,
   })
-  readonly params: VTableParamsSelectionInterface;
+  readonly params: VTableSelectionInterface;
 }

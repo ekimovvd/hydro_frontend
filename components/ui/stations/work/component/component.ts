@@ -17,6 +17,7 @@ import {
   StatusInterface,
   StatusTypeEnum,
 } from "~/shared/entities/status/factory";
+import { EventEnum } from "~/pages/stations/constants";
 
 import { COMPONENT_NAME } from "./constants";
 
@@ -101,11 +102,36 @@ export default class StationsWork extends Vue {
     this.status.type = StatusTypeEnum.default;
   }
 
-  onSaveStation(): void {
-    console.log(`Save station: ${this.form}`);
+  async onSaveStation(): Promise<void> {
+    try {
+      this.onChangeStatusLoading(StatusIdEnum.stationsWorkFormButtonSave);
+      await this.projectRepository
+        .updateWorkStation(this.form)
+        .then(async () => {
+          await this.projectRepository.getAllWorkStations().then((value) => {
+            this.onChangeStatusDefault();
+            this.$emit(EventEnum.workStationsUpdate, value);
+          });
+        });
+    } catch (e) {
+      this.onChangeStatusDefault();
+    }
   }
 
-  onRemoveStation(): void {
-    console.log(`Remove station: ${this.form.ID}`);
+  async onRemoveStation(): Promise<void> {
+    try {
+      this.onChangeStatusLoading(StatusIdEnum.stationsWorkFormButtonDelete);
+      await this.projectRepository
+        .forceDeleteWorkStation(this.form.ID)
+        .then(async () => {
+          await this.projectRepository.getAllWorkStations().then((value) => {
+            this.onClearStation();
+            this.onChangeStatusDefault();
+            this.$emit(EventEnum.workStationsUpdate, value);
+          });
+        });
+    } catch (e) {
+      this.onChangeStatusDefault();
+    }
   }
 }

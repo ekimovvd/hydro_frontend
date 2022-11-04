@@ -10,5 +10,9 @@
     .cell {
       font-family: $font-family-medium;
     }
+
+    &--view-success {
+      background: $color-success;
+    }
   }
 }

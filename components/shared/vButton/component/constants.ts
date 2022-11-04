@@ -1,1 +1,1 @@
-export const COMPONENt_NAME = "v-button";
+export const COMPONENT_NAME = "v-button";

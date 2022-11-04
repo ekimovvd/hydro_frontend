@@ -8,12 +8,12 @@ import {
 import { StatusInterface } from "~/shared/entities/status/factory";
 import { VButtonFullViewClassEnum } from "../components/text/constants";
 
-import { COMPONENt_NAME } from "./constants";
-
 import VButtonText from "../components/text/component";
 
+import { COMPONENT_NAME } from "./constants";
+
 @Component({
-  name: COMPONENt_NAME,
+  name: COMPONENT_NAME,
   components: {
     "text-component": VButtonText,
   },
@@ -29,6 +29,11 @@ export default class VButton extends Vue {
     required: true,
   })
   readonly status: StatusInterface;
+  @Prop({
+    type: Boolean,
+    default: false,
+  })
+  readonly disabled: boolean;
 
   get getComponent(): VButtonParamsTypeEnum {
     return this.params.type;

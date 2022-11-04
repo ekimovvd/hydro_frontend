@@ -1,4 +1,5 @@
 export interface VPopconfirmParamsInterface {
+  id: string;
   title: VPopconfirmParamsTitleEnum;
   confirmButtonText: VPopconfirmParamsButtonTextEnum;
   cancelButtonText: VPopconfirmParamsButtonTextEnum;
@@ -12,6 +13,7 @@ export enum VPopconfirmParamsTitleEnum {
 
 export enum VPopconfirmParamsLabelEnum {
   delete = "Удалить",
+  loading = "Загрузка...",
 }
 
 export enum VPopconfirmParamsButtonTextEnum {
@@ -28,6 +30,7 @@ export const VPopconfirmParamsFactory = (
   params: Partial<VPopconfirmParamsInterface> = {}
 ): VPopconfirmParamsInterface => {
   return {
+    id: "",
     title: VPopconfirmParamsTitleEnum.delete,
     confirmButtonText: VPopconfirmParamsButtonTextEnum.delete,
     cancelButtonText: VPopconfirmParamsButtonTextEnum.cancel,

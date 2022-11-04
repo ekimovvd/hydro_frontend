@@ -105,6 +105,14 @@ export default class StationsWorkForm extends Vue {
       : "";
   }
 
+  get getButtonSaveDisabled(): boolean {
+    return this.form.ID === null || this.form.Name === "";
+  }
+
+  get getButtonDeleteDisabled(): boolean {
+    return this.form.ID === null;
+  }
+
   @Emit(EventEnum.formName)
   onChangeName(): void {}
 

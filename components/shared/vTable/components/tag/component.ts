@@ -1,8 +1,8 @@
 import { Component, Prop, Vue } from "nuxt-property-decorator";
 
 import {
-  VTableParamsTagInterface,
-  VTableParamsStyleEnum,
+  VTableTagInterface,
+  VTableStyleEnum,
 } from "~/shared/components/vTable/factory";
 
 import {
@@ -19,11 +19,11 @@ export default class VTableTag extends Vue {
     type: Object,
     required: true,
   })
-  readonly params: VTableParamsTagInterface;
+  readonly params: VTableTagInterface;
 
   get getLabelIconStyleViewClass(): VLabelIconStyleViewClassEnum {
     switch (this.params.style) {
-      case VTableParamsStyleEnum.primary:
+      case VTableStyleEnum.primary:
         return VLabelIconStyleViewClassEnum.primary;
       default:
         return VLabelIconStyleViewClassEnum.default;

@@ -1,5 +1,5 @@
 export interface VButtonParamsInterface {
-  id?: string;
+  id: string;
   type: VButtonParamsTypeEnum;
   label?: VButtonParamsLabelEnum;
   style: VButtonParamsStyleEnum;
@@ -15,6 +15,7 @@ export enum VButtonParamsLabelEnum {
   loading = "Загрузка...",
   auth = "Войти",
   save = "Сохранить",
+  add = "Добавить",
 }
 
 export enum VButtonParamsStyleEnum {
@@ -34,6 +35,7 @@ export const VButtonParamsFactory = (
   params: Partial<VButtonParamsInterface>
 ): VButtonParamsInterface => {
   return {
+    id: "",
     type: VButtonParamsTypeEnum.text,
     style: VButtonParamsStyleEnum.primary,
     full: true,

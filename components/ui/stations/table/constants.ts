@@ -1,27 +1,23 @@
 import {
+  VButtonParamsFactory,
+  VButtonParamsInterface,
+  VButtonParamsLabelEnum,
+} from "~/shared/components/vButton/factory";
+import {
   VTableAlignEnum,
   VTableColumnFactory,
   VTableColumnInterface,
   VTableColumnLabelEnum,
-  VTableIconEnum,
   VTableParamsFactory,
   VTableParamsInterface,
-  VTableStyleEnum,
   VTableTypeEnum,
   VTableWidthEnum,
 } from "~/shared/components/vTable/factory";
+import { StatusIdEnum } from "~/shared/entities/status/factory";
 
-export const COMPONENT_NAME = "stations-work-table";
+export const COMPONENT_NAME = "stations-table";
 
 export const VTableParams: VTableParamsInterface = VTableParamsFactory({
-  tag: {
-    isEnabled: true,
-    prop: "IsFavorite",
-    label: VTableIconEnum.star,
-    icon: VTableIconEnum.star,
-    style: VTableStyleEnum.primary,
-    align: VTableAlignEnum.center,
-  },
   selection: {
     isEnabled: true,
     type: VTableTypeEnum.selection,
@@ -40,19 +36,25 @@ export const VTableColumns: VTableColumnInterface[] = [
     label: VTableColumnLabelEnum.postCode,
   }),
   VTableColumnFactory({
-    prop: "HydroStation.ObjName",
+    prop: "ObjName",
     label: VTableColumnLabelEnum.river,
   }),
   VTableColumnFactory({
-    prop: "HydroStation.Name",
+    prop: "Name",
     label: VTableColumnLabelEnum.postName,
   }),
   VTableColumnFactory({
-    prop: "HydroStation.Lat",
+    prop: "Lat",
     label: VTableColumnLabelEnum.latitude,
   }),
   VTableColumnFactory({
-    prop: "HydroStation.Lng",
+    prop: "Lng",
     label: VTableColumnLabelEnum.longitude,
   }),
 ];
+
+export const VButtonParamsAdd: VButtonParamsInterface = VButtonParamsFactory({
+  id: StatusIdEnum.stationsTableButtonAdd,
+  label: VButtonParamsLabelEnum.add,
+  full: false,
+});

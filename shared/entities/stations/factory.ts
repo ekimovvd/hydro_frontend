@@ -12,9 +12,9 @@ export interface WorkStationInterface {
   HydroStation: HydroStationInterface;
 }
 
-interface HydroStationInterface {
+export interface HydroStationInterface {
+  ID: number | null;
   ObjName: string;
-  ID: number;
   BasinName: string;
   Name: string;
   Lat: number | null;
@@ -44,6 +44,21 @@ export const WorkStationFactory = (
       Lng: null,
       HaveCoords: false,
     },
+    ...params,
+  };
+};
+
+export const HydroStationFactory = (
+  params: Partial<HydroStationInterface> = {}
+): HydroStationInterface => {
+  return {
+    ID: null,
+    ObjName: "",
+    BasinName: "",
+    Name: "",
+    Lat: null,
+    Lng: null,
+    HaveCoords: false,
     ...params,
   };
 };
