@@ -24,6 +24,8 @@ import {
 
 import {
   COMPONENT_NAME,
+  NotificationAddStationError,
+  NotificationAddStationSuccess,
   VButtonParamsAdd,
   VTableColumns,
   VTableParams,
@@ -100,10 +102,12 @@ export default class StationsTable extends Vue {
             this.$emit(EventEnum.workStationsUpdate, value);
             this.onChangeStatusDefault();
             this.onChangeSelection([]);
+            this.$notify(NotificationAddStationSuccess);
           });
         });
     } catch (e) {
       this.onChangeStatusDefault();
+      this.$notify(NotificationAddStationError);
     }
   }
 }

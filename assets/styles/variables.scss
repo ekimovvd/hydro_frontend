@@ -66,6 +66,7 @@ $translate-x: -50%;
 $flex-direction-column: column;
 
 // display
+$display-none: none;
 $display-block: block;
 $display-grid: grid;
 $display-inline-block: inline-block;
@@ -101,3 +102,6 @@ $resize-none: none;
 
 // overflow
 $overflow-y-auto: auto;
+
+// box-shadow
+$box-shadow-none: none;

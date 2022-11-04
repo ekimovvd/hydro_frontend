@@ -21,6 +21,8 @@ import {
   VInputParamsPassword,
   VLabelParamsLogin,
   VLabelParamsPassword,
+  NotificationAuthSuccess,
+  NotificationAuthError,
 } from "./constants";
 
 @Component({
@@ -66,9 +68,11 @@ export default class AuthForm extends Vue {
       this.$emit(StatusEventEnum.loading, StatusIdEnum.authButton);
       await this.projectReposity.token(this.user).then((res) => {
         this.$cookies.set("access_token", res.access_token);
+        this.$notify(NotificationAuthSuccess);
         this.$emit(StatusEventEnum.default);
       });
     } catch (e) {
+      this.$notify(NotificationAuthError);
       this.$emit(StatusEventEnum.default);
     }
   }

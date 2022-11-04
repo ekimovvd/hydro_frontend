@@ -13,6 +13,12 @@ import {
   VLabelParamsForEnum,
   VLabelParamsTextEnum,
 } from "~/shared/components/vLabel/factory";
+import {
+  NotificationCustomClassEnum,
+  NotificationFactory,
+  NotificationInterface,
+  NotificationTypeEnum,
+} from "~/shared/entities/notification/factory";
 import { StatusIdEnum } from "~/shared/entities/status/factory";
 
 export const COMPONENT_NAME = "auth-form";
@@ -41,3 +47,16 @@ export const VButtonParams = VButtonParamsFactory({
   id: StatusIdEnum.authButton,
   label: VButtonParamsLabelEnum.auth,
 });
+
+export const NotificationAuthSuccess: NotificationInterface =
+  NotificationFactory({
+    message: "Вы успешно авторизованы!",
+  });
+
+export const NotificationAuthError: NotificationInterface = NotificationFactory(
+  {
+    message: "Авторизация не пройдена!",
+    type: NotificationTypeEnum.error,
+    customClass: NotificationCustomClassEnum.error,
+  }
+);

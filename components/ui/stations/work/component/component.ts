@@ -19,7 +19,13 @@ import {
 } from "~/shared/entities/status/factory";
 import { EventEnum } from "~/pages/stations/constants";
 
-import { COMPONENT_NAME } from "./constants";
+import {
+  COMPONENT_NAME,
+  NotificationDeleteStationError,
+  NotificationDeleteStationSuccess,
+  NotificationUpdateStationError,
+  NotificationUpdateStationSuccess,
+} from "./constants";
 
 @Component({
   name: COMPONENT_NAME,
@@ -111,10 +117,12 @@ export default class StationsWork extends Vue {
           await this.projectRepository.getAllWorkStations().then((value) => {
             this.onChangeStatusDefault();
             this.$emit(EventEnum.workStationsUpdate, value);
+            this.$notify(NotificationUpdateStationSuccess);
           });
         });
     } catch (e) {
       this.onChangeStatusDefault();
+      this.$notify(NotificationUpdateStationError);
     }
   }
 
@@ -128,10 +136,12 @@ export default class StationsWork extends Vue {
             this.onClearStation();
             this.onChangeStatusDefault();
             this.$emit(EventEnum.workStationsUpdate, value);
+            this.$notify(NotificationDeleteStationSuccess);
           });
         });
     } catch (e) {
       this.onChangeStatusDefault();
+      this.$notify(NotificationDeleteStationError);
     }
   }
 }

@@ -1,3 +1,10 @@
+import {
+  NotificationCustomClassEnum,
+  NotificationFactory,
+  NotificationInterface,
+  NotificationTypeEnum,
+} from "~/shared/entities/notification/factory";
+
 export const COMPONENT_NAME = "stations-work";
 
 export enum EventEnum {
@@ -14,3 +21,25 @@ export enum EventEnum {
   stationRemove = "station:remove",
   stationSave = "station:save",
 }
+
+export const NotificationUpdateStationSuccess: NotificationInterface =
+  NotificationFactory({
+    message: "Станция успешно обновлена!",
+  });
+export const NotificationUpdateStationError: NotificationInterface =
+  NotificationFactory({
+    message: "Станция не обновлена!",
+    type: NotificationTypeEnum.error,
+    customClass: NotificationCustomClassEnum.error,
+  });
+
+export const NotificationDeleteStationSuccess: NotificationInterface =
+  NotificationFactory({
+    message: "Станция успешно удалена!",
+  });
+export const NotificationDeleteStationError: NotificationInterface =
+  NotificationFactory({
+    message: "Станция не удалена!",
+    type: NotificationTypeEnum.error,
+    customClass: NotificationCustomClassEnum.error,
+  });

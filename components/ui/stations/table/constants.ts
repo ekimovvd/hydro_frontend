@@ -13,6 +13,12 @@ import {
   VTableTypeEnum,
   VTableWidthEnum,
 } from "~/shared/components/vTable/factory";
+import {
+  NotificationCustomClassEnum,
+  NotificationFactory,
+  NotificationInterface,
+  NotificationTypeEnum,
+} from "~/shared/entities/notification/factory";
 import { StatusIdEnum } from "~/shared/entities/status/factory";
 
 export const COMPONENT_NAME = "stations-table";
@@ -58,3 +64,15 @@ export const VButtonParamsAdd: VButtonParamsInterface = VButtonParamsFactory({
   label: VButtonParamsLabelEnum.add,
   full: false,
 });
+
+export const NotificationAddStationSuccess: NotificationInterface =
+  NotificationFactory({
+    message: "Станции успешно добавлены",
+  });
+
+export const NotificationAddStationError: NotificationInterface =
+  NotificationFactory({
+    message: "Станции не добавлены",
+    type: NotificationTypeEnum.error,
+    customClass: NotificationCustomClassEnum.error,
+  });

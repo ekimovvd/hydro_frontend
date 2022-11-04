@@ -47,6 +47,7 @@ export default {
     baseURL: process.env.API_URL,
     proxyHeaders: false,
     credentials: false,
+    progress: false,
   },
 
   build: {},

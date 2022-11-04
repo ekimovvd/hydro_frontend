@@ -69,54 +69,56 @@ li {
   margin: $margin-none;
 }
 
-// input[type="radio"] {
-//   outline: none;
-// }
-
-// input[type="checkbox"] {
-//   outline: none;
-// }
-
 #__nuxt,
 #__layout {
   width: $width-full;
   height: $height-full;
 }
 
-// *[data-tooltip] {
-//   position: relative;
-// }
+.el-notification {
+  background: $color-white-dark;
+  box-shadow: $box-shadow-none;
+  border: $border-none;
+  padding: 10px;
 
-// *[data-tooltip]::after {
-//   content: attr(data-tooltip);
+  &--view-success {
+    .el-notification__group {
+      ::before {
+        content: url("assets/svg/bx-badge-check.svg");
+      }
+    }
+  }
 
-//   position: absolute;
-//   top: 20px;
-//   left: 50%;
-//   transform: translateX(-50%);
-//   width: 150px;
-//   z-index: 101;
+  &--view-error {
+    .el-notification__group {
+      ::before {
+        content: url("assets/svg/bx-error-alt.svg");
+      }
+    }
+  }
 
-//   pointer-events: none;
-//   opacity: 0;
-//   -webkit-transition: opacity 0.15s ease-in-out;
-//   -moz-transition: opacity 0.15s ease-in-out;
-//   -ms-transition: opacity 0.15s ease-in-out;
-//   -o-transition: opacity 0.15s ease-in-out;
-//   transition: opacity 0.15s ease-in-out;
+  .el-notification__title {
+    display: $display-none;
+  }
 
-//   display: block;
-//   font-size: 12px;
-//   background: #ffffff;
-//   border: 2px solid #e4e4e4;
-//   border-radius: 5px;
-//   padding: 5px;
-// }
+  .el-notification__content,
+  p {
+    font-family: $font-family-regular;
+    color: $color-gray;
+    margin: $margin-none;
+    font-size: 14px;
+  }
 
-// *[data-tooltip]:hover::after {
-//   opacity: 1;
-// }
+  .el-notification__group {
+    display: $display-flex;
+    align-items: $align-items-center;
+    margin-right: $margin-none;
+    position: $position-relative;
 
-// table {
-//   border-collapse: collapse;
-// }
+    ::before {
+      position: $position-absolute;
+      left: -35px;
+      top: 0;
+    }
+  }
+}
