@@ -1,5 +1,6 @@
 <template>
   <div :class="b()">
+    <h4 :class="b('title')">Рабочий список постов</h4>
     <VTable
       :params="VTableParams"
       :columns="VTableColumns"

@@ -61,10 +61,6 @@ export default class StationsTable extends Vue {
   public hydroStations: HydroStationInterface[] = [];
   public status: StatusInterface = StatusFactory();
 
-  get getStations() {
-    return this.stations.slice(0, 10);
-  }
-
   get getWorkStationsIds(): Array<number> {
     return this.workStations.map((element) => element.ID);
   }

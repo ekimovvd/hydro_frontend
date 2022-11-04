@@ -2,6 +2,7 @@ import { Component, Emit, Prop, Vue, Watch } from "nuxt-property-decorator";
 
 import VTableSelection from "../components/selection/component";
 import VTableTag from "../components/tag/component";
+import VTablePagination from "../components/pagination/component";
 
 import {
   VTableColumnInterface,
@@ -17,6 +18,7 @@ import { COMPONENT_NAME, VTableRowStyleViewClass } from "./constants";
   components: {
     VTableSelection,
     VTableTag,
+    VTablePagination,
   },
 })
 export default class VTable extends Vue {
@@ -51,6 +53,20 @@ export default class VTable extends Vue {
   })
   readonly rowKey: string | number;
 
+  public page: number = 1;
+  private pageSize: number = 10;
+
+  get getData(): WorkStationInterface[] {
+    return this.data.slice(
+      this.pageSize * this.page - this.pageSize,
+      this.pageSize * this.page
+    );
+  }
+
+  get getTotal(): number {
+    return this.data.length;
+  }
+
   @Watch("selections")
   onClearSelections(value: WorkStationInterface[]): void {
     if (!value.length) {
@@ -68,5 +84,9 @@ export default class VTable extends Vue {
     return this.rowIds.find((element) => element === row[this.params.rowKey])
       ? VTableRowStyleViewClass.success
       : VTableRowStyleViewClass.default;
+  }
+
+  onChangeCurrentPage(value: number): void {
+    this.page = value;
   }
 }

@@ -1,30 +1,36 @@
 <template>
-  <el-table
-    :class="b()"
-    ref="table"
-    :data="data"
-    :border="params.border"
-    :highlight-current-row="params.currentRow.isEnabled"
-    :row-key="params.currentRow.rowKey"
-    :current-row-key="rowKey"
-    :row-class-name="onTableRowClassName"
-    @selection-change="onChangeSelection"
-    @row-click="onClickRow"
-  >
-    <VTableSelection
-      v-if="params.selection.isEnabled"
-      :params="params.selection"
-    />
-    <el-table-column
-      v-for="column in columns"
-      :key="column.prop"
-      :prop="column.prop"
-      :label="column.label"
-      :align="params.align"
+  <div :class="b()">
+    <el-table
+      ref="table"
+      :data="getData"
+      :border="params.border"
+      :highlight-current-row="params.currentRow.isEnabled"
+      :row-key="params.currentRow.rowKey"
+      :current-row-key="rowKey"
+      :row-class-name="onTableRowClassName"
+      @selection-change="onChangeSelection"
+      @row-click="onClickRow"
     >
-    </el-table-column>
-    <VTableTag v-if="params.tag.isEnabled" :params="params.tag" />
-  </el-table>
+      <VTableSelection
+        v-if="params.selection.isEnabled"
+        :params="params.selection"
+      />
+      <el-table-column
+        v-for="column in columns"
+        :key="column.prop"
+        :prop="column.prop"
+        :label="column.label"
+        :align="params.align"
+      >
+      </el-table-column>
+      <VTableTag v-if="params.tag.isEnabled" :params="params.tag" />
+    </el-table>
+    <VTablePagination
+      :params="params.pagination"
+      :total="getTotal"
+      @current:page:change="onChangeCurrentPage"
+    />
+  </div>
 </template>
 
 <script lang="ts" src="./component.ts"></script>

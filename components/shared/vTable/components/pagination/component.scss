@@ -1,0 +1,52 @@
+.v-table-pagination {
+  &.el-pagination {
+    padding: $padding-none;
+    margin-top: 15px;
+
+    .number,
+    .btn-quickprev,
+    .btn-quicknext {
+      @include display-flex-center;
+      border-radius: $border-radius;
+      background: $color-white-dark;
+      cursor: $cursor-pointer;
+      color: $color-gray;
+      width: 30px;
+      height: 30px;
+    }
+
+    .number {
+      &.active {
+        background: $color-primary;
+        color: $color-white;
+      }
+    }
+
+    .btn-quicknext,
+    .btn-quickprev {
+      position: $position-relative;
+    }
+
+    .btn-quickprev::before {
+      content: url("assets/svg/bx-chevrons-left.svg");
+      position: $position-absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    .btn-quicknext::before {
+      content: url("assets/svg/bx-chevrons-right.svg");
+      position: $position-absolute;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    .el-pager {
+      @include display-flex-center;
+      width: $width-full;
+      grid-column-gap: 10px;
+    }
+  }
+}

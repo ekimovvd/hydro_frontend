@@ -8,7 +8,8 @@ import {
   Table,
   TableColumn,
   Popconfirm,
-  Button
+  Button,
+  Pagination,
 } from "element-ui";
 import lang from "element-ui/lib/locale/lang/ru-RU";
 import locale from "element-ui/lib/locale";
@@ -22,5 +23,6 @@ Vue.use(Checkbox);
 Vue.use(Radio);
 Vue.use(Table);
 Vue.use(TableColumn);
-Vue.use(Popconfirm)
-Vue.use(Button)
+Vue.use(Popconfirm);
+Vue.use(Button);
+Vue.use(Pagination);

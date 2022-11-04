@@ -5,6 +5,7 @@ export interface VTableParamsInterface {
   selection: VTableSelectionInterface;
   currentRow: VTableCurrentRowInterface;
   align: VTableAlignEnum;
+  pagination: VTablePaginationInterface;
 }
 
 export interface VTableTagInterface {
@@ -31,6 +32,11 @@ export interface VTableSelectionInterface {
   type?: VTableTypeEnum;
   width?: VTableWidthEnum;
   align?: VTableAlignEnum;
+}
+
+export interface VTablePaginationInterface {
+  background: boolean;
+  layout: string;
 }
 
 export enum VTableColumnLabelEnum {
@@ -87,6 +93,10 @@ export const VTableParamsFactory = (
       isEnabled: false,
     },
     align: VTableAlignEnum.center,
+    pagination: {
+      background: true,
+      layout: "pager",
+    },
     ...params,
   };
 };

@@ -1,21 +1,24 @@
 <template>
   <div :class="b()">
-    <VTable
-      :params="VTableParams"
-      :columns="VTableColumns"
-      :data="getStations"
-      :row-key="station.ID"
-      :row-ids="getWorkStationsIds"
-      :selections="hydroStations"
-      @selection="onChangeSelection"
-      @row="onChangeRow"
-    />
-    <VButton
-      :params="VButtonParamsAdd"
-      :status="status"
-      :disabled="getButtonAddDisabled"
-      @click="onAddStations"
-    />
+    <h4 :class="b('title')">Список постов</h4>
+    <div :class="b('offer')">
+      <VTable
+        :params="VTableParams"
+        :columns="VTableColumns"
+        :data="stations"
+        :row-key="station.ID"
+        :row-ids="getWorkStationsIds"
+        :selections="hydroStations"
+        @selection="onChangeSelection"
+        @row="onChangeRow"
+      />
+      <VButton
+        :params="VButtonParamsAdd"
+        :status="status"
+        :disabled="getButtonAddDisabled"
+        @click="onAddStations"
+      />
+    </div>
   </div>
 </template>
 

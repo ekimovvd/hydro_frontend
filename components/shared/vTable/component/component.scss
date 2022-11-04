@@ -1,6 +1,8 @@
 @import "element-ui/lib/theme-chalk/table.css";
 
 .v-table {
+  width: $width-full;
+
   .cell {
     font-family: $font-family-regular;
     font-size: 13px;
