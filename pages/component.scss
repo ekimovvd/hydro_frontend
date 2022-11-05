@@ -1,4 +1,6 @@
-.index {
+.home {
+  padding: 70px $padding-none;
+
   &__container {
     @include container;
   }

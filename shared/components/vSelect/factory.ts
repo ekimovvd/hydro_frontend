@@ -40,6 +40,7 @@ export enum VSelectParamsPlaceholderEnum {
   default = "Выберите",
   weatherStation1 = "1-я метеостанция",
   weatherStation2 = "2-я метеостанция",
+  term = "Выберите срок",
 }
 
 export const VSelectParamsFactory = (

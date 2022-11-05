@@ -1,0 +1,7 @@
+.home-stations-table {
+  &__group {
+    @include display-flex-end;
+    grid-column-gap: 10px;
+    margin-top: 10px;
+  }
+}

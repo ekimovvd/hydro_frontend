@@ -104,12 +104,12 @@ export default class StationsWork extends Vue {
     this.areaCenterMeteo = [];
   }
 
-  onChangeStatusLoading(id: string) {
+  onChangeStatusLoading(id: string): void {
     this.status.id = id;
     this.status.type = StatusTypeEnum.loading;
   }
 
-  onChangeStatusDefault() {
+  onChangeStatusDefault(): void {
     this.status.id = StatusIdEnum.default;
     this.status.type = StatusTypeEnum.default;
   }

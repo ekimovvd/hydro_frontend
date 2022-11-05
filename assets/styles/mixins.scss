@@ -103,12 +103,6 @@
   flex-direction: $flex-direction-column;
 }
 
-// icon
-@mixin icon {
-  display: $display-block;
-  color: $color-gray;
-}
-
 // label
 @mixin label {
   display: $display-inline-block;

@@ -21,6 +21,7 @@
         :prop="column.prop"
         :label="column.label"
         :align="params.align"
+        :sortable="column.sortable"
       >
       </el-table-column>
       <VTableTag v-if="params.tag.isEnabled" :params="params.tag" />

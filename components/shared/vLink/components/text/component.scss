@@ -1,0 +1,10 @@
+.v-link-text {
+  &--view-primary {
+    color: $color-white;
+    background: $color-primary;
+    font-family: $font-family-medium;
+    border-radius: $border-radius;
+    font-size: 13px;
+    padding: 8px 20px;
+  }
+}

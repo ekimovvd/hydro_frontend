@@ -6,6 +6,7 @@ import {
 } from "~/shared/components/vLink/factory";
 
 import VLinkIconText from "../components/icon-text/component";
+import VLinkText from "../components/text/component";
 
 import { COMPONENT_NAME } from "./constants";
 
@@ -13,6 +14,7 @@ import { COMPONENT_NAME } from "./constants";
   name: COMPONENT_NAME,
   components: {
     "icon-text-component": VLinkIconText,
+    "text-component": VLinkText,
   },
 })
 export default class VLink extends Vue {

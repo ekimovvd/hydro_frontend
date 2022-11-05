@@ -19,15 +19,56 @@ $font-size: 13px;
     max-height: 157px;
   }
 
+  .el-input {
+    @include select-el-input;
+    padding: $padding;
+  }
+
+  .el-input__inner {
+    @include select-el-input-inner;
+  }
+
+  .v-select-default__icon {
+    display: $display-block;
+    font-size: 18px;
+  }
+
+  .el-input__prefix {
+    @include select-prefix;
+  }
+
+  .v-select-default__list {
+    @include select-list;
+    margin-top: 5px;
+    background: $color-white-dark;
+
+    .el-select-dropdown__item {
+      @include select-item;
+      padding: $padding;
+      font-size: $font-size;
+
+      &.selected {
+        color: $color-black;
+      }
+
+      &.hover {
+        color: $color-black;
+      }
+    }
+
+    .el-select-dropdown__empty {
+      @include select-empty;
+      padding: $padding;
+      font-size: $font-size;
+    }
+  }
+
   &--view-gray {
     .el-input {
-      @include select-el-input;
-      padding: $padding;
       background: $color-white-dark;
     }
 
     .el-input__inner {
-      @include select-el-input-inner;
       background: $color-white-dark;
       color: $color-black;
 
@@ -37,38 +78,27 @@ $font-size: 13px;
     }
 
     .v-select-default__icon {
-      @include icon;
-      font-size: 18px;
+      color: $color-gray;
+    }
+  }
+
+  &--view-primary {
+    .el-input {
+      background: $color-primary;
     }
 
-    .v-select-default__list {
-      @include select-list;
-      margin-top: 5px;
-      background: $color-white-dark;
+    .el-input__inner {
+      background: $color-primary;
+      color: $color-white;
 
-      .el-select-dropdown__item {
-        @include select-item;
-        padding: $padding;
-        font-size: $font-size;
-
-        &.selected {
-          color: $color-black;
-        }
-
-        &.hover {
-          color: $color-black;
-        }
-      }
-
-      .el-select-dropdown__empty {
-        @include select-empty;
-        padding: $padding;
-        font-size: $font-size;
+      &::placeholder {
+        color: $color-white;
+        opacity: $opacity;
       }
     }
 
-    .el-input__prefix {
-      @include select-prefix;
+    .v-select-default__icon {
+      color: $color-white;
     }
   }
 }

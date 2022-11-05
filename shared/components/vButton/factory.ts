@@ -16,6 +16,8 @@ export enum VButtonParamsLabelEnum {
   auth = "Войти",
   save = "Сохранить",
   add = "Добавить",
+  delete = "Удалить",
+  pairing = "Сопряжение",
 }
 
 export enum VButtonParamsStyleEnum {

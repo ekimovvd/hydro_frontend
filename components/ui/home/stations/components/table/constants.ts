@@ -4,6 +4,13 @@ import {
   VButtonParamsLabelEnum,
 } from "~/shared/components/vButton/factory";
 import {
+  VLinkParamsFactory,
+  VLinkParamsInterface,
+  VLinkParamsNameEnum,
+  VLinkParamsToEnum,
+  VLinkParamsTypeEnum,
+} from "~/shared/components/vLink/factory";
+import {
   VTableAlignEnum,
   VTableColumnFactory,
   VTableColumnInterface,
@@ -13,15 +20,9 @@ import {
   VTableTypeEnum,
   VTableWidthEnum,
 } from "~/shared/components/vTable/factory";
-import {
-  NotificationCustomClassEnum,
-  NotificationFactory,
-  NotificationInterface,
-  NotificationTypeEnum,
-} from "~/shared/entities/notification/factory";
 import { StatusIdEnum } from "~/shared/entities/status/factory";
 
-export const COMPONENT_NAME = "stations-table";
+export const COMPONENT_NAME = "home-stations-table";
 
 export const VTableParams: VTableParamsInterface = VTableParamsFactory({
   selection: {
@@ -40,39 +41,45 @@ export const VTableColumns: VTableColumnInterface[] = [
   VTableColumnFactory({
     prop: "ID",
     label: VTableColumnLabelEnum.postCode,
+    sortable: true,
   }),
   VTableColumnFactory({
-    prop: "ObjName",
+    prop: "HydroStation.ObjName",
     label: VTableColumnLabelEnum.river,
+    sortable: true,
   }),
   VTableColumnFactory({
-    prop: "Name",
+    prop: "HydroStation.Name",
     label: VTableColumnLabelEnum.postName,
+    sortable: true,
   }),
   VTableColumnFactory({
-    prop: "Lat",
+    prop: "HydroStation.Lat",
     label: VTableColumnLabelEnum.latitude,
   }),
   VTableColumnFactory({
-    prop: "Lng",
+    prop: "HydroStation.Lng",
     label: VTableColumnLabelEnum.longitude,
   }),
 ];
 
-export const VButtonParamsAdd: VButtonParamsInterface = VButtonParamsFactory({
-  id: StatusIdEnum.stationsTableButtonAdd,
-  label: VButtonParamsLabelEnum.add,
-  full: false,
+export const VButtonParamsPairing: VButtonParamsInterface =
+  VButtonParamsFactory({
+    id: StatusIdEnum.homeStationsTableButtonPairing,
+    label: VButtonParamsLabelEnum.pairing,
+    full: false,
+  });
+
+export const VButtonParamsDelete: VButtonParamsInterface = VButtonParamsFactory(
+  {
+    id: StatusIdEnum.homeStationsTableButtonDelete,
+    label: VButtonParamsLabelEnum.delete,
+    full: false,
+  }
+);
+
+export const VLinkParams: VLinkParamsInterface = VLinkParamsFactory({
+  type: VLinkParamsTypeEnum.text,
+  to: VLinkParamsToEnum.stations,
+  name: VLinkParamsNameEnum.add,
 });
-
-export const NotificationAddStationSuccess: NotificationInterface =
-  NotificationFactory({
-    message: "Станции успешно добавлены!",
-  });
-
-export const NotificationAddStationError: NotificationInterface =
-  NotificationFactory({
-    message: "Станции не добавлены!",
-    type: NotificationTypeEnum.error,
-    customClass: NotificationCustomClassEnum.error,
-  });

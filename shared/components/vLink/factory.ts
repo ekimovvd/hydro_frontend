@@ -3,10 +3,12 @@ export interface VLinkParamsInterface {
   to: VLinkParamsToEnum;
   icon?: VLinkParamsIconEnum;
   name: VLinkParamsNameEnum;
+  style: VLinkParamsStyleEnum;
 }
 
 export enum VLinkParamsTypeEnum {
   iconText = "icon-text-component",
+  text = "text-component",
 }
 
 export enum VLinkParamsToEnum {
@@ -40,6 +42,11 @@ export enum VLinkParamsNameEnum {
   forecasts = "Прогнозы",
   auth = "Авторизация",
   profile = "Профиль",
+  add = "Добавить",
+}
+
+export enum VLinkParamsStyleEnum {
+  primary = "primary",
 }
 
 export const VLinkParamsFactory = (
@@ -49,6 +56,7 @@ export const VLinkParamsFactory = (
     type: VLinkParamsTypeEnum.iconText,
     to: VLinkParamsToEnum.home,
     name: VLinkParamsNameEnum.home,
+    style: VLinkParamsStyleEnum.primary,
     ...params,
   };
 };

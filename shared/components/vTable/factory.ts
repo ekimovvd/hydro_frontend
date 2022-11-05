@@ -25,6 +25,7 @@ export interface VTableCurrentRowInterface {
 export interface VTableColumnInterface {
   prop: string;
   label: VTableColumnLabelEnum;
+  sortable: boolean;
 }
 
 export interface VTableSelectionInterface {
@@ -107,6 +108,7 @@ export const VTableColumnFactory = (
   return {
     prop: "",
     label: VTableColumnLabelEnum.default,
+    sortable: false,
     ...params,
   };
 };

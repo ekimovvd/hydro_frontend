@@ -21,7 +21,7 @@ $font-size-13: 13px;
   }
 
   &__icon {
-    @include icon;
+    display: $display-block;
     font-size: 15px;
   }
 

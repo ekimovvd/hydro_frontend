@@ -21,6 +21,8 @@ export enum StatusIdEnum {
   stationsTableButtonAdd = "stations-table-button-add",
   stationsWorkFormButtonSave = "stations-work-form-button-save",
   stationsWorkFormButtonDelete = "stations-work-form-button-delete",
+  homeStationsTableButtonPairing = "home-stations-table-button-pairing",
+  homeStationsTableButtonDelete = "home-stations-table-button-delete",
 }
 
 export const StatusFactory = (

@@ -8,7 +8,8 @@
   }
 
   &__icon {
-    @include icon;
+    display: $display-block;
+    color: $color-gray;
     font-size: 18px;
     margin-right: 5px;
   }

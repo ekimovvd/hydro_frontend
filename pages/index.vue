@@ -1,6 +1,12 @@
 <template>
   <section :class="b()">
-    <div :class="b('container')">container</div>
+    <div :class="b('container')">
+      <HomeStations
+        :stations="workStations"
+        @work:stations:update="onUpdateWorkStations"
+        @work:stations:list:update="onUpdateWorkStationsList"
+      />
+    </div>
   </section>
 </template>
 
