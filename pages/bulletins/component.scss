@@ -1,0 +1,7 @@
+.bulletins {
+  padding: 40px $padding-none;
+
+  &__container {
+    @include container;
+  }
+}
