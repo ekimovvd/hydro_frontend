@@ -1,7 +1,7 @@
 <template>
   <div :class="b()">
     <StationsWorkTable
-      :stations="stations"
+      :stations="getStations"
       :form="form"
       @station="onChangeStation"
       @station:clear="onClearStation"

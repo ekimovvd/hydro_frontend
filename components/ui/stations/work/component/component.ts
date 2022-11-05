@@ -48,6 +48,12 @@ export default class StationsWork extends Vue {
 
   readonly projectRepository = this.$projectServices.projectRepository;
 
+  get getStations(): WorkStationInterface[] {
+    return this.stations.sort(
+      (a, b) => Number(b.IsFavorite) - Number(a.IsFavorite)
+    );
+  }
+
   onChangeFormName(value: string): void {
     this.form.Name = value;
   }

@@ -70,7 +70,7 @@ export default class VTable extends Vue {
   @Watch("selections")
   onClearSelections(value: WorkStationInterface[]): void {
     if (!value.length) {
-      this.$refs.table.clearSelection();
+      (this.$refs.table as any).clearSelection();
     }
   }
 
