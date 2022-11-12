@@ -4,10 +4,14 @@ import {
   HydroStationInterface,
 } from "../entities/stations/factory";
 import { AuthInterface, TokenInterface } from "../entities/connect/factory";
+import { TaskServerInterface } from "../entities/tasks/factory";
 
 export interface ProjectRepositoryInterface {
   // TOKEN
   token(params?: AuthInterface): Promise<TokenInterface>;
+
+  // TASKS
+  getAllServerTasks(): Promise<TaskServerInterface[]>;
 
   // STATIONS
   getAllHydroStations(): Promise<HydroStationInterface[]>;

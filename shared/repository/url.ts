@@ -1,10 +1,16 @@
 import { ConnectApiEnum } from "../api/connect/factory";
 import { StationsApiEnum } from "../api/stations/factory";
+import { TasksApiEnum } from "../api/tasks/factory";
 
 export class Url {
   // CONNECT
   token(): string {
     return ConnectApiEnum.token;
+  }
+
+  // TASKS
+  getAllServerTasks(): string {
+    return TasksApiEnum.getAllServerTasks;
   }
 
   // STATIONS

@@ -4,4 +4,8 @@
   &__container {
     @include container;
   }
+
+  &__task {
+    margin-top: 40px;
+  }
 }

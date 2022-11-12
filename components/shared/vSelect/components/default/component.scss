@@ -84,11 +84,11 @@ $font-size: 13px;
 
   &--view-primary {
     .el-input {
-      background: $color-primary;
+      background: $color-blue;
     }
 
     .el-input__inner {
-      background: $color-primary;
+      background: $color-blue;
       color: $color-white;
 
       &::placeholder {

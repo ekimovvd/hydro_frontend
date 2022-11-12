@@ -42,17 +42,21 @@ export const VTableColumns: VTableColumnInterface[] = [
   VTableColumnFactory({
     prop: "HydroStation.ObjName",
     label: VTableColumnLabelEnum.river,
+    tree: true,
   }),
   VTableColumnFactory({
     prop: "HydroStation.Name",
     label: VTableColumnLabelEnum.postName,
+    tree: true,
   }),
   VTableColumnFactory({
     prop: "HydroStation.Lat",
     label: VTableColumnLabelEnum.latitude,
+    tree: true,
   }),
   VTableColumnFactory({
     prop: "HydroStation.Lng",
     label: VTableColumnLabelEnum.longitude,
+    tree: true,
   }),
 ];

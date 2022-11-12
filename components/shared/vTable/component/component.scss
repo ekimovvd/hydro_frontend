@@ -14,7 +14,45 @@
     }
 
     &--view-success {
-      background: $color-success;
+      background: $color-green;
+    }
+  }
+
+  .v-table__row-cell {
+    &--view-danger {
+      .cell {
+        margin: 0 5px;
+        color: $color-danger;
+        border: 2px solid $color-danger-light;
+        border-radius: $border-radius;
+      }
+    }
+
+    &--view-warning {
+      .cell {
+        margin: 0 5px;
+        color: $color-warning;
+        border: 2px solid $color-warning-light;
+        border-radius: $border-radius;
+      }
+    }
+
+    &--view-success {
+      .cell {
+        margin: 0 5px;
+        color: $color-success;
+        border: 2px solid $color-success-light;
+        border-radius: $border-radius;
+      }
+    }
+
+    &--view-primary {
+      .cell {
+        margin: 0 5px;
+        color: $color-primary;
+        border: 2px solid $color-primary-light;
+        border-radius: $border-radius;
+      }
     }
   }
 }

@@ -36,12 +36,10 @@ export default class Stations extends Vue {
   async fetch(): Promise<void> {
     const projectRepository = this.$projectServices.projectRepository;
 
-    const promises = Promise.all([
+    await Promise.all([
       projectRepository.getAllHydroStations(),
       projectRepository.getAllWorkStations(),
-    ]);
-
-    promises.then(([hydroStations, workStations]) => {
+    ]).then(([hydroStations, workStations]) => {
       this.hydroStations = hydroStations;
       this.workStations = workStations;
     });

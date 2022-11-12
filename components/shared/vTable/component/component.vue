@@ -8,6 +8,7 @@
       :row-key="params.currentRow.rowKey"
       :current-row-key="rowKey"
       :row-class-name="onTableRowClassName"
+      :cell-class-name="onTableCellClassName"
       @selection-change="onChangeSelection"
       @row-click="onClickRow"
     >
@@ -16,6 +17,7 @@
         :params="params.selection"
       />
       <el-table-column
+        :class-name="b('row-cell')"
         v-for="column in columns"
         :key="column.prop"
         :prop="column.prop"
@@ -23,6 +25,9 @@
         :align="params.align"
         :sortable="column.sortable"
       >
+        <template slot-scope="scope">
+          {{ onFormattingCell(scope.row, column) }}
+        </template>
       </el-table-column>
       <VTableTag v-if="params.tag.isEnabled" :params="params.tag" />
     </el-table>

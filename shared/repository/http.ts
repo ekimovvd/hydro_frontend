@@ -5,6 +5,7 @@ import {
   NearestSynopStationInterface,
   WorkStationInterface,
 } from "../entities/stations/factory";
+import { TaskServerInterface } from "../entities/tasks/factory";
 import { ProjectRepositoryInterface } from "./factory";
 import { Url } from "./url";
 
@@ -19,6 +20,15 @@ export class Http implements ProjectRepositoryInterface {
     const { data } = await this.axios.post<TokenInterface>(
       this.url.token(),
       params
+    );
+
+    return data;
+  }
+
+  // TASKS
+  async getAllServerTasks(): Promise<TaskServerInterface[]> {
+    const { data } = await this.axios.get<Promise<TaskServerInterface[]>>(
+      this.url.getAllServerTasks()
     );
 
     return data;

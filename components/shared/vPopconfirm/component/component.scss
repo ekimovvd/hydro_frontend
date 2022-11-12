@@ -4,7 +4,7 @@
   .el-button {
     @include button-reset;
     @include button;
-    background: $color-primary;
+    background: $color-blue;
     width: $width-full;
   }
 }
@@ -32,7 +32,7 @@
     width: $width-full;
 
     &:first-child {
-      background: $color-primary;
+      background: $color-blue;
     }
 
     &:last-child {

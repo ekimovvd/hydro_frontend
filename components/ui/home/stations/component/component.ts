@@ -15,7 +15,11 @@ import { EventEnum } from "~/pages/constants";
 import HomeStationsConfig from "../components/config/component";
 import HomeStationsTable from "../components/table/component";
 
-import { COMPONENT_NAME } from "./constants";
+import {
+  COMPONENT_NAME,
+  NotificationDeleteStationError,
+  NotificationDeleteStationSuccess,
+} from "./constants";
 
 @Component({
   name: COMPONENT_NAME,
@@ -66,12 +70,14 @@ export default class HomeStations extends Vue {
               this.$emit(EventEnum.workStationsListUpdate);
               this.onChangeStatusDefault();
               this.onClearStation();
+              this.$notify(NotificationDeleteStationSuccess);
             }
           );
         });
     } catch (e) {
       this.onChangeStatusDefault();
       this.onClearStation();
+      this.$notify(NotificationDeleteStationError);
     }
   }
 }

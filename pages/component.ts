@@ -1,9 +1,11 @@
 import { Component, Vue } from "nuxt-property-decorator";
 
 import HomeStations from "~/components/ui/home/stations/component/component";
+import VTask from "~/components/shared/vTask/component/component";
 
 import { VLinkParamsNameEnum } from "~/shared/components/vLink/factory";
 import { WorkStationInterface } from "~/shared/entities/stations/factory";
+import { TaskServerInterface } from "~/shared/entities/tasks/factory";
 
 import { COMPONENT_NAME, LAYOUT_NAME } from "./constants";
 
@@ -12,6 +14,7 @@ import { COMPONENT_NAME, LAYOUT_NAME } from "./constants";
   layout: LAYOUT_NAME,
   components: {
     HomeStations,
+    VTask,
   },
   head() {
     return {
@@ -21,15 +24,18 @@ import { COMPONENT_NAME, LAYOUT_NAME } from "./constants";
 })
 export default class Home extends Vue {
   public workStations: WorkStationInterface[] = [];
+  public serverTasks: TaskServerInterface[] = [];
 
   async fetch(): Promise<void> {
     const projectRepository = this.$projectServices.projectRepository;
 
-    await Promise.all([projectRepository.getAllWorkStations()]).then(
-      ([workStations]) => {
-        this.workStations = workStations;
-      }
-    );
+    await Promise.all([
+      projectRepository.getAllWorkStations(),
+      projectRepository.getAllServerTasks(),
+    ]).then(([workStations, serverTasks]) => {
+      this.workStations = workStations;
+      this.serverTasks = serverTasks;
+    });
   }
 
   onUpdateWorkStations(value: WorkStationInterface[]): void {

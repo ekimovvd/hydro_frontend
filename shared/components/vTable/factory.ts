@@ -26,6 +26,9 @@ export interface VTableColumnInterface {
   prop: string;
   label: VTableColumnLabelEnum;
   sortable: boolean;
+  tree: boolean;
+  keys: VTableColumnKeysInterface;
+  date: boolean;
 }
 
 export interface VTableSelectionInterface {
@@ -40,6 +43,16 @@ export interface VTablePaginationInterface {
   layout: string;
 }
 
+export interface VTableColumnKeysInterface {
+  isEnabled: boolean;
+  keys: object;
+}
+
+export interface VTableCellInterface {
+  prop: string;
+  keys: object;
+}
+
 export enum VTableColumnLabelEnum {
   default = "",
   postCode = "Код поста",
@@ -49,6 +62,12 @@ export enum VTableColumnLabelEnum {
   longitude = "Долгота",
   postMark = "Отметка поста",
   zeroPost = "Нуль поста",
+  post = "Пост",
+  task = "Задача",
+  status = "Состояние",
+  lastRunTime = "Последний запуск",
+  scheduledTime = "Запланировано",
+  lastRunComment = "Результат запуска",
 }
 
 export enum VTableIconEnum {
@@ -59,6 +78,13 @@ export enum VTableStyleEnum {
   default = "default",
   primary = "primary",
   orange = "orange",
+}
+
+export enum VTableColumnStyleEnum {
+  danger = "danger",
+  warning = "warning",
+  success = "success",
+  primary = "primary",
 }
 
 export enum VTableEventEnum {
@@ -109,6 +135,22 @@ export const VTableColumnFactory = (
     prop: "",
     label: VTableColumnLabelEnum.default,
     sortable: false,
+    tree: false,
+    keys: {
+      isEnabled: false,
+      keys: {},
+    },
+    date: false,
+    ...params,
+  };
+};
+
+export const VTableCellFactory = (
+  params: Partial<VTableCellInterface> = {}
+): VTableCellInterface => {
+  return {
+    prop: "",
+    keys: {},
     ...params,
   };
 };
