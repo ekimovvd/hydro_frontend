@@ -19,6 +19,15 @@ export enum VLabelParamsTextEnum {
   areaCenterMeteo = "2-ая метеостанция",
   postName = "Название поста",
   comment = "Комментарий",
+  station = "Пост",
+  taskType = "Тип задачи",
+  status = "Состояние",
+  mode = "Точка отсчёта",
+  calculationPeriod = "Период расчёта",
+  period = "Интервал, сутки",
+  periodExt = "Интервал расширенный, сутки",
+  calcStepDays = "Шаг, сутки",
+  interval = "Интервал расчёта",
 }
 
 export const VLabelParamsFactory = (

@@ -5,6 +5,8 @@
       :columns="VTableColumns"
       :data="tasks"
       :cells="VTableCells"
+      :row-key="task.ID"
+      @row="onChangeRow"
     />
   </div>
 </template>

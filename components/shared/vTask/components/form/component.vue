@@ -1,0 +1,128 @@
+<template>
+  <form :class="b()" @submit.prevent="">
+    <div :class="b('block')">
+      <div :class="b('group')">
+        <VLabel :class="b('label')" :params="VLabelParamsStation" />
+        <VSelect
+          :params="VSelectParamsStation"
+          :data="getStations"
+          :value="getStationValue"
+          @select="onSelectStation"
+          @clear="onClearStation"
+        />
+      </div>
+      <div :class="b('group')">
+        <VLabel :class="b('label')" :params="VLabelParamsTaskType" />
+        <VSelect
+          :params="VSelectParamsTaskType"
+          :data="VSelectDataTaskType"
+          :value="getTaskTypeValue"
+          @select="onSelectTaskType"
+          @clear="onClearTaskType"
+        />
+      </div>
+      <div :class="b('group')">
+        <VLabel :class="b('label')" :params="VLabelParamsStatus" />
+        <VSelect
+          :params="VSelectParamsStatus"
+          :data="VSelectDataStatus"
+          :value="getStatusValue"
+          @select="onSelectStatus"
+          @clear="onClearStatus"
+        />
+      </div>
+      <div :class="b('group')">
+        <VInput
+          :params="VInputParamsSkipErrors"
+          :value="getSkipErrorsValue"
+          @change="onChangeSkipErrors"
+        />
+      </div>
+    </div>
+    <div :class="b('block')">
+      <div :class="b('group')">
+        <VLabel :class="b('label')" :params="VLabelParamsInterval" />
+        <VInput
+          :params="VInputParamsInterval"
+          :value="0"
+          @change="onChangeInterval"
+        />
+      </div>
+      <div :class="b('group')">
+        <VLabel :class="b('label')" :params="VLabelParamsMode" />
+        <VSelect
+          :params="VSelectParamsMode"
+          :data="VSelectDataMode"
+          :value="getModeValue"
+          @select="onSelectMode"
+          @clear="onClearMode"
+        />
+      </div>
+      <div :class="b('group')">
+        <VLabel :class="b('label')" :params="VLabelParamsCalculationPeriod" />
+        <VSelect
+          :params="VSelectParamsCalculationPeriod"
+          :data="VSelectDataCalculationPeriod"
+          :value="calculationPeriod"
+          @select="onSelectCalculationPeriod"
+          @clear="onClearCalculationPeriod"
+        />
+      </div>
+    </div>
+    <div :class="b('block')">
+      <div :class="b('reservoir')">
+        <div :class="b('group')">
+          <VLabel :class="b('label')" :params="VLabelParamsPeriod" />
+          <VInput
+            :params="VInputParamsPeriod"
+            :value="0"
+            @change="onChangePeriod"
+          />
+        </div>
+        <div :class="b('group')">
+          <VLabel :class="b('label')" :params="VLabelParamsPeriodExt" />
+          <VInput
+            :params="VInputParamsPeriodExt"
+            :value="0"
+            @change="onChangePeriodExt"
+          />
+        </div>
+        <div :class="b('group')">
+          <VLabel :class="b('label')" :params="VLabelParamsCalcStepDays" />
+          <VInput
+            :params="VInputParamsCalcStepDays"
+            :value="0"
+            @change="onChangeCalcStepDays"
+          />
+        </div>
+        <div :class="b('group')">
+          <VInput
+            :params="VInputParamsCorrQ"
+            :value="false"
+            @change="onChangeCorrQ"
+          />
+        </div>
+      </div>
+      <div :class="b('buttons')">
+        <VButton
+          :params="VButtonParamsCreate"
+          :status="status"
+          @click="onTaskCreate"
+        />
+        <VButton
+          :params="VButtonParamsSave"
+          :status="status"
+          @click="onTaskSave"
+        />
+        <VButton
+          :params="VButtonParamsDelete"
+          :status="status"
+          @click="onTaskDelete"
+        />
+      </div>
+    </div>
+  </form>
+</template>
+
+<script lang="ts" src="./component.ts"></script>
+<style lang="scss" src="./component.scss"></style>

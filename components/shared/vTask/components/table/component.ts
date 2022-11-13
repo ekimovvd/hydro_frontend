@@ -9,6 +9,7 @@ import {
 } from "~/shared/components/vTable/factory";
 
 import { TaskServerInterface } from "~/shared/entities/tasks/factory";
+import { EventEnum } from "../../component/constants";
 
 import {
   COMPONENT_NAME,
@@ -29,8 +30,20 @@ export default class VTaskTable extends Vue {
     default: () => [],
   })
   readonly tasks: TaskServerInterface[];
+  @Prop({
+    type: Object,
+    required: true,
+  })
+  readonly task: TaskServerInterface;
 
   readonly VTableParams: VTableParamsInterface = VTableParams;
   readonly VTableColumns: VTableColumnInterface[] = VTableColumns;
   readonly VTableCells: VTableCellInterface[] = VTableCells;
+
+  onChangeRow(value: TaskServerInterface): void {
+    this.$emit(
+      this.task.ID === value.ID ? EventEnum.taskClear : EventEnum.task,
+      value
+    );
+  }
 }

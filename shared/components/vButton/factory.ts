@@ -18,6 +18,7 @@ export enum VButtonParamsLabelEnum {
   add = "Добавить",
   delete = "Удалить",
   pairing = "Сопряжение",
+  create = "Создать",
 }
 
 export enum VButtonParamsStyleEnum {

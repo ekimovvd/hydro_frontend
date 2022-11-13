@@ -50,10 +50,9 @@ export const VTableColumns: VTableColumnInterface[] = [
     tree: true,
   }),
   VTableColumnFactory({
-    prop: "HydroStation.Name",
+    prop: "Name",
     label: VTableColumnLabelEnum.postName,
     sortable: true,
-    tree: true,
   }),
   VTableColumnFactory({
     prop: "HydroStation.Lat",

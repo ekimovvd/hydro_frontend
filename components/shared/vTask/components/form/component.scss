@@ -1,0 +1,25 @@
+.v-task-form {
+  display: $display-flex;
+  grid-column-gap: 50px;
+
+  &__block {
+    @include display-flex-column;
+    width: $width-full;
+    grid-row-gap: 20px;
+  }
+
+  &__group {
+    @include display-flex-column;
+    grid-row-gap: 5px;
+  }
+
+  &__reservoir {
+    @include display-flex-column;
+    grid-row-gap: 20px;
+  }
+
+  &__buttons {
+    @include display-flex-center;
+    grid-column-gap: 10px;
+  }
+}

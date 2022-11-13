@@ -1,1 +1,25 @@
 export const COMPONENT_NAME = "v-task";
+
+export enum EventEnum {
+  task = "task",
+  taskClear = "task:clear",
+  stationUpdate = "station:update",
+  stationClear = "station:clear",
+  taskTypeUpdate = "task:type:update",
+  taskTypeClear = "task:type:clear",
+  statusUpdate = "status:update",
+  statusClear = "status:clear",
+  skipErrorsUpdate = "skip:errors:update",
+  modeUpdate = "mode:update",
+  modeClear = "mode:clear",
+  calculationPeriodUpdate = "calculation:period:update",
+  calculationPeriodClear = "calculation:period:clear",
+  taskCreate = "task:create",
+  taskSave = "task:save",
+  taskDelete = "task:delete",
+  intervalUpdate = "interval:update",
+  periodUpdate = "period:update",
+  periodExtUpdate = "period:ext:update",
+  calcStepDaysUpdate = "calc:step:days:update",
+  corrQUpdate = "corr:q:update",
+}

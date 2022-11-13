@@ -12,6 +12,7 @@ export enum VInputParamsTypeEnum {
   textarea = "textarea-component",
   checkbox = "checkbox-component",
   radio = "radio-component",
+  number = "number-component",
 }
 
 export enum VInputParamsPlaceholderEnum {
@@ -34,6 +35,8 @@ export enum VInputParamsTextEnum {
   default = "",
   isReservoir = "Является водохранилищем",
   isFavorite = "Является избранным",
+  skipErrors = "Игнорировать ошибки",
+  corrQ = "Коррекция расходов",
 }
 
 export enum VInputEventEnum {

@@ -2,23 +2,63 @@ import { VTableColumnStyleEnum } from "~/shared/components/vTable/factory";
 
 export interface TaskServerInterface {
   ID: number | null;
-  LastRunComment: LastRunCommentEnum | null;
+  LastRunComment: string | null;
   LastRunTime: string | null;
   ScheduledTime: string;
   StationID: number | null;
-  Status: StatusEnum | null;
-  TaskTypeID: TaskTypeIDEnum | null;
+  Status: number | null;
+  TaskTypeID: string | null;
+  TaskData: TaskServerTaskDataInterface;
+}
+
+export interface TaskServerTaskDataInterface {
+  config: {
+    "@measuredQHSource": string;
+    "@avgQType": string;
+    "@corrQ": string;
+    "@skipErrors": string;
+    "@regimeSparseDays": string;
+    Schedule: {
+      "@runAtScheduledTime": string;
+      "@mode": string | null;
+      "@interval": string | null;
+    };
+    CalcPeriodOptions: {
+      "@start": string | null;
+      "@end": string | null;
+    };
+  };
+}
+
+export enum ModeEnum {
+  FromLastRun = "FromLastRun",
+  OncePerCall = "OncePerCall",
+}
+
+export enum ModeValueEnum {
+  FromLastRun = "От последнего запуска",
+  OncePerCall = "Выровнять по времени",
+}
+
+export enum CalculationPeriodEnum {
+  relative = "relative",
+  fixed = "fixed",
+}
+
+export enum CalculationPeriodValueEnum {
+  relative = "Относительный",
+  fixed = "Фиксированный",
 }
 
 export enum TaskTypeIDEnum {
-  acf = "Acf",
-  phases = "Phases",
-  curveQ = "CurveQ",
-  autoQ = "AutoQ",
-  tempSum = "TempSum",
-  reservoirSingle = "ReservoirSingle",
-  reservoirPeriod = "ReservoirPeriod",
-  transitionPoints = "TransitionPoints",
+  Acf = "Acf",
+  Phases = "Phases",
+  CurveQ = "CurveQ",
+  AutoQ = "AutoQ",
+  TempSum = "TempSum",
+  ReservoirSingle = "ReservoirSingle",
+  ReservoirPeriod = "ReservoirPeriod",
+  TransitionPoints = "TransitionPoints",
 }
 
 export const TaskTypeIDValue = {
@@ -81,6 +121,24 @@ export const TaskServerFactory = (
     StationID: null,
     Status: null,
     TaskTypeID: null,
+    TaskData: {
+      config: {
+        "@measuredQHSource": "HydroOnly",
+        "@avgQType": "Arithmetic",
+        "@corrQ": "False",
+        "@skipErrors": "False",
+        "@regimeSparseDays": "1",
+        Schedule: {
+          "@runAtScheduledTime": "False",
+          "@mode": null,
+          "@interval": null,
+        },
+        CalcPeriodOptions: {
+          "@start": null,
+          "@end": null,
+        },
+      },
+    },
     ...params,
   };
 };

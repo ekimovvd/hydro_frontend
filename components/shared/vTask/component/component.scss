@@ -2,4 +2,9 @@
   &__title {
     margin-bottom: 10px;
   }
+
+  &__group {
+    @include display-flex-column;
+    grid-row-gap: 20px;
+  }
 }

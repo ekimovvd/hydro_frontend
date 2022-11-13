@@ -11,6 +11,7 @@ import VInputPassword from "../components/password/component";
 import VInputTextarea from "../components/textarea/component";
 import VInputCheckbox from "../components/checkbox/component";
 import VInputRadio from "../components/radio/component";
+import VInputNumber from "../components/number/component";
 
 import { COMPONENT_NAME } from "./constants";
 
@@ -22,6 +23,7 @@ import { COMPONENT_NAME } from "./constants";
     "textarea-component": VInputTextarea,
     "checkbox-component": VInputCheckbox,
     "radio-component": VInputRadio,
+    "number-component": VInputNumber,
   },
 })
 export default class VInput extends Vue {
@@ -31,10 +33,10 @@ export default class VInput extends Vue {
   })
   readonly params: VInputParamsInterface;
   @Prop({
-    type: [String, Boolean],
+    type: [String, Boolean, Number],
     required: true,
   })
-  readonly value: string | boolean;
+  readonly value: string | boolean | number;
 
   get getComponent(): VInputParamsTypeEnum {
     return this.params.type;

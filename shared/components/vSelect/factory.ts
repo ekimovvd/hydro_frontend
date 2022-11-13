@@ -41,6 +41,11 @@ export enum VSelectParamsPlaceholderEnum {
   weatherStation1 = "1-я метеостанция",
   weatherStation2 = "2-я метеостанция",
   term = "Выберите срок",
+  station = "Выберите пост",
+  taskType = "Выберите тип задачи",
+  status = "Выберите состояние",
+  mode = "Выберите точку отсчёта",
+  calculationPeriod = "Выберите период расчёта",
 }
 
 export const VSelectParamsFactory = (

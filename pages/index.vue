@@ -6,7 +6,7 @@
         @work:stations:update="onUpdateWorkStations"
         @work:stations:list:update="onUpdateWorkStationsList"
       />
-      <VTask :class="b('task')" :tasks="serverTasks" />
+      <VTask :class="b('task')" :tasks="serverTasks" :stations="workStations" />
     </div>
   </div>
 </template>
