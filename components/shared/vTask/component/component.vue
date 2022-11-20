@@ -19,12 +19,14 @@
         @task:type:clear="onClearTaskType"
         @status:update="onUpdateStatus"
         @status:clear="onClearStatus"
+        @scheduled:time:update="onUpdateScheduledTime"
         @skip:errors:update="onUpdateSkipErrors"
         @mode:update="onUpdateMode"
         @mode:clear="onClearMode"
         @calculation:period:update="onUpdateCalculationPeriod"
         @calculation:period:clear="onClearCalculationPeriod"
-        @interval:update="onUpdateInterval"
+        @interval:days:update="onUpdateIntervalDays"
+        @interval:time:update="onUpdateIntervalTime"
         @period:update="onUpdatePeriod"
         @period:ext:update="onUpdatePeriodExt"
         @calc:step:days:update="onUpdateCalcStepDays"
@@ -33,7 +35,6 @@
         @task:save="onTaskSave"
         @task:delete="onTaskDelete"
       />
-      {{ task }}
     </div>
   </div>
 </template>

@@ -70,6 +70,7 @@ export default class AuthForm extends Vue {
         this.$cookies.set("access_token", res.access_token);
         this.$notify(NotificationAuthSuccess);
         this.$emit(StatusEventEnum.default);
+        this.$router.push("/");
       });
     } catch (e) {
       this.$notify(NotificationAuthError);

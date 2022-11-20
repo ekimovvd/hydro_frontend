@@ -12,6 +12,8 @@ import {
   Pagination,
   Notification,
   InputNumber,
+  DatePicker,
+  TimePicker,
 } from "element-ui";
 import lang from "element-ui/lib/locale/lang/ru-RU";
 import locale from "element-ui/lib/locale";
@@ -30,5 +32,7 @@ Vue.use(Popconfirm);
 Vue.use(Button);
 Vue.use(Pagination);
 Vue.use(InputNumber);
+Vue.use(DatePicker);
+Vue.use(TimePicker);
 
 Vue.prototype.$notify = Notification;

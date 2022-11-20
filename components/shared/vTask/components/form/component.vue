@@ -22,6 +22,14 @@
         />
       </div>
       <div :class="b('group')">
+        <VLabel :class="b('label')" :params="VLabelParamsScheduledTime" />
+        <VPicker
+          :params="VPickerParamsScheduledTime"
+          :value="getScheduledTimeValue"
+          @change="onChangeScheduledTime"
+        />
+      </div>
+      <div :class="b('group')">
         <VLabel :class="b('label')" :params="VLabelParamsStatus" />
         <VSelect
           :params="VSelectParamsStatus"
@@ -41,11 +49,19 @@
     </div>
     <div :class="b('block')">
       <div :class="b('group')">
-        <VLabel :class="b('label')" :params="VLabelParamsInterval" />
+        <VLabel :class="b('label')" :params="VLabelParamsIntervalDays" />
         <VInput
           :params="VInputParamsInterval"
-          :value="0"
-          @change="onChangeInterval"
+          :value="getIntervalDaysValue"
+          @change="onChangeIntervalDays"
+        />
+      </div>
+      <div :class="b('group')">
+        <VLabel :class="b('label')" :params="VLabelParamsIntervalTime" />
+        <VPicker
+          :params="VPickerParamsIntervalTime"
+          :value="getIntervalTimeValue"
+          @change="onChangeIntervalTime"
         />
       </div>
       <div :class="b('group')">
@@ -75,7 +91,7 @@
           <VLabel :class="b('label')" :params="VLabelParamsPeriod" />
           <VInput
             :params="VInputParamsPeriod"
-            :value="0"
+            :value="getPeriodValue"
             @change="onChangePeriod"
           />
         </div>
@@ -83,7 +99,7 @@
           <VLabel :class="b('label')" :params="VLabelParamsPeriodExt" />
           <VInput
             :params="VInputParamsPeriodExt"
-            :value="0"
+            :value="getPeriodExtValue"
             @change="onChangePeriodExt"
           />
         </div>
@@ -91,14 +107,14 @@
           <VLabel :class="b('label')" :params="VLabelParamsCalcStepDays" />
           <VInput
             :params="VInputParamsCalcStepDays"
-            :value="0"
+            :value="getCalcStepDaysValue"
             @change="onChangeCalcStepDays"
           />
         </div>
         <div :class="b('group')">
           <VInput
             :params="VInputParamsCorrQ"
-            :value="false"
+            :value="getCorrQValue"
             @change="onChangeCorrQ"
           />
         </div>

@@ -22,10 +22,13 @@ $font-size: 13px;
   .el-input {
     @include select-el-input;
     padding: $padding;
+    height: 35px;
   }
 
   .el-input__inner {
     @include select-el-input-inner;
+    padding: $padding-none !important;
+    height: 35px;
   }
 
   .v-select-default__icon {
@@ -35,12 +38,21 @@ $font-size: 13px;
 
   .el-input__prefix {
     @include select-prefix;
+    position: $position-relative;
+    height: 18px;
+  }
+
+  .popper__arrow {
+    display: none !important;
   }
 
   .v-select-default__list {
     @include select-list;
     margin-top: 5px;
     margin-bottom: 5px;
+    transform: scale(1);
+    transition: none;
+    opacity: 1;
     background: $color-white-dark;
 
     .el-select-dropdown__item {

@@ -2,7 +2,7 @@ import { Plugin } from "@nuxt/types";
 import { initializeAxios } from "~/shared/repository/initialize";
 
 const axiosPlugin: Plugin = (context) => {
-  const { $axios, app } = context;
+  const { $axios, app, redirect } = context;
 
   initializeAxios($axios);
 
@@ -23,7 +23,11 @@ const axiosPlugin: Plugin = (context) => {
     (response) => {
       return response;
     },
-    (error) => {}
+    (error) => {
+      if (error.response.status === 401) {
+        redirect("/auth");
+      }
+    }
   );
 };
 

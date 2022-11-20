@@ -9,5 +9,6 @@ import VNavbar from "~/components/shared/vNavbar/component/component";
     VHeader,
     VNavbar,
   },
+  middleware: ["auth"],
 })
 export default class Home extends Vue {}

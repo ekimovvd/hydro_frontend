@@ -87,6 +87,11 @@ export default class VTask extends Vue {
     this.task.Status = null;
   }
 
+  // SCHEDULED TIME
+  onUpdateScheduledTime(value: string): void {
+    this.task.ScheduledTime = value;
+  }
+
   // SKIP ERRORS
   onUpdateSkipErrors(value: boolean): void {
     this.task.TaskData.config["@skipErrors"] = this.onCapitalizeFirstLetter(
@@ -111,28 +116,49 @@ export default class VTask extends Vue {
   }
 
   // INTERVAL
-  onUpdateInterval(value: number): void {
-    console.log("interval");
+  onUpdateIntervalDays(value: number): void {
+    const interval = this.task.TaskData.config.Schedule["@interval"];
+    if (value !== undefined) {
+      this.task.TaskData.config.Schedule["@interval"] =
+        interval !== null
+          ? `${value}.${interval.split(".")[1]}`
+          : `${value}.00:00:00`;
+    } else {
+      this.task.TaskData.config.Schedule["@interval"] = `0.${
+        interval.split(".")[1]
+      }`;
+    }
+  }
+
+  onUpdateIntervalTime(value: string): void {
+    const interval = this.task.TaskData.config.Schedule["@interval"];
+    this.task.TaskData.config.Schedule["@interval"] =
+      interval !== null ? `${interval.split(".")[0]}.${value}` : `0.00:00:00`;
   }
 
   // PERIOD
   onUpdatePeriod(value: number): void {
-    console.log("period");
+    // this.task.TaskData.config.ReservoirCalculatorOptions["@period"] =
+    //   value !== undefined ? value : null;
   }
 
   // PERIODEXT
   onUpdatePeriodExt(value: number): void {
-    console.log("periodExt");
+    // this.task.TaskData.config.ReservoirCalculatorOptions["@periodExt"] =
+    //   value !== undefined ? value : null;
   }
 
   // CALCSTEPDAYS
   onUpdateCalcStepDays(value: number): void {
-    console.log("calcStepDays");
+    // this.task.TaskData.config.ReservoirCalculatorOptions["@calcStepDays"] =
+    //   value !== undefined ? value : null;
   }
 
   // CORRQ
   onUpdateCorrQ(value: boolean): void {
-    console.log("corrq");
+    this.task.TaskData.config["@corrQ"] = this.onCapitalizeFirstLetter(
+      value.toString()
+    );
   }
 
   // BUTTONS

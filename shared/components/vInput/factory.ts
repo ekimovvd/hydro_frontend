@@ -21,6 +21,7 @@ export enum VInputParamsPlaceholderEnum {
   password = "Введите пароль",
   postName = "Введите название поста",
   comment = "Введите комментарий",
+  intervalDays = "Введите количество дней",
 }
 
 export enum VInputParamsIdEnum {

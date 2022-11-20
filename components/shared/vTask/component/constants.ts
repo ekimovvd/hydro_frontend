@@ -17,9 +17,11 @@ export enum EventEnum {
   taskCreate = "task:create",
   taskSave = "task:save",
   taskDelete = "task:delete",
-  intervalUpdate = "interval:update",
+  intervalDaysUpdate = "interval:days:update",
+  intervalTimeUpdate = "interval:time:update",
   periodUpdate = "period:update",
   periodExtUpdate = "period:ext:update",
   calcStepDaysUpdate = "calc:step:days:update",
   corrQUpdate = "corr:q:update",
+  scheduledTimeUpdate = "scheduled:time:update",
 }

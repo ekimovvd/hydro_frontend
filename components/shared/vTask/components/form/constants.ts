@@ -5,6 +5,7 @@ import {
 import {
   VInputParamsFactory,
   VInputParamsInterface,
+  VInputParamsPlaceholderEnum,
   VInputParamsTextEnum,
   VInputParamsTypeEnum,
 } from "~/shared/components/vInput/factory";
@@ -13,6 +14,13 @@ import {
   VLabelParamsInterface,
   VLabelParamsTextEnum,
 } from "~/shared/components/vLabel/factory";
+import {
+  VPickerParamsComponentEnum,
+  VPickerParamsFactory,
+  VPickerParamsFormatEnum,
+  VPickerParamsPlaceholderEnum,
+  VPickerParamsTypeEnum,
+} from "~/shared/components/vPicker/factory";
 import {
   VSelectDataFactory,
   VSelectDataInterface,
@@ -146,9 +154,14 @@ export const VLabelParamsMode: VLabelParamsInterface = VLabelParamsFactory({
 });
 export const VLabelParamsCalculationPeriod: VLabelParamsInterface =
   VLabelParamsFactory({ text: VLabelParamsTextEnum.calculationPeriod });
-export const VLabelParamsInterval: VLabelParamsInterface = VLabelParamsFactory({
-  text: VLabelParamsTextEnum.interval,
-});
+export const VLabelParamsIntervalDays: VLabelParamsInterface =
+  VLabelParamsFactory({
+    text: VLabelParamsTextEnum.intervalDays,
+  });
+export const VLabelParamsIntervalTime: VLabelParamsInterface =
+  VLabelParamsFactory({
+    text: VLabelParamsTextEnum.intervalTime,
+  });
 export const VLabelParamsPeriod: VLabelParamsInterface = VLabelParamsFactory({
   text: VLabelParamsTextEnum.period,
 });
@@ -161,6 +174,10 @@ export const VLabelParamsCalcStepDays: VLabelParamsInterface =
   VLabelParamsFactory({
     text: VLabelParamsTextEnum.calcStepDays,
   });
+export const VLabelParamsScheduledTime: VLabelParamsInterface =
+  VLabelParamsFactory({
+    text: VLabelParamsTextEnum.scheduledTime,
+  });
 
 export const VInputParamsSkipErrors: VInputParamsInterface =
   VInputParamsFactory({
@@ -169,6 +186,7 @@ export const VInputParamsSkipErrors: VInputParamsInterface =
   });
 export const VInputParamsInterval = VInputParamsFactory({
   type: VInputParamsTypeEnum.number,
+  placeholder: VInputParamsPlaceholderEnum.intervalDays,
 });
 export const VInputParamsPeriod = VInputParamsFactory({
   type: VInputParamsTypeEnum.number,
@@ -195,4 +213,16 @@ export const VButtonParamsSave = VButtonParamsFactory({
 export const VButtonParamsDelete = VButtonParamsFactory({
   id: StatusIdEnum.tasksFormButtonDelete,
   label: VButtonParamsLabelEnum.delete,
+});
+
+export const VPickerParamsScheduledTime = VPickerParamsFactory({
+  type: VPickerParamsTypeEnum.dateTime,
+  format: VPickerParamsFormatEnum.dateTime,
+  placeholder: VPickerParamsPlaceholderEnum.scheduledTime,
+});
+export const VPickerParamsIntervalTime = VPickerParamsFactory({
+  component: VPickerParamsComponentEnum.time,
+  type: VPickerParamsTypeEnum.time,
+  format: VPickerParamsFormatEnum.time,
+  placeholder: VPickerParamsPlaceholderEnum.intervalTime,
 });

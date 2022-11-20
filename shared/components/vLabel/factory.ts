@@ -27,7 +27,9 @@ export enum VLabelParamsTextEnum {
   period = "Интервал, сутки",
   periodExt = "Интервал расширенный, сутки",
   calcStepDays = "Шаг, сутки",
-  interval = "Интервал расчёта",
+  intervalDays = "Интервал расчёта (дни)",
+  intervalTime = "Интервал расчёта (время)",
+  scheduledTime = "Следующий запуск",
 }
 
 export const VLabelParamsFactory = (

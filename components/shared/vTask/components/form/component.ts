@@ -4,6 +4,7 @@ import VSelect from "~/components/shared/vSelect/component/component";
 import VLabel from "~/components/shared/vLabel/component/component";
 import VInput from "~/components/shared/vInput/component/component";
 import VButton from "~/components/shared/vButton/component/component";
+import VPicker from "~/components/shared/vPicker/component/component";
 
 import { VLabelParamsInterface } from "~/shared/components/vLabel/factory";
 import {
@@ -16,6 +17,7 @@ import { WorkStationInterface } from "~/shared/entities/stations/factory";
 import { VInputParamsInterface } from "~/shared/components/vInput/factory";
 import { VButtonParamsInterface } from "~/shared/components/vButton/factory";
 import { StatusInterface } from "~/shared/entities/status/factory";
+import { VPickerParamsInterface } from "~/shared/components/vPicker/factory";
 
 import {
   COMPONENT_NAME,
@@ -40,12 +42,16 @@ import {
   VLabelParamsCalcStepDays,
   VLabelParamsPeriodExt,
   VLabelParamsPeriod,
-  VLabelParamsInterval,
   VInputParamsInterval,
   VInputParamsPeriod,
   VInputParamsPeriodExt,
   VInputParamsCalcStepDays,
   VInputParamsCorrQ,
+  VPickerParamsScheduledTime,
+  VLabelParamsScheduledTime,
+  VLabelParamsIntervalDays,
+  VLabelParamsIntervalTime,
+  VPickerParamsIntervalTime,
 } from "./constants";
 import { EventEnum } from "../../component/constants";
 
@@ -56,6 +62,7 @@ import { EventEnum } from "../../component/constants";
     VLabel,
     VInput,
     VButton,
+    VPicker,
   },
 })
 export default class VTaskForm extends Vue {
@@ -100,11 +107,16 @@ export default class VTaskForm extends Vue {
   readonly VLabelParamsMode: VLabelParamsInterface = VLabelParamsMode;
   readonly VLabelParamsCalculationPeriod: VLabelParamsInterface =
     VLabelParamsCalculationPeriod;
-  readonly VLabelParamsInterval: VLabelParamsInterface = VLabelParamsInterval;
+  readonly VLabelParamsIntervalDays: VLabelParamsInterface =
+    VLabelParamsIntervalDays;
+  readonly VLabelParamsIntervalTime: VLabelParamsInterface =
+    VLabelParamsIntervalTime;
   readonly VLabelParamsPeriod: VLabelParamsInterface = VLabelParamsPeriod;
   readonly VLabelParamsPeriodExt: VLabelParamsInterface = VLabelParamsPeriodExt;
   readonly VLabelParamsCalcStepDays: VLabelParamsInterface =
     VLabelParamsCalcStepDays;
+  readonly VLabelParamsScheduledTime: VLabelParamsInterface =
+    VLabelParamsScheduledTime;
 
   readonly VInputParamsSkipErrors: VInputParamsInterface =
     VInputParamsSkipErrors;
@@ -118,6 +130,11 @@ export default class VTaskForm extends Vue {
   readonly VButtonParamsCreate: VButtonParamsInterface = VButtonParamsCreate;
   readonly VButtonParamsSave: VButtonParamsInterface = VButtonParamsSave;
   readonly VButtonParamsDelete: VButtonParamsInterface = VButtonParamsDelete;
+
+  readonly VPickerParamsScheduledTime: VPickerParamsInterface =
+    VPickerParamsScheduledTime;
+  readonly VPickerParamsIntervalTime: VPickerParamsInterface =
+    VPickerParamsIntervalTime;
 
   // STATIONS
   get getStations(): VSelectDataInterface[] {
@@ -141,6 +158,15 @@ export default class VTaskForm extends Vue {
     return this.form.Status === null ? "" : this.form.Status;
   }
 
+  // SCHEDULED TIME
+  get getScheduledTimeValue(): string {
+    if (this.form.ScheduledTime === "" || this.form.ScheduledTime === null) {
+      return "";
+    }
+    const date = this.form.ScheduledTime.split("T");
+    return `${date[0]} ${date[1]}`;
+  }
+
   // SKIP ERRORS
   get getSkipErrorsValue(): boolean {
     return JSON.parse(this.form.TaskData.config["@skipErrors"].toLowerCase());
@@ -151,6 +177,37 @@ export default class VTaskForm extends Vue {
     return this.form.TaskData.config.Schedule["@mode"] === null
       ? ""
       : this.form.TaskData.config.Schedule["@mode"];
+  }
+
+  // INTERVAL
+  get getIntervalDaysValue(): number {
+    const interval = this.form.TaskData.config.Schedule["@interval"];
+    return interval === null ? 0 : parseInt(interval.split(".")[0]);
+  }
+
+  get getIntervalTimeValue(): string {
+    const interval = this.form.TaskData.config.Schedule["@interval"];
+    return interval === null ? "" : interval.split(".")[1];
+  }
+
+  // PERIOD
+  get getPeriodValue(): number {
+    return 0;
+  }
+
+  // PERIOD EXT
+  get getPeriodExtValue(): number {
+    return 0;
+  }
+
+  // CALC STEP DAYS
+  get getCalcStepDaysValue(): number {
+    return 0;
+  }
+
+  // CORRQ
+  get getCorrQValue() {
+    return JSON.parse(this.form.TaskData.config["@corrQ"].toLowerCase());
   }
 
   // STATION
@@ -174,6 +231,12 @@ export default class VTaskForm extends Vue {
   @Emit(EventEnum.statusClear)
   onClearStatus(): void {}
 
+  // SCHEDULED TIME
+  @Emit(EventEnum.scheduledTimeUpdate)
+  onChangeScheduledTime(value: string): string {
+    return value.split(" ").join("T");
+  }
+
   // SKIP ERRORS
   @Emit(EventEnum.skipErrorsUpdate)
   onChangeSkipErrors(value: boolean): void {}
@@ -193,8 +256,11 @@ export default class VTaskForm extends Vue {
   onClearCalculationPeriod(): void {}
 
   // Interval
-  @Emit(EventEnum.intervalUpdate)
-  onChangeInterval(value: number): void {}
+  @Emit(EventEnum.intervalDaysUpdate)
+  onChangeIntervalDays(value: number): void {}
+
+  @Emit(EventEnum.intervalTimeUpdate)
+  onChangeIntervalTime(value: string): void {}
 
   // Period
   @Emit(EventEnum.periodUpdate)
