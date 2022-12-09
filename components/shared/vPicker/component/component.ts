@@ -24,10 +24,10 @@ export default class VPicker extends Vue {
   })
   readonly params: VPickerParamsInterface;
   @Prop({
-    type: String,
-    default: "",
+    type: [String, Array],
+    required: true,
   })
-  readonly value: string;
+  readonly value: string | Array<string>;
 
   get getComponent(): VPickerParamsComponentEnum {
     return this.params.component;

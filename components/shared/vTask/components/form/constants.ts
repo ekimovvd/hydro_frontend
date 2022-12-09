@@ -178,6 +178,14 @@ export const VLabelParamsScheduledTime: VLabelParamsInterface =
   VLabelParamsFactory({
     text: VLabelParamsTextEnum.scheduledTime,
   });
+export const VLabelParamsCalculationPeriodRelative: VLabelParamsInterface =
+  VLabelParamsFactory({
+    text: VLabelParamsTextEnum.calculationPeriodRelative,
+  });
+export const VLabelParamsCalculationPeriodFixed: VLabelParamsInterface =
+  VLabelParamsFactory({
+    text: VLabelParamsTextEnum.calculationPeriodFixed,
+  });
 
 export const VInputParamsSkipErrors: VInputParamsInterface =
   VInputParamsFactory({
@@ -225,4 +233,16 @@ export const VPickerParamsIntervalTime = VPickerParamsFactory({
   type: VPickerParamsTypeEnum.time,
   format: VPickerParamsFormatEnum.time,
   placeholder: VPickerParamsPlaceholderEnum.intervalTime,
+});
+export const VPickerParamsCalculationPeriodRelative = VPickerParamsFactory({
+  component: VPickerParamsComponentEnum.date,
+  type: VPickerParamsTypeEnum.dateTimeRange,
+  format: VPickerParamsFormatEnum.dateTimeRelative,
+  placeholder: VPickerParamsPlaceholderEnum.calculationPeriodRelative,
+});
+export const VPickerParamsCalculationPeriodFixed = VPickerParamsFactory({
+  component: VPickerParamsComponentEnum.date,
+  type: VPickerParamsTypeEnum.dateTimeRange,
+  format: VPickerParamsFormatEnum.dateTimeFixed,
+  placeholder: VPickerParamsPlaceholderEnum.calculationPeriodFixed,
 });

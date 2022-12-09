@@ -5,6 +5,7 @@ import VLabel from "~/components/shared/vLabel/component/component";
 import VInput from "~/components/shared/vInput/component/component";
 import VButton from "~/components/shared/vButton/component/component";
 import VPicker from "~/components/shared/vPicker/component/component";
+import VTaskMethods from "../methods/component";
 
 import { VLabelParamsInterface } from "~/shared/components/vLabel/factory";
 import {
@@ -52,6 +53,10 @@ import {
   VLabelParamsIntervalDays,
   VLabelParamsIntervalTime,
   VPickerParamsIntervalTime,
+  VLabelParamsCalculationPeriodRelative,
+  VLabelParamsCalculationPeriodFixed,
+  VPickerParamsCalculationPeriodRelative,
+  VPickerParamsCalculationPeriodFixed,
 } from "./constants";
 import { EventEnum } from "../../component/constants";
 
@@ -63,6 +68,7 @@ import { EventEnum } from "../../component/constants";
     VInput,
     VButton,
     VPicker,
+    VTaskMethods,
   },
 })
 export default class VTaskForm extends Vue {
@@ -86,6 +92,11 @@ export default class VTaskForm extends Vue {
     required: true,
   })
   readonly calculationPeriod: string;
+  @Prop({
+    type: Boolean,
+    required: true,
+  })
+  readonly isReservoir: boolean;
 
   readonly VSelectParamsStation: VSelectParamsInterface = VSelectParamsStation;
   readonly VSelectParamsTaskType: VSelectParamsInterface =
@@ -117,6 +128,10 @@ export default class VTaskForm extends Vue {
     VLabelParamsCalcStepDays;
   readonly VLabelParamsScheduledTime: VLabelParamsInterface =
     VLabelParamsScheduledTime;
+  readonly VLabelParamsCalculationPeriodRelative: VLabelParamsInterface =
+    VLabelParamsCalculationPeriodRelative;
+  readonly VLabelParamsCalculationPeriodFixed: VLabelParamsInterface =
+    VLabelParamsCalculationPeriodFixed;
 
   readonly VInputParamsSkipErrors: VInputParamsInterface =
     VInputParamsSkipErrors;
@@ -135,6 +150,20 @@ export default class VTaskForm extends Vue {
     VPickerParamsScheduledTime;
   readonly VPickerParamsIntervalTime: VPickerParamsInterface =
     VPickerParamsIntervalTime;
+  readonly VPickerParamsCalculationPeriodRelative: VPickerParamsInterface =
+    VPickerParamsCalculationPeriodRelative;
+  readonly VPickerParamsCalculationPeriodFixed: VPickerParamsInterface =
+    VPickerParamsCalculationPeriodFixed;
+
+  // RESERVOIR BLOCK
+  get getIsShowReservoirBlock(): boolean {
+    return this.isReservoir;
+  }
+
+  // METHODS BLOCK
+  get getIsShowMethodsBlock(): boolean {
+    return !this.isReservoir;
+  }
 
   // STATIONS
   get getStations(): VSelectDataInterface[] {
@@ -190,19 +219,61 @@ export default class VTaskForm extends Vue {
     return interval === null ? "" : interval.split(".")[1];
   }
 
+  // CALCULATION PERIOD
+  get getCalculationPeriodRelative(): boolean {
+    return this.calculationPeriod === "relative";
+  }
+
+  get getCalculationPeriodFixed(): boolean {
+    return this.calculationPeriod === "fixed";
+  }
+
+  get getCalculationPeriodRelativeValue() {
+    const calcPeriodOptions = this.form.TaskData.config.CalcPeriodOptions;
+    return calcPeriodOptions["@start"] === null ||
+      calcPeriodOptions["@end"] === null
+      ? ""
+      : [calcPeriodOptions["@start"], calcPeriodOptions["@end"]];
+  }
+
+  get getCalculationPeriodFixedValue() {
+    const calcPeriodOptions = this.form.TaskData.config.CalcPeriodOptions;
+    return calcPeriodOptions["@start"] === null ||
+      calcPeriodOptions["@end"] === null
+      ? ""
+      : [calcPeriodOptions["@start"], calcPeriodOptions["@end"]];
+  }
+
   // PERIOD
   get getPeriodValue(): number {
-    return 0;
+    return this.form.TaskData.config.ReservoirCalculatorOptions["@period"] ===
+      null
+      ? 0
+      : parseInt(
+          this.form.TaskData.config.ReservoirCalculatorOptions["@period"]
+        );
   }
 
   // PERIOD EXT
   get getPeriodExtValue(): number {
-    return 0;
+    return this.form.TaskData.config.ReservoirCalculatorOptions[
+      "@periodExt"
+    ] === null
+      ? 0
+      : parseInt(
+          this.form.TaskData.config.ReservoirCalculatorOptions["@periodExt"]
+        );
   }
 
   // CALC STEP DAYS
   get getCalcStepDaysValue(): number {
-    return 0;
+    return this.form.TaskData.config.ReservoirCalculatorOptions[
+      "@calcStepDays"
+    ] === null
+      ? 0
+      : parseInt(
+          this.form.TaskData.config.ReservoirCalculatorOptions["@calcStepDays"]
+        );
   }
 
   // CORRQ
@@ -254,6 +325,12 @@ export default class VTaskForm extends Vue {
 
   @Emit(EventEnum.calculationPeriodClear)
   onClearCalculationPeriod(): void {}
+
+  @Emit(EventEnum.calculationPeriodRelativeUpdate)
+  onChangeCalculationPeriodRelative(value: string | null): void {}
+
+  @Emit(EventEnum.calculationPeriodFixedUpdate)
+  onChangeCalculationPeriodFixed(value: string | null): void {}
 
   // Interval
   @Emit(EventEnum.intervalDaysUpdate)

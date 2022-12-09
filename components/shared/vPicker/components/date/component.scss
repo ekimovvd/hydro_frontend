@@ -3,3 +3,7 @@
 .v-picker-date {
   width: $width-full !important;
 }
+
+.el-range__close-icon {
+  display: none !important;
+}

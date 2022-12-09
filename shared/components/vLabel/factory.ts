@@ -24,6 +24,8 @@ export enum VLabelParamsTextEnum {
   status = "Состояние",
   mode = "Точка отсчёта",
   calculationPeriod = "Период расчёта",
+  calculationPeriodRelative = "Относительный период расчёта",
+  calculationPeriodFixed = "Фиксированный период расчёта",
   period = "Интервал, сутки",
   periodExt = "Интервал расширенный, сутки",
   calcStepDays = "Шаг, сутки",

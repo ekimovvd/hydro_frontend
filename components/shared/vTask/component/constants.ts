@@ -14,6 +14,8 @@ export enum EventEnum {
   modeClear = "mode:clear",
   calculationPeriodUpdate = "calculation:period:update",
   calculationPeriodClear = "calculation:period:clear",
+  calculationPeriodRelativeUpdate = "calculation:period:relative:update",
+  calculationPeriodFixedUpdate = "calculation:period:fixed:update",
   taskCreate = "task:create",
   taskSave = "task:save",
   taskDelete = "task:delete",

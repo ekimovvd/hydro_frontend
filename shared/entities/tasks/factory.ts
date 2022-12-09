@@ -27,7 +27,20 @@ export interface TaskServerTaskDataInterface {
       "@start": string | null;
       "@end": string | null;
     };
+    ReservoirCalculatorOptions?: {
+      "@period": string | null;
+      "@periodExt": string | null;
+      "@calcStepDays": string | null;
+    };
+    MethodByPhaseOptions?: {
+      PhaseInfo: TaskServerMethodByPhaseOptions[];
+    };
   };
+}
+
+export interface TaskServerMethodByPhaseOptions {
+  "@phase": string;
+  "@method": string;
 }
 
 export enum ModeEnum {
@@ -111,7 +124,8 @@ export const LastRunCommentValueClass = {
 };
 
 export const TaskServerFactory = (
-  params: Partial<TaskServerInterface> = {}
+  params: Partial<TaskServerInterface> = {},
+  reservoirCalculatorOptions = {}
 ): TaskServerInterface => {
   return {
     ID: null,
@@ -136,6 +150,39 @@ export const TaskServerFactory = (
         CalcPeriodOptions: {
           "@start": null,
           "@end": null,
+        },
+        ReservoirCalculatorOptions: {
+          "@period": null,
+          "@periodExt": null,
+          "@calcStepDays": null,
+        },
+        MethodByPhaseOptions: {
+          PhaseInfo: [
+            {
+              "@phase": "Winter",
+              "@method": "SimpleQ",
+            },
+            {
+              "@phase": "Spring",
+              "@method": "TransitionQBySum",
+            },
+            {
+              "@phase": "Summer",
+              "@method": "OpenQNoOvg",
+            },
+            {
+              "@phase": "Overgrowing",
+              "@method": "OpenQWithOvg",
+            },
+            {
+              "@phase": "Autumn",
+              "@method": "TransitionQByAlpha",
+            },
+            {
+              "@phase": "Unknown",
+              "@method": "QurveQ",
+            },
+          ],
         },
       },
     },

@@ -39,6 +39,7 @@ export default class VTask extends Vue {
   public status: StatusInterface = StatusFactory();
   public task: TaskServerInterface = TaskServerFactory();
   public calculationPeriod: string = "";
+  public isReservoir: boolean = false;
 
   onCapitalizeFirstLetter(value: string) {
     return value[0].toUpperCase() + value.slice(1);
@@ -65,10 +66,14 @@ export default class VTask extends Vue {
 
   // STATION
   onUpdateStation(value: number): void {
+    const findStation = this.stations.find((station) => station.ID === value);
+
+    this.isReservoir = findStation.IsReservoir;
     this.task.StationID = value;
   }
   onClearStation(): void {
     this.task.StationID = null;
+    this.isReservoir = false;
   }
 
   // TASK TYPE
@@ -110,9 +115,27 @@ export default class VTask extends Vue {
   // CALCULATION PERIOD
   onUpdateCalculationPeriod(value: string): void {
     this.calculationPeriod = value;
+    this.task.TaskData.config.CalcPeriodOptions["@start"] = null;
+    this.task.TaskData.config.CalcPeriodOptions["@end"] = null;
   }
   onClearCalculationPeriod(): void {
     this.calculationPeriod = "";
+    this.task.TaskData.config.CalcPeriodOptions["@start"] = null;
+    this.task.TaskData.config.CalcPeriodOptions["@end"] = null;
+  }
+
+  onUpdateCalculationPeriodRelative(value: string | null): void {
+    this.task.TaskData.config.CalcPeriodOptions["@start"] =
+      value === null ? null : value[0];
+    this.task.TaskData.config.CalcPeriodOptions["@end"] =
+      value === null ? null : value[1];
+  }
+
+  onUpdateCalculationPeriodFixed(value: string | null): void {
+    this.task.TaskData.config.CalcPeriodOptions["@start"] =
+      value === null ? null : value[0];
+    this.task.TaskData.config.CalcPeriodOptions["@end"] =
+      value === null ? null : value[1];
   }
 
   // INTERVAL
@@ -138,20 +161,20 @@ export default class VTask extends Vue {
 
   // PERIOD
   onUpdatePeriod(value: number): void {
-    // this.task.TaskData.config.ReservoirCalculatorOptions["@period"] =
-    //   value !== undefined ? value : null;
+    this.task.TaskData.config.ReservoirCalculatorOptions["@period"] =
+      value !== undefined ? value.toString() : null;
   }
 
   // PERIODEXT
   onUpdatePeriodExt(value: number): void {
-    // this.task.TaskData.config.ReservoirCalculatorOptions["@periodExt"] =
-    //   value !== undefined ? value : null;
+    this.task.TaskData.config.ReservoirCalculatorOptions["@periodExt"] =
+      value !== undefined ? value.toString() : null;
   }
 
   // CALCSTEPDAYS
   onUpdateCalcStepDays(value: number): void {
-    // this.task.TaskData.config.ReservoirCalculatorOptions["@calcStepDays"] =
-    //   value !== undefined ? value : null;
+    this.task.TaskData.config.ReservoirCalculatorOptions["@calcStepDays"] =
+      value !== undefined ? value.toString() : null;
   }
 
   // CORRQ

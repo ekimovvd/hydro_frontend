@@ -84,9 +84,31 @@
           @clear="onClearCalculationPeriod"
         />
       </div>
+      <div :class="b('group')" v-if="getCalculationPeriodRelative">
+        <VLabel
+          :class="b('label')"
+          :params="VLabelParamsCalculationPeriodRelative"
+        />
+        <VPicker
+          :params="VPickerParamsCalculationPeriodRelative"
+          :value="getCalculationPeriodRelativeValue"
+          @change="onChangeCalculationPeriodRelative"
+        />
+      </div>
+      <div :class="b('group')" v-if="getCalculationPeriodFixed">
+        <VLabel
+          :class="b('label')"
+          :params="VLabelParamsCalculationPeriodFixed"
+        />
+        <VPicker
+          :params="VPickerParamsCalculationPeriodFixed"
+          :value="getCalculationPeriodFixedValue"
+          @change="onChangeCalculationPeriodFixed"
+        />
+      </div>
     </div>
     <div :class="b('block')">
-      <div :class="b('reservoir')">
+      <div :class="b('reservoir')" v-if="getIsShowReservoirBlock">
         <div :class="b('group')">
           <VLabel :class="b('label')" :params="VLabelParamsPeriod" />
           <VInput
@@ -119,6 +141,7 @@
           />
         </div>
       </div>
+      <VTaskMethods v-if="getIsShowMethodsBlock" :form="form" />
       <div :class="b('buttons')">
         <VButton
           :params="VButtonParamsCreate"

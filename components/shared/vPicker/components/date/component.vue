@@ -6,6 +6,9 @@
     :editable="false"
     :format="params.format"
     :value-format="params.format"
+    :range-separator="params.rangeSeparator"
+    :start-placeholder="params.startPlaceholder"
+    :end-placeholder="params.endPlaceholder"
     v-model="currentValue"
   >
   </el-date-picker>

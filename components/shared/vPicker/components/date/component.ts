@@ -15,16 +15,16 @@ export default class VPickerDate extends Vue {
   })
   readonly params: VPickerParamsInterface;
   @Prop({
-    type: String,
-    default: "",
+    type: [String, Array],
+    required: true,
   })
-  readonly value: string;
+  readonly value: string | Array<string>;
 
-  get currentValue() {
+  get currentValue(): string | Array<string> {
     return this.value;
   }
 
-  set currentValue(value: string) {
+  set currentValue(value: string | Array<string>) {
     this.$emit(EventEnum.change, value);
   }
 }

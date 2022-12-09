@@ -13,7 +13,21 @@
   }
 }
 
-.el-picker-panel__footer,
-.el-time-panel__footer {
-  display: none;
+.el-picker-panel__footer {
+  padding: 10px;
+
+  .el-button {
+    border: none;
+    outline: none;
+    margin: 0;
+    cursor: pointer;
+    font-family: "Rubik-Medium", sans-serif;
+    font-size: 14px;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 8px 20px;
+    background: $color-blue;
+    margin-left: 10px;
+  }
 }
