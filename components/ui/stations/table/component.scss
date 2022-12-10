@@ -5,7 +5,7 @@
 
   &__offer {
     @include display-flex-column;
-    align-items: $align-items-end;
+    align-items: end;
     grid-row-gap: 10px;
   }
 }

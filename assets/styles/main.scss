@@ -1,13 +1,13 @@
 * {
-  box-sizing: $box-sizing;
-  text-decoration: $text-decoration-none;
+  box-sizing: border-box;
+  text-decoration: none;
 }
 
 body {
   font-family: $font-family-regular;
-  margin: $margin-none;
-  padding: $padding-none;
-  height: $height-full-vh;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
   background: $color-white;
   font-size: 14px;
 }
@@ -18,8 +18,8 @@ h3,
 h4,
 h5,
 h6 {
-  padding: $padding-none;
-  margin: $margin-none;
+  padding: 0;
+  margin: 0;
   font-family: $font-family-medium;
   color: $color-black;
 }
@@ -45,40 +45,40 @@ h5 {
 }
 
 p {
-  margin: $margin-none;
-  padding: $padding-none;
+  margin: 0;
+  padding: 0;
   color: $color-gray;
 }
 
 section {
-  width: $width-full;
-  height: $height-full;
+  width: 100%;
+  height: 100%;
 }
 
 div,
 p,
 input,
 form {
-  box-sizing: $box-sizing;
+  box-sizing: border-box;
 }
 
 ul,
 li {
-  display: $display-block;
-  padding: $padding-none;
-  margin: $margin-none;
+  display: block;
+  padding: 0;
+  margin: 0;
 }
 
 #__nuxt,
 #__layout {
-  width: $width-full;
-  height: $height-full;
+  width: 100%;
+  height: 100%;
 }
 
 .el-notification {
   background: $color-white-dark;
-  box-shadow: $box-shadow-none;
-  border: $border-none;
+  box-shadow: none;
+  border: none;
   padding: 10px;
 
   &--view-success {
@@ -98,25 +98,25 @@ li {
   }
 
   .el-notification__title {
-    display: $display-none;
+    display: none;
   }
 
   .el-notification__content,
   p {
     font-family: $font-family-regular;
     color: $color-gray;
-    margin: $margin-none;
+    margin: 0;
     font-size: 14px;
   }
 
   .el-notification__group {
-    display: $display-flex;
-    align-items: $align-items-center;
-    margin-right: $margin-none;
-    position: $position-relative;
+    display: flex;
+    align-items: center;
+    margin-right: 0;
+    position: relative;
 
     ::before {
-      position: $position-absolute;
+      position: absolute;
       left: -35px;
       top: 0;
     }

@@ -1,11 +1,11 @@
 .v-popconfirm {
-  width: $width-full;
+  width: 100%;
 
   .el-button {
     @include button-reset;
     @include button;
     background: $color-blue;
-    width: $width-full;
+    width: 100%;
   }
 }
 
@@ -13,7 +13,7 @@
   margin-top: 10px;
   padding: 15px;
   background: $color-white-dark;
-  border-radius: $border-radius;
+  border-radius: 5px;
 
   .el-popconfirm__main {
     color: $color-gray;
@@ -29,7 +29,7 @@
   .el-button {
     @include button-reset;
     @include button;
-    width: $width-full;
+    width: 100%;
 
     &:first-child {
       background: $color-blue;

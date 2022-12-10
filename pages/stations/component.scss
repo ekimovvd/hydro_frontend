@@ -1,12 +1,12 @@
 .stations {
-  padding: 70px $padding-none;
+  padding: 70px 0;
 
   &__container {
     @include container;
   }
 
   &__group {
-    display: $display-grid;
+    display: grid;
     grid-template-columns: 1fr 600px;
     grid-column-gap: 50px;
     margin-bottom: 50px;

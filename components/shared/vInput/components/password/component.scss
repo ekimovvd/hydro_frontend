@@ -1,7 +1,7 @@
 $font-size-13: 13px;
 
 .v-input-password {
-  position: $position-relative;
+  position: relative;
 
   .el-input__inner {
     @include input;
@@ -21,7 +21,7 @@ $font-size-13: 13px;
   }
 
   &__icon {
-    display: $display-block;
+    display: block;
     color: $color-gray;
     font-size: 15px;
   }

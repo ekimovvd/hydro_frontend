@@ -1,7 +1,7 @@
 @import "element-ui/lib/theme-chalk/table.css";
 
 .v-table {
-  width: $width-full;
+  width: 100%;
 
   .cell {
     font-family: $font-family-regular;
@@ -24,7 +24,7 @@
         margin: 0 5px;
         color: $color-danger;
         border: 2px solid $color-danger-light;
-        border-radius: $border-radius;
+        border-radius: 5px;
       }
     }
 
@@ -33,7 +33,7 @@
         margin: 0 5px;
         color: $color-warning;
         border: 2px solid $color-warning-light;
-        border-radius: $border-radius;
+        border-radius: 5px;
       }
     }
 
@@ -42,7 +42,7 @@
         margin: 0 5px;
         color: $color-success;
         border: 2px solid $color-success-light;
-        border-radius: $border-radius;
+        border-radius: 5px;
       }
     }
 
@@ -51,7 +51,7 @@
         margin: 0 5px;
         color: $color-primary;
         border: 2px solid $color-primary-light;
-        border-radius: $border-radius;
+        border-radius: 5px;
       }
     }
   }

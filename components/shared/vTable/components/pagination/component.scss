@@ -1,15 +1,15 @@
 .v-table-pagination {
   &.el-pagination {
-    padding: $padding-none;
+    padding: 0;
     margin-top: 15px;
 
     .number,
     .btn-quickprev,
     .btn-quicknext {
       @include display-flex-center;
-      border-radius: $border-radius;
+      border-radius: 5px;
       background: $color-white-dark;
-      cursor: $cursor-pointer;
+      cursor: pointer;
       color: $color-gray;
       width: 30px;
       height: 30px;
@@ -24,12 +24,12 @@
 
     .btn-quicknext,
     .btn-quickprev {
-      position: $position-relative;
+      position: relative;
     }
 
     .btn-quickprev::before {
       content: url("assets/svg/bx-chevrons-left.svg");
-      position: $position-absolute;
+      position: absolute;
       top: 16px;
       left: 50%;
       transform: translateX(-50%) translateY(-50%);
@@ -37,7 +37,7 @@
 
     .btn-quicknext::before {
       content: url("assets/svg/bx-chevrons-right.svg");
-      position: $position-absolute;
+      position: absolute;
       top: 16px;
       left: 50%;
       transform: translateX(-50%) translateY(-50%);
@@ -45,7 +45,7 @@
 
     .el-pager {
       @include display-flex-center;
-      width: $width-full;
+      width: 100%;
       grid-column-gap: 10px;
     }
   }

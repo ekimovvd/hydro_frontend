@@ -1,6 +1,6 @@
 .bulletins-wrapper {
   &__group {
-    display: $display-grid;
+    display: grid;
     grid-template-columns: 600px 1fr;
     grid-column-gap: 40px;
     margin-top: 40px;

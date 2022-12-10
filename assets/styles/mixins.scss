@@ -1,128 +1,128 @@
 // container
 @mixin container {
-  width: $widht-90;
-  height: $height-full;
-  margin: $margin-none $margin-auto;
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
 }
 
 // input
 @mixin input {
-  width: $width-full;
+  width: 100%;
   background: $color-gray-light;
-  outline: $outline-none;
-  border-radius: $border-radius;
+  outline: none;
+  border-radius: 5px;
   color: $color-gray;
   font-family: $font-family-regular;
 
   &::placeholder {
     color: $color-gray;
-    opacity: $opacity;
+    opacity: 1;
     font-family: $font-family-regular;
   }
 }
 
 // textarea
 @mixin textarea {
-  width: $width-full;
+  width: 100%;
   background: $color-gray-light;
-  resize: $resize-none;
-  outline: $outline-none;
+  resize: none;
+  outline: none;
   color: $color-gray;
   font-family: $font-family-regular;
-  border-radius: $border-radius;
+  border-radius: 5px;
 
   &::placeholder {
     color: $color-gray;
-    opacity: $opacity;
+    opacity: 1;
     font-family: $font-family-regular;
   }
 }
 
 // button
 @mixin button-reset {
-  background: $background-none;
-  border: $border-none;
-  outline: $outline-none;
-  margin: $margin-none;
-  cursor: $cursor-pointer;
+  background: none;
+  border: none;
+  outline: none;
+  margin: 0;
+  cursor: pointer;
 }
 
 @mixin button {
   font-family: $font-family-medium;
-  font-size: $button-size;
-  text-align: $text-align-center;
+  font-size: 14px;
+  text-align: center;
   color: $color-white;
-  border-radius: $border-radius;
-  padding: $button-padding;
+  border-radius: 5px;
+  padding: 8px 20px;
 
   &:disabled {
-    opacity: $opacity-8;
-    cursor: $cursor-default;
+    opacity: 0.8;
+    cursor: default;
   }
 }
 
 // position
 @mixin position-y {
-  position: $position-absolute;
-  transform: translateY($translate-y);
+  position: absolute;
+  transform: translateY(-50%);
 }
 
 @mixin position-y-right {
   @include position-y();
-  top: $top-50-percent;
-  right: $right-0;
+  top: 50%;
+  right: 0;
 }
 
 @mixin position-y-left {
   @include position-y();
-  top: $top-50;
-  right: $right-0;
+  top: 50%;
+  right: 0;
 }
 
 // display - flex
 @mixin display-flex-center {
-  display: $display-flex;
-  align-items: $align-items-center;
-  justify-content: $justify-content-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @mixin display-flex-between {
-  display: $display-flex;
-  align-items: $align-items-center;
-  justify-content: $justify-content-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 @mixin display-flex-end {
-  display: $display-flex;
-  align-items: $align-items-center;
-  justify-content: $justify-content-end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 @mixin display-flex-column {
-  display: $display-flex;
-  flex-direction: $flex-direction-column;
+  display: flex;
+  flex-direction: column;
 }
 
 // label
 @mixin label {
-  display: $display-inline-block;
+  display: inline-block;
   color: $color-gray;
-  font-size: $label-size;
+  font-size: 13px;
 }
 
 // select
 @mixin select-el-input {
   @include display-flex-between();
-  border-radius: $border-radius;
+  border-radius: 5px;
 }
 
 @mixin select-el-input-inner {
-  border: $border-none;
-  cursor: $cursor-pointer;
-  outline: $outline-none;
-  width: $width-full;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  width: 100%;
   font-family: $font-family-regular;
-  padding: $padding-none;
+  padding: 0;
 
   &::placeholder {
     font-family: $font-family-regular;
@@ -130,20 +130,20 @@
 }
 
 @mixin select-list {
-  border-radius: $border-radius;
+  border-radius: 5px;
 }
 
 @mixin select-prefix {
-  cursor: $cursor-pointer;
+  cursor: pointer;
 }
 
 @mixin select-item {
-  cursor: $cursor-pointer;
+  cursor: pointer;
   color: $color-gray;
 }
 
 @mixin select-empty {
-  cursor: $cursor-default;
+  cursor: default;
   color: $color-gray;
-  text-align: $text-align-center;
+  text-align: center;
 }

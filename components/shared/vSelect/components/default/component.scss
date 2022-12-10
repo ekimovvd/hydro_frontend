@@ -2,11 +2,11 @@ $padding: 8px 12px;
 $font-size: 13px;
 
 .v-select-default {
-  cursor: $cursor-pointer;
+  cursor: pointer;
 
   &__clear {
     @include button-reset;
-    padding: $padding-none;
+    padding: 0;
   }
 
   &__prefix {
@@ -15,7 +15,7 @@ $font-size: 13px;
   }
 
   .v-select-default__list {
-    overflow-y: $overflow-y-auto;
+    overflow-y: auto;
     max-height: 157px;
   }
 
@@ -27,18 +27,18 @@ $font-size: 13px;
 
   .el-input__inner {
     @include select-el-input-inner;
-    padding: $padding-none !important;
+    padding: 0 !important;
     height: 35px;
   }
 
   .v-select-default__icon {
-    display: $display-block;
+    display: block;
     font-size: 18px;
   }
 
   .el-input__prefix {
     @include select-prefix;
-    position: $position-relative;
+    position: relative;
     height: 18px;
   }
 
@@ -106,7 +106,7 @@ $font-size: 13px;
 
       &::placeholder {
         color: $color-white;
-        opacity: $opacity;
+        opacity: 1;
       }
     }
 
