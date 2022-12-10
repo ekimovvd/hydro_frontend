@@ -13,6 +13,18 @@ export class Url {
     return TasksApiEnum.getAllServerTasks;
   }
 
+  saveServerTask(): string {
+    return TasksApiEnum.saveServerTask;
+  }
+
+  createServerTask(): string {
+    return TasksApiEnum.createServerTask;
+  }
+
+  deleteServerTask(): string {
+    return TasksApiEnum.deleteServerTask;
+  }
+
   // STATIONS
   getAllHydroStations(): string {
     return StationsApiEnum.getAllHydroStations;

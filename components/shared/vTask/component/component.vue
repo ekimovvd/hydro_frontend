@@ -37,6 +37,7 @@
         @task:create="onTaskCreate"
         @task:save="onTaskSave"
         @task:delete="onTaskDelete"
+        @phase:update="onUpdatePhase"
       />
     </div>
   </div>

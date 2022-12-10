@@ -10,4 +10,91 @@
     background: #ffffff;
     padding: 0 10px;
   }
+
+  .v-task-methods__columns {
+    display: flex;
+    align-items: center;
+    grid-column-gap: 10px;
+  }
+
+  .v-task-methods__columns-column {
+    width: 115px;
+    height: 21px;
+  }
+
+  .v-task-methods__columns-cells {
+    display: flex;
+    align-items: center;
+    grid-column-gap: 6px;
+  }
+
+  .v-task-methods__columns-cell {
+    width: 22px;
+    height: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 12px;
+    line-height: 16px;
+    color: $color-gray;
+  }
+
+  .v-task-methods__rows-group {
+    display: flex;
+    align-items: center;
+    grid-column-gap: 10px;
+  }
+
+  .v-task-methods__rows {
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: 7px;
+  }
+
+  .v-task-methods__rows-row {
+    gap: 10px;
+    width: 115px;
+    height: 21px;
+    background: #e7e7ed;
+    padding-left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 12px;
+    line-height: 16px;
+    color: $color-gray;
+  }
+
+  .v-task-methods__rows-cells {
+    display: grid;
+    grid-template-columns: repeat(6, 22px);
+    grid-column-gap: 6px;
+    grid-row-gap: 7px;
+  }
+
+  .v-task-methods__rows-cell {
+    width: 22px;
+    height: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e4e4e4;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+
+    &:disabled {
+      cursor: default;
+    }
+  }
+
+  .v-task-methods__rows-cell--active {
+    background: #8a8af8;
+  }
+
+  .v-task-methods__rows-cell--enabled {
+    background: #efc17c;
+  }
 }

@@ -13,6 +13,12 @@ export interface ProjectRepositoryInterface {
   // TASKS
   getAllServerTasks(): Promise<TaskServerInterface[]>;
 
+  saveServerTask(task: TaskServerInterface): Promise<string>;
+
+  createServerTask(task: TaskServerInterface): Promise<string>;
+
+  deleteServerTask(ID: string | number): Promise<string>;
+
   // STATIONS
   getAllHydroStations(): Promise<HydroStationInterface[]>;
 

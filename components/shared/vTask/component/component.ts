@@ -15,7 +15,17 @@ import {
 import VTaskTable from "../components/table/component";
 import VTaskForm from "../components/form/component";
 
-import { COMPONENT_NAME } from "./constants";
+import {
+  COMPONENT_NAME,
+  EventEnum,
+  NotificationCreateServerTaskError,
+  NotificationCreateServerTaskSuccess,
+  NotificationDeleteServerTaskError,
+  NotificationDeleteServerTaskSuccess,
+  NotificationSaveServerTaskError,
+  NotificationSaveServerTaskSuccess,
+} from "./constants";
+import { CellInterface } from "../components/methods/constants";
 
 @Component({
   name: COMPONENT_NAME,
@@ -35,6 +45,8 @@ export default class VTask extends Vue {
     default: () => [],
   })
   readonly stations: WorkStationInterface[];
+
+  readonly projectReposity = this.$projectServices.projectRepository;
 
   public status: StatusInterface = StatusFactory();
   public task: TaskServerInterface = TaskServerFactory();
@@ -57,11 +69,37 @@ export default class VTask extends Vue {
 
   // TASK
   onChangeTask(value: TaskServerInterface): void {
+    const findStation = this.stations.find(
+      (station) => station.ID === value.StationID
+    );
+    this.isReservoir = findStation.IsReservoir;
     this.task = TaskServerFactory(value);
   }
 
   onClearTask(): void {
     this.task = TaskServerFactory();
+  }
+
+  onModificationTask(): TaskServerInterface {
+    return {
+      LastRunComment: this.task.LastRunComment,
+      LastRunTime: this.task.LastRunTime,
+      ScheduledTime: this.task.ScheduledTime,
+      StationID: this.task.StationID,
+      Status: this.task.Status,
+      TaskTypeID: this.task.TaskTypeID,
+      TaskData: {
+        config: {
+          "@measuredQHSource": this.task.TaskData.config["@measuredQHSource"],
+          "@avgQType": this.task.TaskData.config["@avgQType"],
+          "@corrQ": this.task.TaskData.config["@corrQ"],
+          "@skipErrors": this.task.TaskData.config["@skipErrors"],
+          "@regimeSparseDays": this.task.TaskData.config["@regimeSparseDays"],
+          Schedule: this.task.TaskData.config.Schedule,
+          CalcPeriodOptions: this.task.TaskData.config.CalcPeriodOptions,
+        },
+      },
+    };
   }
 
   // STATION
@@ -109,33 +147,33 @@ export default class VTask extends Vue {
     this.task.TaskData.config.Schedule["@mode"] = value;
   }
   onClearMode(): void {
-    this.task.TaskData.config.Schedule["@mode"] = null;
+    this.task.TaskData.config.Schedule["@mode"] = "";
   }
 
   // CALCULATION PERIOD
   onUpdateCalculationPeriod(value: string): void {
     this.calculationPeriod = value;
-    this.task.TaskData.config.CalcPeriodOptions["@start"] = null;
-    this.task.TaskData.config.CalcPeriodOptions["@end"] = null;
+    this.task.TaskData.config.CalcPeriodOptions["@start"] = "";
+    this.task.TaskData.config.CalcPeriodOptions["@end"] = "";
   }
   onClearCalculationPeriod(): void {
     this.calculationPeriod = "";
-    this.task.TaskData.config.CalcPeriodOptions["@start"] = null;
-    this.task.TaskData.config.CalcPeriodOptions["@end"] = null;
+    this.task.TaskData.config.CalcPeriodOptions["@start"] = "";
+    this.task.TaskData.config.CalcPeriodOptions["@end"] = "";
   }
 
-  onUpdateCalculationPeriodRelative(value: string | null): void {
+  onUpdateCalculationPeriodRelative(value: string): void {
     this.task.TaskData.config.CalcPeriodOptions["@start"] =
-      value === null ? null : value[0];
+      value === "" ? "" : value[0];
     this.task.TaskData.config.CalcPeriodOptions["@end"] =
-      value === null ? null : value[1];
+      value === "" ? "" : value[1];
   }
 
-  onUpdateCalculationPeriodFixed(value: string | null): void {
+  onUpdateCalculationPeriodFixed(value: string): void {
     this.task.TaskData.config.CalcPeriodOptions["@start"] =
-      value === null ? null : value[0];
+      value === "" ? "" : value[0];
     this.task.TaskData.config.CalcPeriodOptions["@end"] =
-      value === null ? null : value[1];
+      value === "" ? "" : value[1];
   }
 
   // INTERVAL
@@ -143,7 +181,7 @@ export default class VTask extends Vue {
     const interval = this.task.TaskData.config.Schedule["@interval"];
     if (value !== undefined) {
       this.task.TaskData.config.Schedule["@interval"] =
-        interval !== null
+        interval !== ""
           ? `${value}.${interval.split(".")[1]}`
           : `${value}.00:00:00`;
     } else {
@@ -156,25 +194,25 @@ export default class VTask extends Vue {
   onUpdateIntervalTime(value: string): void {
     const interval = this.task.TaskData.config.Schedule["@interval"];
     this.task.TaskData.config.Schedule["@interval"] =
-      interval !== null ? `${interval.split(".")[0]}.${value}` : `0.00:00:00`;
+      interval !== "" ? `${interval.split(".")[0]}.${value}` : `0.00:00:00`;
   }
 
   // PERIOD
   onUpdatePeriod(value: number): void {
     this.task.TaskData.config.ReservoirCalculatorOptions["@period"] =
-      value !== undefined ? value.toString() : null;
+      value !== undefined ? value.toString() : "";
   }
 
   // PERIODEXT
   onUpdatePeriodExt(value: number): void {
     this.task.TaskData.config.ReservoirCalculatorOptions["@periodExt"] =
-      value !== undefined ? value.toString() : null;
+      value !== undefined ? value.toString() : "";
   }
 
   // CALCSTEPDAYS
   onUpdateCalcStepDays(value: number): void {
     this.task.TaskData.config.ReservoirCalculatorOptions["@calcStepDays"] =
-      value !== undefined ? value.toString() : null;
+      value !== undefined ? value.toString() : "";
   }
 
   // CORRQ
@@ -184,16 +222,102 @@ export default class VTask extends Vue {
     );
   }
 
+  // METHODS
+  onUpdatePhase(value: CellInterface): void {
+    const phaseInfo = this.task.TaskData.config.MethodByPhaseOptions.PhaseInfo;
+    const findPhase = phaseInfo.find(
+      (phase) =>
+        phase["@method"] === value["@method"] &&
+        phase["@phase"] === value["@phase"]
+    );
+
+    if (findPhase) {
+      phaseInfo.splice(phaseInfo.indexOf(findPhase), 1);
+    } else {
+      phaseInfo.forEach((phase, phaseIndex) => {
+        if (phase["@phase"] === value["@phase"]) {
+          phaseInfo.splice(phaseIndex, 1);
+        }
+      });
+
+      phaseInfo.push({
+        "@method": value["@method"],
+        "@phase": value["@phase"],
+      });
+    }
+  }
+
   // BUTTONS
-  onTaskCreate(): void {
-    console.log("Task create");
+  async onTaskCreate(): Promise<void> {
+    try {
+      this.onChangeStatusLoading(StatusIdEnum.tasksFormButtonCreate);
+      const task = this.onModificationTask();
+
+      if (this.isReservoir) {
+        task.TaskData.config["ReservoirCalculatorOptions"] =
+          this.task.TaskData.config.ReservoirCalculatorOptions;
+      } else {
+        task.TaskData.config["MethodByPhaseOptions"] =
+          this.task.TaskData.config.MethodByPhaseOptions;
+      }
+
+      await this.projectReposity.createServerTask(task).then(async () => {
+        await this.projectReposity.getAllServerTasks().then((serverTasks) => {
+          this.$emit(EventEnum.serverTasksUpdate, serverTasks);
+          this.$notify(NotificationCreateServerTaskSuccess);
+          this.onChangeStatusDefault();
+        });
+      });
+    } catch (e) {
+      this.$notify(NotificationCreateServerTaskError);
+      this.onChangeStatusDefault();
+    }
   }
 
-  onTaskSave(): void {
-    console.log("Task save");
+  async onTaskSave(): Promise<void> {
+    try {
+      const task = this.onModificationTask();
+
+      if (this.isReservoir) {
+        task.TaskData.config["ReservoirCalculatorOptions"] =
+          this.task.TaskData.config.ReservoirCalculatorOptions;
+      } else {
+        task.TaskData.config["MethodByPhaseOptions"] =
+          this.task.TaskData.config.MethodByPhaseOptions;
+      }
+
+      this.onChangeStatusLoading(StatusIdEnum.tasksFormButtonSave);
+      await this.projectReposity.saveServerTask(this.task).then(async () => {
+        await this.projectReposity.getAllServerTasks().then((serverTasks) => {
+          this.$emit(EventEnum.serverTasksUpdate, serverTasks);
+          this.$notify(NotificationSaveServerTaskSuccess);
+          this.onChangeStatusDefault();
+        });
+      });
+    } catch (e) {
+      this.$notify(NotificationSaveServerTaskError);
+      this.onChangeStatusDefault();
+    }
   }
 
-  onTaskDelete(): void {
-    console.log("Task delete");
+  async onTaskDelete(): Promise<void> {
+    try {
+      this.onChangeStatusLoading(StatusIdEnum.tasksFormButtonDelete);
+      await this.projectReposity
+        .deleteServerTask(this.task.ID)
+        .then(async () => {
+          await this.projectReposity.getAllServerTasks().then((serverTasks) => {
+            this.$emit(EventEnum.serverTasksUpdate, serverTasks);
+            this.$notify(NotificationDeleteServerTaskSuccess);
+            this.onChangeStatusDefault();
+            this.isReservoir = false;
+            this.task = TaskServerFactory();
+            this.calculationPeriod = "";
+          });
+        });
+    } catch (e) {
+      this.$notify(NotificationDeleteServerTaskError);
+      this.onChangeStatusDefault();
+    }
   }
 }

@@ -34,6 +34,32 @@ export class Http implements ProjectRepositoryInterface {
     return data;
   }
 
+  async saveServerTask(task: TaskServerInterface): Promise<string> {
+    const { data } = await this.axios.put<Promise<string>>(
+      this.url.saveServerTask(),
+      task
+    );
+
+    return data;
+  }
+
+  async createServerTask(task: TaskServerInterface): Promise<string> {
+    const { data } = await this.axios.post<Promise<string>>(
+      this.url.createServerTask(),
+      task
+    );
+
+    return data;
+  }
+
+  async deleteServerTask(ID: string | number): Promise<string> {
+    const { data } = await this.axios.put<Promise<string>>(
+      `${this.url.deleteServerTask()}${ID}`
+    );
+
+    return data;
+  }
+
   // STATIONS
   async getAllHydroStations(): Promise<HydroStationInterface[]> {
     const { data } = await this.axios.get<Promise<HydroStationInterface[]>>(

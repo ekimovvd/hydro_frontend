@@ -67,7 +67,6 @@ export default class HomeStations extends Vue {
           await Promise.all([this.projectRepository.getAllWorkStations()]).then(
             ([workStations]) => {
               this.$emit(EventEnum.workStationsUpdate, workStations);
-              this.$emit(EventEnum.workStationsListUpdate);
               this.onChangeStatusDefault();
               this.onClearStation();
               this.$notify(NotificationDeleteStationSuccess);

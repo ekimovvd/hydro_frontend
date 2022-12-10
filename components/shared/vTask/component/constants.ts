@@ -1,3 +1,10 @@
+import {
+  NotificationCustomClassEnum,
+  NotificationFactory,
+  NotificationInterface,
+  NotificationTypeEnum,
+} from "~/shared/entities/notification/factory";
+
 export const COMPONENT_NAME = "v-task";
 
 export enum EventEnum {
@@ -26,4 +33,39 @@ export enum EventEnum {
   calcStepDaysUpdate = "calc:step:days:update",
   corrQUpdate = "corr:q:update",
   scheduledTimeUpdate = "scheduled:time:update",
+  phaseUpdate = "phase:update",
+  serverTasksUpdate = "server:tasks:update",
 }
+
+export const NotificationSaveServerTaskSuccess: NotificationInterface =
+  NotificationFactory({
+    message: "Задача успешно сохранена!",
+  });
+export const NotificationSaveServerTaskError: NotificationInterface =
+  NotificationFactory({
+    message: "Задача не сохранена!",
+    type: NotificationTypeEnum.error,
+    customClass: NotificationCustomClassEnum.error,
+  });
+
+export const NotificationCreateServerTaskSuccess: NotificationInterface =
+  NotificationFactory({
+    message: "Задача успешно создана!",
+  });
+export const NotificationCreateServerTaskError: NotificationInterface =
+  NotificationFactory({
+    message: "Задача не создана!",
+    type: NotificationTypeEnum.error,
+    customClass: NotificationCustomClassEnum.error,
+  });
+
+export const NotificationDeleteServerTaskSuccess: NotificationInterface =
+  NotificationFactory({
+    message: "Задача успешно удалена!",
+  });
+export const NotificationDeleteServerTaskError: NotificationInterface =
+  NotificationFactory({
+    message: "Задача не удалена!",
+    type: NotificationTypeEnum.error,
+    customClass: NotificationCustomClassEnum.error,
+  });
