@@ -1,0 +1,22 @@
+.operational {
+  @include container;
+
+  padding: 69px 0;
+
+  &__container {
+    @include display-flex-column;
+
+    height: 100vh;
+    row-gap: 20px;
+  }
+
+  &__filters {
+    margin-bottom: 10px;
+  }
+
+  &__group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 40px;
+  }
+}

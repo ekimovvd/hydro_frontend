@@ -1,4 +1,6 @@
 import { ConnectApiEnum } from "../api/connect/factory";
+import { MethodsApiEnum } from "../api/methods/factory";
+import { OperationalApiEnum } from "../api/operational/factory";
 import { StationsApiEnum } from "../api/stations/factory";
 import { TasksApiEnum } from "../api/tasks/factory";
 
@@ -11,6 +13,10 @@ export class Url {
   // TASKS
   getAllServerTasks(): string {
     return TasksApiEnum.getAllServerTasks;
+  }
+
+  getServerTasksSummary(ID: string | number): string {
+    return `${TasksApiEnum.getServerTasksSummary}${ID}`;
   }
 
   // STATIONS
@@ -36,5 +42,31 @@ export class Url {
 
   updateWorkStation(): string {
     return StationsApiEnum.updateWorkStation;
+  }
+
+  // METHODS
+  getTransitionPeriods(ID: string | number): string {
+    return `${MethodsApiEnum.getTransitionPeriods}${ID}`
+  }
+
+  // OPERATIONAL
+  getObsData(ID: string | number): string {
+    return `${OperationalApiEnum.getObsData}${ID}`;
+  }
+
+  getMeasuredDischarges(ID: string | number): string {
+    return `${OperationalApiEnum.getMeasuredDischarges}${ID}`;
+  }
+
+  getPhases(ID: string | number): string {
+    return `${OperationalApiEnum.getPhases}${ID}`;
+  }
+
+  getFullPhaseHistory(ID: string | number): string {
+    return `${OperationalApiEnum.getFullPhaseHistory}${ID}`;
+  }
+
+  updatePhaseHistory(ID: string | number): string {
+    return `${OperationalApiEnum.updatePhaseHistory}${ID}`;
   }
 }

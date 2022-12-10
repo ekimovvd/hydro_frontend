@@ -11,6 +11,11 @@ export interface TaskServerInterface {
   TaskData: TaskServerTaskDataInterface;
 }
 
+export interface TaskServerSummaryInterface {
+  status: number | null;
+  taskTypeID: string | null;
+}
+
 export interface TaskServerTaskDataInterface {
   config: {
     "@measuredQHSource": string;

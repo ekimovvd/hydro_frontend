@@ -46,6 +46,10 @@ export default class VSelectDefault extends Vue {
         return VSelectStyleViewClassEnum.gray;
       case VSelectParamsStyleEnum.primary:
         return VSelectStyleViewClassEnum.primary;
+      case VSelectParamsStyleEnum.success:
+        return VSelectStyleViewClassEnum.success;
+      case VSelectParamsStyleEnum.violet:
+          return VSelectStyleViewClassEnum.violet;
       default:
         return VSelectStyleViewClassEnum.default;
     }

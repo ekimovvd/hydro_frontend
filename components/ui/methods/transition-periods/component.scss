@@ -1,0 +1,18 @@
+.methods-transition-periods {
+  &__group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 40px;
+    margin-top: 20px;
+  }
+
+  &__block {
+    @include display-flex-column;
+
+    row-gap: 20px;
+  }
+
+  &__select {
+    max-width: 400px;
+  }
+}

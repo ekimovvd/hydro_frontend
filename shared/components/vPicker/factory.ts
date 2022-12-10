@@ -16,6 +16,7 @@ export enum VPickerParamsComponentEnum {
 export enum VPickerParamsTypeEnum {
   date = "date",
   time = "time",
+  dateRange = 'daterange',
   dateTime = "datetime",
   dateTimeRange = "datetimerange",
 }

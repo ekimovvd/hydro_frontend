@@ -67,6 +67,18 @@ $font-size: 13px;
       &.hover {
         color: $color-black;
       }
+
+      &.v-select-default__option {
+        &--type {
+          &-success {
+            color: $color-green-light;
+          }
+
+          &-violet {
+            color: $color-violet;
+          }
+        }
+      }
     }
 
     .el-select-dropdown__empty {
@@ -76,7 +88,7 @@ $font-size: 13px;
     }
   }
 
-  &--view-gray {
+  &--view-gray, &--view-success, &--view-violet {
     .el-input {
       background: $color-white-dark;
     }
@@ -112,6 +124,18 @@ $font-size: 13px;
 
     .v-select-default__icon {
       color: $color-white;
+    }
+  }
+
+  &--view-success {
+    .el-input__inner {
+      color: $color-green-light;
+    }
+  }
+
+  &--view-violet {
+    .el-input__inner {
+      color: $color-violet;
     }
   }
 }

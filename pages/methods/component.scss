@@ -1,0 +1,9 @@
+.methods {
+  @include container;
+
+  padding: 69px 0;
+
+  &__filters {
+    margin-bottom: 10px;
+  }
+}
