@@ -8,6 +8,7 @@ export interface VSelectParamsInterface {
 }
 
 export interface VSelectDataInterface {
+  type: VSelectOptionStyleEnum;
   value?: string | number;
   label?: string;
 }
@@ -19,6 +20,14 @@ export enum VSelectParamsTypeEnum {
 export enum VSelectParamsStyleEnum {
   gray = "gray",
   primary = "primary",
+  success = "success",
+  violet = "violet"
+}
+
+export enum VSelectOptionStyleEnum {
+  default = "default",
+  success = "success",
+  violet = "violet"
 }
 
 export enum VSelectParamsPooperClassEnum {
@@ -66,6 +75,7 @@ export const VSelectDataFactory = (
   params: Partial<VSelectDataInterface> = {}
 ): VSelectDataInterface => {
   return {
+    type: VSelectOptionStyleEnum.default,
     ...params,
   };
 };

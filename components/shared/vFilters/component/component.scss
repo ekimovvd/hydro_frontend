@@ -1,0 +1,12 @@
+.v-filters {
+  &__container {
+    @include container;
+    @include display-flex-center;
+
+    column-gap: 20px;
+  }
+
+  &__component {
+    max-width: 400px;
+  }
+}

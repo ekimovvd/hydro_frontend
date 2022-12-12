@@ -68,6 +68,17 @@ export enum VTableColumnLabelEnum {
   lastRunTime = "Последний запуск",
   scheduledTime = "Запланировано",
   lastRunComment = "Результат запуска",
+  on = 'Вкл',
+  date = 'Дата',
+  pointType = 'Тип точки',
+  devQ = '∆Q',
+  curveQ = 'Q КР',
+  sumT = '∑T',
+  phaseStartDate = 'Дата начала фазы',
+  recordType = 'Тип записи',
+  phaseName = 'Название фазы',
+  H = 'H, см',
+  q = 'Q, м3/с'
 }
 
 export enum VTableIconEnum {

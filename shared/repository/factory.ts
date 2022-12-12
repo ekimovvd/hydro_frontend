@@ -4,7 +4,10 @@ import {
   HydroStationInterface,
 } from "../entities/stations/factory";
 import { AuthInterface, TokenInterface } from "../entities/connect/factory";
-import { TaskServerInterface } from "../entities/tasks/factory";
+import { TaskServerInterface, TaskServerSummaryInterface } from "../entities/tasks/factory";
+import { VOperationalRequestParams } from "~/pages/operational/constants";
+import { TransitionPeriodInterface } from "../entities/transition-periods/factory";
+import { OperationalFullPhaseHistoryInterface, OperationalMeasuredDischargesInterface, OperationalObsDataInterface, OperationalUpdatePhaseHistoryInterface, OperationalValueInterface } from "../entities/operational/factory";
 
 export interface ProjectRepositoryInterface {
   // TOKEN
@@ -12,6 +15,8 @@ export interface ProjectRepositoryInterface {
 
   // TASKS
   getAllServerTasks(): Promise<TaskServerInterface[]>;
+
+  getServerTasksSummary(ID: string | number): Promise<TaskServerSummaryInterface[]>;
 
   saveServerTask(task: TaskServerInterface): Promise<string>;
 
@@ -33,6 +38,20 @@ export interface ProjectRepositoryInterface {
   forceDeleteWorkStation(ID: string | number): Promise<boolean>;
 
   updateWorkStation(params: WorkStationInterface): Promise<string>;
+
+  // METHODS
+  getTransitionPeriods(ID: string | number): Promise<TransitionPeriodInterface[]>;
+
+  // OPERATIONAL
+  getObsData(params: VOperationalRequestParams): Promise<OperationalObsDataInterface>;
+
+  getMeasuredDischarges(params: VOperationalRequestParams): Promise<OperationalMeasuredDischargesInterface[]>;
+
+  getPhases(ID: string | number): Promise<OperationalValueInterface[]>;
+
+  getFullPhaseHistory(ID: string | number): Promise<OperationalFullPhaseHistoryInterface[]>;
+
+  updatePhaseHistory(ID: string | number, params: OperationalUpdatePhaseHistoryInterface): Promise<void>;
 }
 
 export interface ProjectServicesInterface {

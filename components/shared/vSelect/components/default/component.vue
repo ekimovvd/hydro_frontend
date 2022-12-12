@@ -9,6 +9,7 @@
   >
     <el-option
       v-for="element in data"
+      :class="b('option', { type: element.type })"
       :key="element.value"
       :label="element.label"
       :value="element.value"

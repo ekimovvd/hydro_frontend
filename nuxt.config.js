@@ -35,6 +35,7 @@ export default {
     "~/plugins/vue-bem-cn.ts",
     "~plugins/project-services.ts",
     "~/plugins/element-ui.ts",
+    { src: "~/plugins/apexcharts.ts", ssr: false }
   ],
 
   components: true,

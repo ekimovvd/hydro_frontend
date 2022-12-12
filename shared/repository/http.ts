@@ -1,11 +1,14 @@
 import { AxiosInstance } from "axios";
+import { VOperationalRequestParams } from "~/pages/operational/constants";
 import { AuthInterface, TokenInterface } from "../entities/connect/factory";
+import { OperationalFullPhaseHistoryInterface, OperationalMeasuredDischargesInterface, OperationalObsDataInterface, OperationalUpdatePhaseHistoryInterface, OperationalValueInterface } from "../entities/operational/factory";
 import {
   HydroStationInterface,
   NearestSynopStationInterface,
   WorkStationInterface,
 } from "../entities/stations/factory";
-import { TaskServerInterface } from "../entities/tasks/factory";
+import { TaskServerInterface, TaskServerSummaryInterface } from "../entities/tasks/factory";
+import { TransitionPeriodInterface } from "../entities/transition-periods/factory";
 import { ProjectRepositoryInterface } from "./factory";
 import { Url } from "./url";
 
@@ -110,5 +113,47 @@ export class Http implements ProjectRepositoryInterface {
     );
 
     return data;
+  }
+
+  // METHODS
+  async getTransitionPeriods(ID: string | number): Promise<TransitionPeriodInterface[]> {
+    const { data } = await this.axios.get<TransitionPeriodInterface[]>(
+      this.url.getTransitionPeriods(ID)
+    );
+
+    return data;
+  }
+
+  // OPERATIONAL
+  async getObsData(params: VOperationalRequestParams): Promise<OperationalObsDataInterface> {
+    const { workStationId, startDate, endDate } = params;
+    const url = `${this.url.getObsData(workStationId)}?dtFrom=${startDate}&dtTo=${endDate}`;
+    const { data } = await this.axios.get<OperationalObsDataInterface>(url);
+
+    return data;
+  }
+
+  async getMeasuredDischarges(params: VOperationalRequestParams): Promise<OperationalMeasuredDischargesInterface[]> {
+    const { workStationId, startDate, endDate } = params;
+    const url = `${this.url.getMeasuredDischarges(workStationId)}?dtFrom=${startDate}&dtTo=${endDate}`;
+    const { data } = await this.axios.get<OperationalMeasuredDischargesInterface[]>(url);
+
+    return data;
+  }
+
+  async getPhases(ID: string | number): Promise<OperationalValueInterface[]> {
+    const { data } = await this.axios.get<OperationalValueInterface[]>(this.url.getPhases(ID));
+
+    return data;
+  }
+
+  async getFullPhaseHistory(ID: string | number): Promise<OperationalFullPhaseHistoryInterface[]> {
+    const { data } = await this.axios.get<OperationalFullPhaseHistoryInterface[]>(this.url.getFullPhaseHistory(ID));
+
+    return data;
+  }
+
+  async updatePhaseHistory(ID: string | number, params: OperationalUpdatePhaseHistoryInterface): Promise<void> {
+    await this.axios.put<void>(this.url.updatePhaseHistory(ID), params);
   }
 }
