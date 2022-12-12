@@ -4,9 +4,13 @@
       <HomeStations
         :stations="workStations"
         @work:stations:update="onUpdateWorkStations"
-        @work:stations:list:update="onUpdateWorkStationsList"
       />
-      <VTask :class="b('task')" :tasks="serverTasks" :stations="workStations" />
+      <VTask
+        :class="b('task')"
+        :tasks="serverTasks"
+        :stations="workStations"
+        @server:tasks:update="onUpdateServerTasks"
+      />
     </div>
   </div>
 </template>

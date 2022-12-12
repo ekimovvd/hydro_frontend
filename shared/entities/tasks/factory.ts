@@ -1,7 +1,7 @@
 import { VTableColumnStyleEnum } from "~/shared/components/vTable/factory";
 
 export interface TaskServerInterface {
-  ID: number | null;
+  ID?: number | null;
   LastRunComment: string | null;
   LastRunTime: string | null;
   ScheduledTime: string;
@@ -25,17 +25,17 @@ export interface TaskServerTaskDataInterface {
     "@regimeSparseDays": string;
     Schedule: {
       "@runAtScheduledTime": string;
-      "@mode": string | null;
-      "@interval": string | null;
+      "@mode": string;
+      "@interval": string;
     };
     CalcPeriodOptions: {
-      "@start": string | null;
+      "@start": string;
       "@end": string | null;
     };
     ReservoirCalculatorOptions?: {
-      "@period": string | null;
-      "@periodExt": string | null;
-      "@calcStepDays": string | null;
+      "@period": string;
+      "@periodExt": string;
+      "@calcStepDays": string;
     };
     MethodByPhaseOptions?: {
       PhaseInfo: TaskServerMethodByPhaseOptions[];
@@ -129,8 +129,7 @@ export const LastRunCommentValueClass = {
 };
 
 export const TaskServerFactory = (
-  params: Partial<TaskServerInterface> = {},
-  reservoirCalculatorOptions = {}
+  params: Partial<TaskServerInterface> = {}
 ): TaskServerInterface => {
   return {
     ID: null,
@@ -149,17 +148,17 @@ export const TaskServerFactory = (
         "@regimeSparseDays": "1",
         Schedule: {
           "@runAtScheduledTime": "False",
-          "@mode": null,
-          "@interval": null,
+          "@mode": "",
+          "@interval": "",
         },
         CalcPeriodOptions: {
-          "@start": null,
-          "@end": null,
+          "@start": "",
+          "@end": "",
         },
         ReservoirCalculatorOptions: {
-          "@period": null,
-          "@periodExt": null,
-          "@calcStepDays": null,
+          "@period": "",
+          "@periodExt": "",
+          "@calcStepDays": "",
         },
         MethodByPhaseOptions: {
           PhaseInfo: [

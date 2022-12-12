@@ -42,7 +42,7 @@ export default class Home extends Vue {
     this.workStations = value;
   }
 
-  onUpdateWorkStationsList(): void {
-    console.log("work:stations:list:update");
+  onUpdateServerTasks(serverTasks: TaskServerInterface[]): void {
+    this.serverTasks = serverTasks;
   }
 }

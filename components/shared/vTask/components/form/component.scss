@@ -1,10 +1,10 @@
 .v-task-form {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 343px;
   grid-column-gap: 50px;
 
   &__block {
     @include display-flex-column;
-    width: 100%;
     grid-row-gap: 20px;
   }
 

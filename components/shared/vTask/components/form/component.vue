@@ -141,21 +141,28 @@
           />
         </div>
       </div>
-      <VTaskMethods v-if="getIsShowMethodsBlock" :form="form" />
+      <VTaskMethods
+        v-if="getIsShowMethodsBlock"
+        :form="form"
+        @phase:update="onUpdatePhase"
+      />
       <div :class="b('buttons')">
         <VButton
           :params="VButtonParamsCreate"
           :status="status"
+          :disabled="getDisabledCreate"
           @click="onTaskCreate"
         />
         <VButton
           :params="VButtonParamsSave"
           :status="status"
+          :disabled="getDisabledSave"
           @click="onTaskSave"
         />
         <VButton
           :params="VButtonParamsDelete"
           :status="status"
+          :disabled="getDisabledDelete"
           @click="onTaskDelete"
         />
       </div>

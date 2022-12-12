@@ -15,8 +15,16 @@ export class Url {
     return TasksApiEnum.getAllServerTasks;
   }
 
-  getServerTasksSummary(ID: string | number): string {
-    return `${TasksApiEnum.getServerTasksSummary}${ID}`;
+  saveServerTask(): string {
+    return TasksApiEnum.saveServerTask;
+  }
+
+  createServerTask(): string {
+    return TasksApiEnum.createServerTask;
+  }
+
+  deleteServerTask(): string {
+    return TasksApiEnum.deleteServerTask;
   }
 
   // STATIONS

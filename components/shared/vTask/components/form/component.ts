@@ -19,6 +19,7 @@ import { VInputParamsInterface } from "~/shared/components/vInput/factory";
 import { VButtonParamsInterface } from "~/shared/components/vButton/factory";
 import { StatusInterface } from "~/shared/entities/status/factory";
 import { VPickerParamsInterface } from "~/shared/components/vPicker/factory";
+import { StatusTypeEnum } from "~/shared/entities/status/factory";
 
 import {
   COMPONENT_NAME,
@@ -59,6 +60,7 @@ import {
   VPickerParamsCalculationPeriodFixed,
 } from "./constants";
 import { EventEnum } from "../../component/constants";
+import { CellInterface } from "../methods/constants";
 
 @Component({
   name: COMPONENT_NAME,
@@ -203,7 +205,7 @@ export default class VTaskForm extends Vue {
 
   // MODE
   get getModeValue(): string {
-    return this.form.TaskData.config.Schedule["@mode"] === null
+    return this.form.TaskData.config.Schedule["@mode"] === ""
       ? ""
       : this.form.TaskData.config.Schedule["@mode"];
   }
@@ -211,12 +213,12 @@ export default class VTaskForm extends Vue {
   // INTERVAL
   get getIntervalDaysValue(): number {
     const interval = this.form.TaskData.config.Schedule["@interval"];
-    return interval === null ? 0 : parseInt(interval.split(".")[0]);
+    return interval === "" ? 0 : parseInt(interval.split(".")[0]);
   }
 
   get getIntervalTimeValue(): string {
     const interval = this.form.TaskData.config.Schedule["@interval"];
-    return interval === null ? "" : interval.split(".")[1];
+    return interval === "" ? "" : interval.split(".")[1];
   }
 
   // CALCULATION PERIOD
@@ -230,16 +232,16 @@ export default class VTaskForm extends Vue {
 
   get getCalculationPeriodRelativeValue() {
     const calcPeriodOptions = this.form.TaskData.config.CalcPeriodOptions;
-    return calcPeriodOptions["@start"] === null ||
-      calcPeriodOptions["@end"] === null
+    return calcPeriodOptions["@start"] === "" ||
+      calcPeriodOptions["@end"] === ""
       ? ""
       : [calcPeriodOptions["@start"], calcPeriodOptions["@end"]];
   }
 
   get getCalculationPeriodFixedValue() {
     const calcPeriodOptions = this.form.TaskData.config.CalcPeriodOptions;
-    return calcPeriodOptions["@start"] === null ||
-      calcPeriodOptions["@end"] === null
+    return calcPeriodOptions["@start"] === "" ||
+      calcPeriodOptions["@end"] === ""
       ? ""
       : [calcPeriodOptions["@start"], calcPeriodOptions["@end"]];
   }
@@ -247,7 +249,7 @@ export default class VTaskForm extends Vue {
   // PERIOD
   get getPeriodValue(): number {
     return this.form.TaskData.config.ReservoirCalculatorOptions["@period"] ===
-      null
+      ""
       ? 0
       : parseInt(
           this.form.TaskData.config.ReservoirCalculatorOptions["@period"]
@@ -258,7 +260,7 @@ export default class VTaskForm extends Vue {
   get getPeriodExtValue(): number {
     return this.form.TaskData.config.ReservoirCalculatorOptions[
       "@periodExt"
-    ] === null
+    ] === ""
       ? 0
       : parseInt(
           this.form.TaskData.config.ReservoirCalculatorOptions["@periodExt"]
@@ -269,7 +271,7 @@ export default class VTaskForm extends Vue {
   get getCalcStepDaysValue(): number {
     return this.form.TaskData.config.ReservoirCalculatorOptions[
       "@calcStepDays"
-    ] === null
+    ] === ""
       ? 0
       : parseInt(
           this.form.TaskData.config.ReservoirCalculatorOptions["@calcStepDays"]
@@ -279,6 +281,35 @@ export default class VTaskForm extends Vue {
   // CORRQ
   get getCorrQValue() {
     return JSON.parse(this.form.TaskData.config["@corrQ"].toLowerCase());
+  }
+
+  // CREATE
+  get getDisabledCreate(): boolean {
+    return (
+      this.status.type === StatusTypeEnum.loading ||
+      this.form.StationID === null ||
+      this.form.TaskTypeID === null ||
+      this.form.ScheduledTime === "" ||
+      this.form.Status === null ||
+      this.form.ID !== null
+    );
+  }
+
+  // SAVE
+  get getDisabledSave(): boolean {
+    return (
+      this.status.type === StatusTypeEnum.loading ||
+      this.form.StationID === null ||
+      this.form.TaskTypeID === null ||
+      this.form.ScheduledTime === "" ||
+      this.form.Status === null ||
+      this.form.ID === null
+    );
+  }
+
+  // DELETE
+  get getDisabledDelete(): boolean {
+    return this.status.type === StatusTypeEnum.loading || this.form.ID === null;
   }
 
   // STATION
@@ -354,6 +385,10 @@ export default class VTaskForm extends Vue {
   // CorrQ
   @Emit(EventEnum.corrQUpdate)
   onChangeCorrQ(value: boolean): void {}
+
+  // METHODS
+  @Emit(EventEnum.phaseUpdate)
+  onUpdatePhase(value: CellInterface): void {}
 
   // BUTTONS
   @Emit(EventEnum.taskCreate)
