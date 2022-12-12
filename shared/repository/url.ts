@@ -15,6 +15,10 @@ export class Url {
     return TasksApiEnum.getAllServerTasks;
   }
 
+  getServerTasksSummary(): string {
+    return TasksApiEnum.getServerTasksSummary;
+  }
+
   saveServerTask(): string {
     return TasksApiEnum.saveServerTask;
   }
@@ -54,7 +58,7 @@ export class Url {
 
   // METHODS
   getTransitionPeriods(ID: string | number): string {
-    return `${MethodsApiEnum.getTransitionPeriods}${ID}`
+    return `${MethodsApiEnum.getTransitionPeriods}${ID}`;
   }
 
   // OPERATIONAL

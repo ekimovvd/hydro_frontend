@@ -1,6 +1,5 @@
 <template>
   <div :class="b()">
-    <h4 :class="b('title')">Список постов</h4>
     <div :class="b('group')">
       <VSelect :params="VSelectParamsTerm" :data="[]" :value="''" />
     </div>

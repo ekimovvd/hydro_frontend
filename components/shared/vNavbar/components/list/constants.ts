@@ -30,14 +30,4 @@ export const VLinks: VLinkParamsInterface[] = [
     name: VLinkParamsNameEnum.files,
     icon: VLinkParamsIconEnum.files,
   }),
-  VLinkParamsFactory({
-    to: VLinkParamsToEnum.bulletins,
-    name: VLinkParamsNameEnum.bulletins,
-    icon: VLinkParamsIconEnum.bulletins,
-  }),
-  VLinkParamsFactory({
-    to: VLinkParamsToEnum.forecasts,
-    name: VLinkParamsNameEnum.forecasts,
-    icon: VLinkParamsIconEnum.forecasts,
-  }),
 ];

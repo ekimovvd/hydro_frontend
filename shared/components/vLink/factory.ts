@@ -17,8 +17,6 @@ export enum VLinkParamsToEnum {
   operational = "/operational",
   methods = "/methods",
   files = "/files",
-  bulletins = "/bulletins",
-  forecasts = "/forecasts",
   profile = "/profile",
 }
 
@@ -28,8 +26,6 @@ export enum VLinkParamsIconEnum {
   operational = "bx bx-flag",
   methods = "bx bx-slider",
   files = "bx bx-file",
-  bulletins = "bx bx-envelope",
-  forecasts = "bx bx-layer",
 }
 
 export enum VLinkParamsNameEnum {
@@ -38,8 +34,6 @@ export enum VLinkParamsNameEnum {
   operational = "Оперативная работа",
   methods = "Методы",
   files = "Файлы",
-  bulletins = "Бюллетени",
-  forecasts = "Прогнозы",
   auth = "Авторизация",
   profile = "Профиль",
   add = "Добавить",
